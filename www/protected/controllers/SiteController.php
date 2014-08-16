@@ -100,8 +100,13 @@ class SiteController extends Controller
 public function actionRegister()
 	{
 		$model=new RegisterForm;
-
-		// display the login form
+// collect user input data
+		if(isset($_POST['RegisterForm']))
+		{
+			$model->attributes=$_POST['RegisterForm'];
+			
+		}
+		// display the register form
 		$this->render('register',array('model'=>$model));
 	}
 	/**

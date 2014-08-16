@@ -1,0 +1,9 @@
+2014/08/16 17:12:01 [warning] [application] Failed to set unsafe attribute "username" of "RegisterForm".
+in Z:\home\angler\www\protected\controllers\SiteController.php (106)
+in Z:\home\angler\www\index.php (13)
+2014/08/16 17:12:01 [warning] [application] Failed to set unsafe attribute "email" of "RegisterForm".
+in Z:\home\angler\www\protected\controllers\SiteController.php (106)
+in Z:\home\angler\www\index.php (13)
+2014/08/16 17:12:01 [warning] [application] Failed to set unsafe attribute "password" of "RegisterForm".
+in Z:\home\angler\www\protected\controllers\SiteController.php (106)
+in Z:\home\angler\www\index.php (13)
