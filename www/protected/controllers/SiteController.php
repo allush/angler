@@ -97,7 +97,13 @@ class SiteController extends Controller
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
+public function actionRegister()
+	{
+		$model=new RegisterForm;
 
+		// display the login form
+		$this->render('register',array('model'=>$model));
+	}
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
