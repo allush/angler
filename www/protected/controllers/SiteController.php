@@ -109,6 +109,10 @@ public function actionRegister()
 		// display the register form
 		$this->render('register',array('model'=>$model));
 	}
+	public function actionProfile()
+	{
+
+	}
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
