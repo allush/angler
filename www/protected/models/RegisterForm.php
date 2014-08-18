@@ -9,7 +9,5 @@ class RegisterForm extends CFormModel
 	public $username;
 	public $email;
 	public $password;
-private $_identity;
-
 }
 ?>

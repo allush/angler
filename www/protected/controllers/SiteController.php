@@ -1,5 +1,16 @@
 <?php
-
+class Post extends CActiveRecord
+{
+    public static function model($className=__CLASS__)
+    {
+        return parent::model($className);
+    }
+ 
+    public function tableName()
+    {
+        return 'user';
+    }
+}
 class SiteController extends Controller
 {
 	/**
@@ -97,18 +108,30 @@ class SiteController extends Controller
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
-public function actionRegister()
+	/**
+	 * Displays the register page
+	 */
+	public function actionRegister()
 	{
 		$model=new RegisterForm;
+		$connection=new CDbConnection('mysql:host=localhost;dbname=angler','root','');
+		$connection->active=true;
+		$post=new Post;
 // collect user input data
 		if(isset($_POST['RegisterForm']))
 		{
-			$model->attributes=$_POST['RegisterForm'];
-			
+		$model->attributes=$_POST['RegisterForm'];
+		$post->name=$model->username;
+		$post->email=$model->email;
+		$post->password=$model->password;
+		$post->save();
 		}
 		// display the register form
 		$this->render('register',array('model'=>$model));
 	}
+	/**
+	 * Displays the profile page
+	 */
 	public function actionProfile()
 	{
 
