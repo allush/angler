@@ -123,7 +123,7 @@ class SiteController extends Controller
 		$model->attributes=$_POST['RegisterForm'];
 		$post->name=$model->username;
 		$post->email=$model->email;
-		$post->password=$model->password;
+		$post->password=$hash = CPasswordHelper::hashPassword($model->password);
 		$post->save();
 		}
 		// display the register form
