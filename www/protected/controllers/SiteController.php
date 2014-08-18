@@ -121,7 +121,6 @@ class SiteController extends Controller
 		if(isset($_POST['RegisterForm']))
 		{
 		$model->attributes=$_POST['RegisterForm'];
-		if($model->validate())
 		$post->name=$model->username;
 		$post->email=$model->email;
 		$post->password=$model->password;

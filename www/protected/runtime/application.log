@@ -352,3 +352,12 @@ Stack trace:
 REQUEST_URI=/index.php?r=site/register
 HTTP_REFERER=http://angler/
 ---
+2014/08/18 15:33:15 [warning] [application] Failed to set unsafe attribute "username" of "RegisterForm".
+in W:\home\angler\www\protected\controllers\SiteController.php (123)
+in W:\home\angler\www\index.php (13)
+2014/08/18 15:34:21 [warning] [application] Failed to set unsafe attribute "username" of "RegisterForm".
+in W:\home\angler\www\protected\controllers\SiteController.php (123)
+in W:\home\angler\www\index.php (13)
+2014/08/18 15:36:04 [warning] [application] Failed to set unsafe attribute "username" of "RegisterForm".
+in W:\home\angler\www\protected\controllers\SiteController.php (123)
+in W:\home\angler\www\index.php (13)
