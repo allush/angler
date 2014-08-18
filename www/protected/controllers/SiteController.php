@@ -114,8 +114,8 @@ class SiteController extends Controller
 	public function actionRegister()
 	{
 		$model=new RegisterForm;
-		//$connection=new CDbConnection('mysql:host=localhost;dbname=angler','root','');
-		//$connection->active=true;
+		$connection=new CDbConnection('mysql:host=localhost;dbname=angler','root','');
+		$connection->active=true;
 		$post=new Post;
 // collect user input data
 		if(isset($_POST['RegisterForm']))
