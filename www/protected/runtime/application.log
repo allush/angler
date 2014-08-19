@@ -436,3 +436,39 @@ REQUEST_URI=/index.php?r=site/login
 in W:\home\angler\www\protected\components\UserIdentity.php (36)
 in W:\home\angler\www\protected\models\LoginForm.php (52)
 in W:\home\angler\www\protected\controllers\SiteController.php (104)
+2014/08/19 15:27:43 [error] [exception.CException] exception 'CException' with message 'Property "Post.name" is not defined.' in W:\home\angler\www\framework\base\CComponent.php:173
+Stack trace:
+#0 W:\home\angler\www\framework\db\ar\CActiveRecord.php(161): CComponent->__set('name', 'Lihoy_Li_hoy')
+#1 W:\home\angler\www\protected\controllers\SiteController.php(123): CActiveRecord->__set('name', 'Lihoy_Li_hoy')
+#2 W:\home\angler\www\framework\web\actions\CInlineAction.php(49): SiteController->actionRegister()
+#3 W:\home\angler\www\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 W:\home\angler\www\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 W:\home\angler\www\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 W:\home\angler\www\framework\web\CWebApplication.php(282): CController->run('register')
+#7 W:\home\angler\www\framework\web\CWebApplication.php(141): CWebApplication->runController('site/register')
+#8 W:\home\angler\www\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 W:\home\angler\www\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php?r=site/register
+HTTP_REFERER=http://angler/index.php?r=site/register
+---
+2014/08/19 15:51:21 [error] [php] include(User.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (W:\home\angler\www\framework\YiiBase.php:427)
+Stack trace:
+#0 W:\home\angler\www\protected\components\UserIdentity.php(22): spl_autoload_call()
+#1 W:\home\angler\www\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#2 W:\home\angler\www\framework\validators\CInlineValidator.php(42): LoginForm->authenticate()
+#3 W:\home\angler\www\framework\validators\CValidator.php(213): CInlineValidator->validateAttribute()
+#4 W:\home\angler\www\framework\base\CModel.php(159): CInlineValidator->validate()
+#5 W:\home\angler\www\protected\controllers\SiteController.php(103): LoginForm->validate()
+#6 W:\home\angler\www\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#7 W:\home\angler\www\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 W:\home\angler\www\framework\web\CController.php(286): SiteController->runAction()
+#9 W:\home\angler\www\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#10 W:\home\angler\www\framework\web\CWebApplication.php(282): SiteController->run()
+#11 W:\home\angler\www\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 W:\home\angler\www\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 W:\home\angler\www\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=site/login
+in W:\home\angler\www\protected\components\UserIdentity.php (22)
+in W:\home\angler\www\protected\models\LoginForm.php (52)
+in W:\home\angler\www\protected\controllers\SiteController.php (103)

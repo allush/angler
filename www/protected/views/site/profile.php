@@ -5,7 +5,7 @@
 
 $this->pageTitle=Yii::app()->name . ' - Profile';
 $this->breadcrumbs=array(
-	'Proflie',
+	'Profile',
 );
 ?>
 
@@ -15,7 +15,7 @@ $this->breadcrumbs=array(
 
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'register-form',
+	'id'=>'profile-form',
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,

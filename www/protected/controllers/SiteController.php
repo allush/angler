@@ -5,7 +5,6 @@ class Post extends CActiveRecord
     {
         return parent::model($className);
     }
-
     public function tableName()
     {
         return 'user';
@@ -95,7 +94,6 @@ class SiteController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-
 		// collect user input data
 		if(isset($_POST['LoginForm']))
 		{
@@ -103,6 +101,7 @@ class SiteController extends Controller
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
 				$this->redirect(Yii::app()->user->returnUrl);
+
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
@@ -120,13 +119,13 @@ class SiteController extends Controller
 		if(isset($_POST['RegisterForm']))
 		{
 		$model->attributes=$_POST['RegisterForm'];
-		$post->name=$model->username;
+		$post->username=$model->username;
 		$post->email=$model->email;
 		$post->password=$hash = CPasswordHelper::hashPassword($model->password);
 		$post->save();
 		}
 		// display the register form
-		$this->render('register',array('model'=>$model));
+        $this->render('register',array('model'=>$model));
 	}
 	/**
 	 * Displays the profile page
@@ -134,6 +133,12 @@ class SiteController extends Controller
 	public function actionProfile()
 	{
 
+        $model=new ProfileForm;
+        if(isset($_POST['RegisterForm']))
+        {
+            $model->attributes=$_POST['ProfileForm'];
+        }
+        $this->render('profile',array('model'=>$model));
 	}
 	/**
 	 * Logs out the current user and redirect to homepage.

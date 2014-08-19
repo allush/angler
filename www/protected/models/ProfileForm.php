@@ -2,7 +2,7 @@
 
 /**
  * ProfileForm class.
- * user profile  data. It is used by the 'proflie' action of 'SiteController'.
+ * user profile  data. It is used by the 'profile' action of 'SiteController'.
  */
 class ProfileForm extends CFormModel
 {
