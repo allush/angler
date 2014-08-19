@@ -5,7 +5,7 @@ class Post extends CActiveRecord
     {
         return parent::model($className);
     }
- 
+
     public function tableName()
     {
         return 'user';
@@ -89,7 +89,6 @@ class SiteController extends Controller
 	public function actionLogin()
 	{
 		$model=new LoginForm;
-
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{
