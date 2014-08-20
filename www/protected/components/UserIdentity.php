@@ -16,7 +16,7 @@ class UserIdentity extends CUserIdentity
 	 * @return boolean whether authentication succeeds.
 	 */
 
-   /* private $_id;
+    private $_id;
     public function authenticate()
     {
         $record=User::model()->findByAttributes(array('username'=>$this->username));
@@ -32,12 +32,11 @@ class UserIdentity extends CUserIdentity
         }
         return !$this->errorCode;
     }
-
     public function getId()
     {
         return $this->_id;
-    }*/
-	public function authenticate()
+    }
+	/*public function authenticate()
 	{
         $post=new Post;
 		$users=array(
@@ -52,5 +51,5 @@ class UserIdentity extends CUserIdentity
 		else
 			$this->errorCode=self::ERROR_NONE;
 		return !$this->errorCode;
-	}
+	}*/
 }
