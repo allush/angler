@@ -119,7 +119,7 @@ class SiteController extends Controller
     public function actionProfile()
     {
         $model = new ProfileForm;
-        if (isset($_POST['RegisterForm'])) {
+        if (isset($_POST['ProfileForm'])) {
             $model->attributes = $_POST['ProfileForm'];
         }
         $this->render('profile', array('model' => $model));

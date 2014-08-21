@@ -7,6 +7,7 @@ $this->pageTitle=Yii::app()->name . ' - Profile';
 $this->breadcrumbs=array(
 	'Profile',
 );
+$user=User::model()->findByAttributes(array('email' => Yii::app()->user->name));
 ?>
 
 <h1>Profile</h1>
@@ -22,24 +23,29 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
+    <div class="row">
+        <?php echo $form->labelEx($model,'Current username'); ?>
+        <?php echo $form->labelEx($model,$user->username); ?>
+        <?php echo $form->textField($model,'username'); ?>
+        <?php echo $form->error($model,'username'); ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username'); ?>
-		<?php echo $form->error($model,'username'); ?>
-	</div>
-	
-	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
+    <div class="row">
+		<?php echo $form->labelEx($model,'Current email'); ?>
+        <?php echo $form->labelEx($model,$user->email); ?>
 		<?php echo $form->textField($model,'email'); ?>
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->textField($model,'password'); ?>
+        <?php echo $form->labelEx($model,'Current password'); ?>
+        <?php echo $form->labelEx($model,$user->password); ?>
+        <?php echo $form->textField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
-	
+
+    <div class="row buttons">
+        <?php echo CHtml::submitButton('Update information'); ?>
+    </div>
 <?php $this->endWidget(); ?>
 </div><!-- form -->
