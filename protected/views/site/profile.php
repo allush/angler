@@ -7,7 +7,7 @@ $this->pageTitle=Yii::app()->name . ' - Profile';
 $this->breadcrumbs=array(
 	'Profile',
 );
-$user=User::model()->findByAttributes(array('email' => Yii::app()->user->name));
+$user=User::model()->findByAttributes(array('id' => Yii::app()->user->id));
 ?>
 
 <h1>Profile</h1>
@@ -38,9 +38,8 @@ $user=User::model()->findByAttributes(array('email' => Yii::app()->user->name));
 	</div>
 	
 	<div class="row">
-        <?php echo $form->labelEx($model,'Current password'); ?>
-        <?php echo $form->labelEx($model,$user->password); ?>
-        <?php echo $form->textField($model,'password'); ?>
+        <?php echo $form->labelEx($model,'New password'); ?>
+        <?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 

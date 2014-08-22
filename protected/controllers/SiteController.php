@@ -121,6 +121,16 @@ class SiteController extends Controller
         $model = new ProfileForm;
         if (isset($_POST['ProfileForm'])) {
             $model->attributes = $_POST['ProfileForm'];
+
+            if ($model->validate()) {
+                $user=User::model()->findByAttributes(array('id' => Yii::app()->user->id));
+                $user->username = $model->username;
+                $user->email = strtolower($model->email);
+                $user->password = CPasswordHelper::hashPassword($model->password);
+                $user->save();
+
+                $this->redirect(Yii::app()->homeUrl);
+            }
         }
         $this->render('profile', array('model' => $model));
     }
