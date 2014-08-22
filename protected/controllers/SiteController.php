@@ -135,6 +135,14 @@ class SiteController extends Controller
         $this->render('profile', array('model' => $model));
     }
 
+    public function actionPhoto()
+    {
+        $model = new PhotoForm;
+        if (isset($_POST['PhotoForm'])) {
+            $model->attributes = $_POST['PhotoForm'];
+        }
+        $this->render('photo', array('model' => $model));
+    }
     /**
      * Logs out the current user and redirect to homepage.
      */
