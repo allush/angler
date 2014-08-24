@@ -135,14 +135,29 @@ class SiteController extends Controller
         $this->render('profile', array('model' => $model));
     }
 
-    public function actionPhoto()
+  /*  public function actionPhoto()
     {
         $model = new PhotoForm;
         if (isset($_POST['PhotoForm'])) {
             $model->attributes = $_POST['PhotoForm'];
         }
         $this->render('photo', array('model' => $model));
+    }*/
+
+    public function actionCreate(){
+        $model=new Item;
+        if(isset($_POST['Item'])){
+            $model->attributes=$_POST['Item'];
+            $model->image=CUploadedFile::getInstance($model,'image');
+            if($model->save()){
+                $model->image->saveAs('path/to/localFile');
+                // перенаправляем на страницу, где выводим сообщение об
+                // успешной загрузке
+            }
+        }
+        $this->render('create', array('model'=>$model));
     }
+
     /**
      * Logs out the current user and redirect to homepage.
      */

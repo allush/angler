@@ -769,3 +769,108 @@ Stack trace:
 REQUEST_URI=/index.php?r=site/photo
 HTTP_REFERER=http://angler/
 ---
+2014/08/22 15:06:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "photo".' in W:\home\angler\framework\web\CController.php:483
+Stack trace:
+#0 W:\home\angler\framework\web\CController.php(270): CController->missingAction('photo')
+#1 W:\home\angler\framework\web\CWebApplication.php(282): CController->run('photo')
+#2 W:\home\angler\framework\web\CWebApplication.php(141): CWebApplication->runController('site/photo')
+#3 W:\home\angler\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 W:\home\angler\www\index.php(26): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=site/photo
+HTTP_REFERER=http://angler/index.php?r=site/profile
+---
+2014/08/22 15:08:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "photo".' in W:\home\angler\framework\web\CController.php:483
+Stack trace:
+#0 W:\home\angler\framework\web\CController.php(270): CController->missingAction('photo')
+#1 W:\home\angler\framework\web\CWebApplication.php(282): CController->run('photo')
+#2 W:\home\angler\framework\web\CWebApplication.php(141): CWebApplication->runController('site/photo')
+#3 W:\home\angler\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 W:\home\angler\www\index.php(26): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=site/photo
+HTTP_REFERER=http://angler/index.php?r=site/profile
+---
+2014/08/22 15:09:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "photo".' in W:\home\angler\framework\web\CController.php:483
+Stack trace:
+#0 W:\home\angler\framework\web\CController.php(270): CController->missingAction('photo')
+#1 W:\home\angler\framework\web\CWebApplication.php(282): CController->run('photo')
+#2 W:\home\angler\framework\web\CWebApplication.php(141): CWebApplication->runController('site/photo')
+#3 W:\home\angler\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 W:\home\angler\www\index.php(26): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=site/photo
+HTTP_REFERER=http://angler/index.php?r=site/profile
+---
+2014/08/22 15:09:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "photo".' in W:\home\angler\framework\web\CController.php:483
+Stack trace:
+#0 W:\home\angler\framework\web\CController.php(270): CController->missingAction('photo')
+#1 W:\home\angler\framework\web\CWebApplication.php(282): CController->run('photo')
+#2 W:\home\angler\framework\web\CWebApplication.php(141): CWebApplication->runController('site/photo')
+#3 W:\home\angler\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 W:\home\angler\www\index.php(26): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=site/photo
+HTTP_REFERER=http://angler/index.php?r=site/profile
+---
+2014/08/22 15:10:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "photo".' in W:\home\angler\framework\web\CController.php:483
+Stack trace:
+#0 W:\home\angler\framework\web\CController.php(270): CController->missingAction('photo')
+#1 W:\home\angler\framework\web\CWebApplication.php(282): CController->run('photo')
+#2 W:\home\angler\framework\web\CWebApplication.php(141): CWebApplication->runController('site/photo')
+#3 W:\home\angler\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 W:\home\angler\www\index.php(26): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=site/photo
+HTTP_REFERER=http://angler/index.php?r=site/profile
+---
+2014/08/22 15:11:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "photo".' in W:\home\angler\framework\web\CController.php:483
+Stack trace:
+#0 W:\home\angler\framework\web\CController.php(270): CController->missingAction('photo')
+#1 W:\home\angler\framework\web\CWebApplication.php(282): CController->run('photo')
+#2 W:\home\angler\framework\web\CWebApplication.php(141): CWebApplication->runController('site/photo')
+#3 W:\home\angler\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 W:\home\angler\www\index.php(26): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=site/photo
+HTTP_REFERER=http://angler/index.php?r=site/profile
+---
+2014/08/22 15:11:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "скуфеу".' in W:\home\angler\framework\web\CController.php:483
+Stack trace:
+#0 W:\home\angler\framework\web\CController.php(270): CController->missingAction('????????????')
+#1 W:\home\angler\framework\web\CWebApplication.php(282): CController->run('????????????')
+#2 W:\home\angler\framework\web\CWebApplication.php(141): CWebApplication->runController('site/??????????...')
+#3 W:\home\angler\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 W:\home\angler\www\index.php(26): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=site/%D1%81%D0%BA%D1%83%D1%84%D0%B5%D1%83
+---
+2014/08/22 15:11:24 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'angler.item' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `Item`.
+in W:\home\angler\www\protected\controllers\SiteController.php (148)
+in W:\home\angler\www\index.php (26)
+2014/08/22 15:11:26 [error] [exception.CDbException] exception 'CDbException' with message 'The table "Item" for active record class "Item" cannot be found in the database.' in W:\home\angler\framework\db\ar\CActiveRecord.php:2362
+Stack trace:
+#0 W:\home\angler\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Item))
+#1 W:\home\angler\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
+#2 W:\home\angler\www\protected\controllers\SiteController.php(148): CActiveRecord->__construct()
+#3 W:\home\angler\framework\web\actions\CInlineAction.php(49): SiteController->actionCreate()
+#4 W:\home\angler\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 W:\home\angler\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 W:\home\angler\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 W:\home\angler\framework\web\CWebApplication.php(282): CController->run('create')
+#8 W:\home\angler\framework\web\CWebApplication.php(141): CWebApplication->runController('site/create')
+#9 W:\home\angler\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 W:\home\angler\www\index.php(26): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=site/create
+---
+2014/08/22 15:18:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "скуфеу".' in W:\home\angler\framework\web\CController.php:483
+Stack trace:
+#0 W:\home\angler\framework\web\CController.php(270): CController->missingAction('????????????')
+#1 W:\home\angler\framework\web\CWebApplication.php(282): CController->run('????????????')
+#2 W:\home\angler\framework\web\CWebApplication.php(141): CWebApplication->runController('site/??????????...')
+#3 W:\home\angler\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 W:\home\angler\www\index.php(26): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=site/%D1%81%D0%BA%D1%83%D1%84%D0%B5%D1%83
+---
