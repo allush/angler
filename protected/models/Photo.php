@@ -1,22 +1,19 @@
 <?php
 
 /**
- * This is the model class for table "user".
+ * This is the model class for table "photo".
  *
- * The followings are the available columns in table 'user':
+ * The followings are the available columns in table 'photo':
  * @property integer $id
- * @property string $username
- * @property string $email
- * @property string $password
  */
-class User extends CActiveRecord
+class Photo extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'user';
+		return 'photo';
 	}
 
 	/**
@@ -27,9 +24,6 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('username, email, password', 'required'),
-            array('email', 'email'),
-            array('email', 'unique'),
 		);
 	}
 
@@ -41,7 +35,7 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'photos'=>array(self::HAS_MANY, 'Photo', 'user_id'),
+             'user'=>array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -52,9 +46,6 @@ class User extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'username' => 'Username',
-			'email' => 'Email',
-			'password' => 'Password',
 		);
 	}
 
@@ -77,9 +68,6 @@ class User extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('username',$this->username,true);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('password',$this->password,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
