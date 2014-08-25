@@ -144,10 +144,10 @@ class SiteController extends Controller
         $this->render('photo', array('model' => $model));
     }*/
 
-    public function actionCreate(){
-        $model=new Item;
-        if(isset($_POST['Item'])){
-            $model->attributes=$_POST['Item'];
+    public function actionPhoto(){
+        $model=new Photo;
+        if(isset($_POST['Photo'])){
+            $model->attributes=$_POST['Photo'];
             $model->image=CUploadedFile::getInstance($model,'image');
             if($model->save()){
                 $model->image->saveAs('path/to/localFile');
@@ -155,7 +155,7 @@ class SiteController extends Controller
                 // успешной загрузке
             }
         }
-        $this->render('create', array('model'=>$model));
+        $this->render('photo', array('model'=>$model));
     }
 
     /**

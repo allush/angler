@@ -11,6 +11,7 @@ class Photo extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+    public $image;
 	public function tableName()
 	{
 		return 'photo';
@@ -24,6 +25,7 @@ class Photo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+            array('image', 'file', 'types'=>'jpg, gif, png'),
 		);
 	}
 
