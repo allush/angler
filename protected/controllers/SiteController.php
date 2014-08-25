@@ -101,11 +101,13 @@ class SiteController extends Controller
 
             if ($model->validate()) {
                 $user = new User();
+                $photo = new Photo();
                 $user->username = $model->username;
                 $user->email = strtolower($model->email);
                 $user->password = CPasswordHelper::hashPassword($model->password);
                 $user->save();
-
+                $photo->id=$user->id;
+                $photo->save();
                 $this->redirect(Yii::app()->homeUrl);
             }
         }
@@ -146,11 +148,14 @@ class SiteController extends Controller
 
     public function actionPhoto(){
         $model=new Photo;
+        $photo=Photo::model()->findByAttributes(array('id' => Yii::app()->user->id));
         if(isset($_POST['Photo'])){
             $model->attributes=$_POST['Photo'];
             $model->image=CUploadedFile::getInstance($model,'image');
             if($model->save()){
                 $model->image->saveAs('path/to/localFile');
+                $photo->filename=$model->image;
+                $photo->save();
                 // перенаправляем на страницу, где выводим сообщение об
                 // успешной загрузке
             }

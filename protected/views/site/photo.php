@@ -3,14 +3,18 @@
 /* @var $model Photo */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - Create';
+$this->pageTitle=Yii::app()->name . ' - Load Photo';
 $this->breadcrumbs=array(
-	'Create',
+	'Load Photo',
 );
-$user=User::model()->findByAttributes(array('id' => Yii::app()->user->id));
+$photo=Photo::model()->findByAttributes(array('id' => Yii::app()->user->id));
 ?>
 <?php $form=$this->beginWidget('CActiveForm', array(
     'id'=>'photo-form',
+    'enableClientValidation'=>true,
+    'clientOptions'=>array(
+        'validateOnSubmit'=>true,
+    ),
 )); ?>
 
 <h1>Photo</h1>
@@ -21,7 +25,9 @@ $user=User::model()->findByAttributes(array('id' => Yii::app()->user->id));
 <?php echo CHtml::activeFileField($model, 'image'); ?>
 <?php echo CHtml::endForm(); ?>
 
-
+<div class="row buttons">
+    <?php echo CHtml::submitButton('Load Photo'); ?>
+</div>
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->

@@ -954,3 +954,24 @@ Stack trace:
 REQUEST_URI=/index.php?r=site/photo
 HTTP_REFERER=http://angler/index.php?r=site/profile
 ---
+2014/08/25 15:07:57 [error] [exception.CDbException] exception 'CDbException' with message 'Table "photo" does not have a column named "user_id".' in W:\home\angler\framework\db\schema\CDbCommandBuilder.php:694
+Stack trace:
+#0 W:\home\angler\framework\db\ar\CActiveRecord.php(1518): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 W:\home\angler\www\protected\views\site\photo.php(11): CActiveRecord->findByAttributes(Array)
+#2 W:\home\angler\framework\web\CBaseController.php(126): require('W:\home\angler\...')
+#3 W:\home\angler\framework\web\CBaseController.php(95): CBaseController->renderInternal('W:\home\angler\...', Array, true)
+#4 W:\home\angler\framework\web\CController.php(869): CBaseController->renderFile('W:\home\angler\...', Array, true)
+#5 W:\home\angler\framework\web\CController.php(782): CController->renderPartial('photo', Array, true)
+#6 W:\home\angler\www\protected\controllers\SiteController.php(163): CController->render('photo', Array)
+#7 W:\home\angler\framework\web\actions\CInlineAction.php(49): SiteController->actionPhoto()
+#8 W:\home\angler\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 W:\home\angler\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 W:\home\angler\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 W:\home\angler\framework\web\CWebApplication.php(282): CController->run('photo')
+#12 W:\home\angler\framework\web\CWebApplication.php(141): CWebApplication->runController('site/photo')
+#13 W:\home\angler\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 W:\home\angler\www\index.php(26): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php?r=site/photo
+HTTP_REFERER=http://angler/index.php
+---
