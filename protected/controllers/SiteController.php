@@ -122,7 +122,7 @@ class SiteController extends Controller
             $model->attributes = $_POST['ProfileForm'];
 
             if ($model->validate()) {
-                $user=User::model()->findByAttributes(array('id' => Yii::app()->user->id));
+                $user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
                 $user->username = $model->username;
                 $user->email = strtolower($model->email);
                 $user->password = CPasswordHelper::hashPassword($model->password);
@@ -134,31 +134,39 @@ class SiteController extends Controller
         $this->render('profile', array('model' => $model));
     }
 
-  /*  public function actionPhoto()
-    {
-        $model = new PhotoForm;
-        if (isset($_POST['PhotoForm'])) {
-            $model->attributes = $_POST['PhotoForm'];
-        }
-        $this->render('photo', array('model' => $model));
-    }*/
+    /*  public function actionPhoto()
+      {
+          $model = new PhotoForm;
+          if (isset($_POST['PhotoForm'])) {
+              $model->attributes = $_POST['PhotoForm'];
+          }
+          $this->render('photo', array('model' => $model));
+      }*/
 
-    public function actionPhoto(){
-        $model=new photo;
-        $photo=new Photo;
-        if(isset($_POST['photo'])){
-            $model->attributes=$_POST['photo'];
-            $model->image=CUploadedFile::getInstance($model,'image');
-            if($model->validate()){
-                $model->image->saveAs('path/to/localFile');
-                $photo->user_id=Yii::app()->user->id;
-                $photo->filename=$model->image;
-                $photo->save();
-                // перенаправляем на страницу, где выводим сообщение об
-                // успешной загрузке
+    public function actionPhoto()
+    {
+        $model = new Photo;
+
+        if (isset($_POST['Photo'])) {
+            $model->attributes = $_POST['Photo'];
+            $model->image = CUploadedFile::getInstance($model, 'image');
+
+            if ($model->image) {
+                $filename = md5(time()) . '.' . $model->image->extensionName;
+                $path = Photo::path() . $filename;
+
+                $model->image->saveAs($path);
+                $model->filename = $filename;
+
+                // тут может быть обработка уже загруженного изображения
+            }
+
+            if ($model->save()) {
+                $this->redirect(Yii::app()->request->urlReferrer);
             }
         }
-        $this->render('photo', array('model'=>$model));
+
+        $this->render('photo', array('model' => $model));
     }
 
     /**
