@@ -49,6 +49,8 @@ class Photo extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+            'user_id' => 'User_ID',
+
 		);
 	}
 
@@ -71,6 +73,7 @@ class Photo extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+        $criteria->compare('user_id',$this->user_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
