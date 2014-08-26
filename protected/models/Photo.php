@@ -12,6 +12,7 @@ class Photo extends CActiveRecord
 	 * @return string the associated database table name
 	 */
     public $image;
+    public $user_id;
 	public function tableName()
 	{
 		return 'photo';
@@ -72,8 +73,7 @@ class Photo extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-        $criteria->compare('user_id',$this->user_id,true);
+
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
