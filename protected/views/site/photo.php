@@ -7,7 +7,6 @@ $this->pageTitle=Yii::app()->name . ' - Load Photo';
 $this->breadcrumbs=array(
 	'Load Photo',
 );
-$photo=Photo::model()->findByAttributes(array('id' => Yii::app()->user->id));
 ?>
 <?php $form=$this->beginWidget('CActiveForm', array(
     'id'=>'photo-form',

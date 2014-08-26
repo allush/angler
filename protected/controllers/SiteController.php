@@ -149,7 +149,7 @@ class SiteController extends Controller
         if(isset($_POST['photo'])){
             $model->attributes=$_POST['photo'];
             $model->image=CUploadedFile::getInstance($model,'image');
-            if($model->save()){
+            if($model->validate()){
                 $model->image->saveAs('path/to/localFile');
                 $photo->user_id=Yii::app()->user->id;
                 $photo->filename=$model->image;
