@@ -47,9 +47,9 @@ class Photo extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'user_id' => 'Пользователь',
-            'filename' => 'Имя файла',
-            'image' => 'Фото',
+            'user_id' => 'Username',
+            'filename' => 'Filename',
+            'image' => 'Photo',
         );
     }
 

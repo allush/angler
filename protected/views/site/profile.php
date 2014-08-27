@@ -14,6 +14,8 @@ $user=User::model()->findByAttributes(array('id' => Yii::app()->user->id));
 
 <p>Hi, that's a profile page.</p>
 
+<?php echo CHtml::link('My photo', array('site/myphoto')); ?>
+
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'profile-form',
@@ -22,6 +24,7 @@ $user=User::model()->findByAttributes(array('id' => Yii::app()->user->id));
 		'validateOnSubmit'=>true,
 	),
 )); ?>
+
 
     <div class="row">
         <?php echo $form->labelEx($model,'Current username'); ?>
@@ -46,5 +49,10 @@ $user=User::model()->findByAttributes(array('id' => Yii::app()->user->id));
     <div class="row buttons">
         <?php echo CHtml::submitButton('Update information'); ?>
     </div>
+
+
+
+
 <?php $this->endWidget(); ?>
 </div><!-- form -->
+

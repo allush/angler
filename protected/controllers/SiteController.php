@@ -131,18 +131,13 @@ class SiteController extends Controller
                 $this->redirect(Yii::app()->homeUrl);
             }
         }
+
         $this->render('profile', array('model' => $model));
     }
 
-    /*  public function actionPhoto()
-      {
-          $model = new PhotoForm;
-          if (isset($_POST['PhotoForm'])) {
-              $model->attributes = $_POST['PhotoForm'];
-          }
-          $this->render('photo', array('model' => $model));
-      }*/
-
+    /**
+     * Displays the photo page
+     */
     public function actionPhoto()
     {
         $model = new Photo;
@@ -167,6 +162,11 @@ class SiteController extends Controller
         }
 
         $this->render('photo', array('model' => $model));
+    }
+
+    public function actionMyPhoto()
+    {
+        $this->render('myphoto');
     }
 
     /**
