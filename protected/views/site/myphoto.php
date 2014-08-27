@@ -5,7 +5,7 @@ $this->pageTitle=Yii::app()->name . ' - My Photo';
 $this->breadcrumbs=array(
     'My Photo',
 );
-$user=Photo::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
+$photo=Photo::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
 ?>
 
 <h1>My photo</h1>
@@ -13,7 +13,8 @@ $user=Photo::model()->findByAttributes(array('user_id' => Yii::app()->user->id))
 <p>Here you can see all your photo</p>
 
 <?php
-CHtml::image($user->path().$user->filename);
+echo $photo->imageUrl().$photo->filename;
+CHtml::image($photo->imageUrl().$photo->filename);
 ?>
 
 
