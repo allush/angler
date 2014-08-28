@@ -64,10 +64,13 @@ class Photo extends CActiveRecord
         return parent::model($className);
     }
 
-    public static function imageUrl(){
-        return Yii::app()->request->getBaseUrl(true) . '/images/photo/';
+    public function imageUrl()
+    {
+        return Yii::app()->baseUrl . '/images/photo/'. $this->filename;
     }
-    public static function path(){
+
+    public static function path()
+    {
         return Yii::app()->basePath . '/../images/photo/';
     }
 }

@@ -8,6 +8,7 @@
  * @property string $username
  * @property string $email
  * @property string $password
+ * @property Photo[] $photos
  */
 class User extends CActiveRecord
 {
@@ -41,7 +42,7 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'photos'=>array(self::HAS_MANY, 'Photo', 'id'),
+            'photos'=>array(self::HAS_MANY, 'Photo', 'user_id'),
 		);
 	}
 

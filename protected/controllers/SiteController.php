@@ -166,7 +166,7 @@ class SiteController extends Controller
 
     public function actionMyPhoto()
     {
-        $this->render('myphoto');
+        $this->render('myphoto', array('photos' => $this->getUser()->photos));
     }
 
     /**
