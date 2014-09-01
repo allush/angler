@@ -42,6 +42,7 @@
                     array('label' => 'Register', 'url' => array('/site/register'), 'visible' => Yii::app()->user->isGuest),
                     array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
                     array('label' => 'Profile', 'url' => array('/site/profile'), 'visible' => !Yii::app()->user->isGuest),
+                    array('label' => 'All Photo', 'url' => array('/site/allphoto')),
                     array('label' => 'Photo', 'url' => array('/site/photo'), 'visible' => !Yii::app()->user->isGuest),
                     array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
                 ),
