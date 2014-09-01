@@ -14,6 +14,7 @@ $this->breadcrumbs = array(
 
 <div class="view">
     <?php
+    $photos=Photo::model()->findAll();
     foreach ($photos as $photo) {
         echo CHtml::image($photo->imageUrl(), "tag", array("width" => "200px", "height" => "200px"));
     }
