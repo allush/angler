@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Admine
- * Date: 01.09.14
- * Time: 13:21
- */
+/* @var $this GalleryController */
+/* @var $photos Photo[] */
 $this->pageTitle = Yii::app()->name . ' - All Photo';
 $this->breadcrumbs = array(
     'All Photo',
@@ -19,7 +15,7 @@ $this->breadcrumbs = array(
 <div class="view">
     <?php
     foreach ($photos as $photo) {
-        echo CHtml::image($photo->imageUrl(), "tag", array("width" => "50px", "height" => "50px"));
+        echo CHtml::image($photo->imageUrl(), "tag", array("width" => "200px", "height" => "200px"));
     }
     ?>
 </div>
