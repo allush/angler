@@ -1,15 +1,16 @@
 <?php
-/* @var $this GalleryController */
+/* @var $this SiteController */
 /* @var $photos Photo[] */
-$this->pageTitle = Yii::app()->name . ' - All Photo';
+$this->pageTitle = Yii::app()->name . ' - My Photo';
 $this->breadcrumbs = array(
-    'All Photo',
+    'My Photo',
 );
 ?>
-<h1>All photo</h1>
 
-<p>Here you can see all photo</p>
+<?php $this->renderPartial('_menu');?>
+<h1>My photo</h1>
 
+<p>Here you can see all your photo</p>
 
 <div class="row">
     <?php
@@ -35,3 +36,14 @@ $this->breadcrumbs = array(
         });
     })
 </script>
+
+
+
+
+
+
+
+
+
+
+

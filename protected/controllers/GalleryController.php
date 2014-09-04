@@ -20,7 +20,8 @@ class GalleryController extends Controller
 
     public function actionAllPhoto()
     {
-        $this->render('allphoto', array('photos' => $this->getUser()->photos));
+        $photos=Photo::model()->findAll();
+        $this->render('allphoto', array('photos' => $photos));
     }
     /**
      * This is the action to handle external exceptions.

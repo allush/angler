@@ -112,62 +112,6 @@ class SiteController extends Controller
         $this->render('register', array('model' => $model));
     }
 
-    /**
-     * Displays the profile page
-     */
-    public function actionProfile()
-    {
-        $model = new ProfileForm;
-        if (isset($_POST['ProfileForm'])) {
-            $model->attributes = $_POST['ProfileForm'];
-
-            if ($model->validate()) {
-                $user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
-                $user->username = $model->username;
-                $user->email = strtolower($model->email);
-                $user->password = CPasswordHelper::hashPassword($model->password);
-                $user->save();
-
-                $this->redirect(Yii::app()->homeUrl);
-            }
-        }
-
-        $this->render('profile', array('model' => $model));
-    }
-
-    /**
-     * Displays the photo page
-     */
-    public function actionPhoto()
-    {
-        $model = new Photo;
-
-        if (isset($_POST['Photo'])) {
-            $model->attributes = $_POST['Photo'];
-            $model->image = CUploadedFile::getInstance($model, 'image');
-
-            if ($model->image) {
-                $filename = md5(time()) . '.' . $model->image->extensionName;
-                $path = Photo::path() . $filename;
-
-                $model->image->saveAs($path);
-                $model->filename = $filename;
-
-                // тут может быть обработка уже загруженного изображения
-            }
-
-            if ($model->save()) {
-                $this->redirect(Yii::app()->request->urlReferrer);
-            }
-        }
-
-        $this->render('photo', array('model' => $model));
-    }
-
-    public function actionMyPhoto()
-    {
-        $this->render('myphoto', array('photos' => $this->getUser()->photos));
-    }
 
     /**
      * Logs out the current user and redirect to homepage.
