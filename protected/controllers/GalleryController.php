@@ -20,7 +20,9 @@ class GalleryController extends Controller
 
     public function actionAllPhoto()
     {
-        $photos=Photo::model()->findAll();
+        $photos=Photo::model()->findAll(array(
+            'condition' => 'is_confirmed=1'
+        ));
         $this->render('allphoto', array('photos' => $photos));
     }
     /**

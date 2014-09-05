@@ -27,7 +27,7 @@ return array(
             // If removed, Gii defaults to localhost only. Edit carefully to taste.
             'ipFilters' => array('127.0.0.1', '::1'),
         ),
-
+        'admin',
     ),
 
     // application components
@@ -74,4 +74,5 @@ return array(
         // this is used in contact page
         'adminEmail' => 'webmaster@example.com',
     ),
+    'language'=>'ru'
 );

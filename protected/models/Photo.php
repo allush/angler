@@ -4,6 +4,7 @@
  * @property integer $id
  * @property integer $user_id
  * @property integer $filename
+ * @property integer $is_confirmed
  */
 class Photo extends CActiveRecord
 {
@@ -26,7 +27,8 @@ class Photo extends CActiveRecord
             array('user_id, filename', 'required'),
             array('user_id', 'numerical', 'integerOnly' => true),
             array('filename', 'length', 'max' => 255),
-            array('image', 'file', 'types' => 'jpg, gif, png'),
+            array('image', 'file', 'types' => 'jpg, gif, png', 'allowEmpty' => true),
+            array('is_confirmed', 'boolean'),
         );
     }
 
@@ -50,6 +52,7 @@ class Photo extends CActiveRecord
             'user_id' => 'Username',
             'filename' => 'Filename',
             'image' => 'Photo',
+            'is_confirmed'=> 'Confirmed',
         );
     }
 
@@ -64,9 +67,23 @@ class Photo extends CActiveRecord
         return parent::model($className);
     }
 
+    protected function beforeDelete()
+    {
+        $path = $this->imagePath();
+        if (file_exists($path) and is_file($path)) {
+            unlink($path);
+        }
+        return parent::beforeDelete();
+    }
+
     public function imageUrl()
     {
-        return Yii::app()->baseUrl . '/images/photo/'. $this->filename;
+        return Yii::app()->baseUrl . '/images/photo/' . $this->filename;
+    }
+
+    public function imagePath()
+    {
+        return $this->path() . $this->filename;
     }
 
     public static function path()
