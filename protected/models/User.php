@@ -8,6 +8,7 @@
  * @property string $username
  * @property string $email
  * @property string $password
+ * @property integer $score
  * @property Photo[] $photos
  */
 class User extends CActiveRecord
@@ -19,6 +20,11 @@ class User extends CActiveRecord
 	{
 		return 'user';
 	}
+
+public function credit()
+{
+    $score= new Score;
+}
 
 	/**
 	 * @return array validation rules for model attributes.

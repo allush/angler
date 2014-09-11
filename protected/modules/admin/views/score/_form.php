@@ -1,13 +1,13 @@
 <?php
-/* @var $this PhotoController */
-/* @var $model Photo */
+/* @var $this ScoreController */
+/* @var $model Score */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'photo-form',
+	'id'=>'score-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -20,25 +20,19 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'user_id'); ?>
-		<?php echo $form->textField($model,'user_id'); ?>
-		<?php echo $form->error($model,'user_id'); ?>
+		<?php echo $form->labelEx($model,'action'); ?>
+		<?php echo $form->textField($model,'action'); ?>
+		<?php echo $form->error($model,'action'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'filename'); ?>
-		<?php echo $form->textArea($model,'filename',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'filename'); ?>
+		<?php echo $form->labelEx($model,'price'); ?>
+		<?php echo $form->textField($model,'price'); ?>
+		<?php echo $form->error($model,'price'); ?>
 	</div>
 
-    <div class="row">
-        <?php echo $form->labelEx($model,'is_confirmed'); ?>
-        <?php echo $form->checkBox($model,'is_confirmed') ?>
-        <?php echo $form->error($model,'is_confirmed'); ?>
-    </div>
-
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
