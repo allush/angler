@@ -7,6 +7,7 @@
  * @property integer $id
  * @property integer $action
  * @property integer $price
+ * @property string $name
  */
 class Score extends CActiveRecord
 {
@@ -14,18 +15,25 @@ class Score extends CActiveRecord
     const EVENT_SET_LOCATION = 1;
 
     public static $events = array(
-        self::EVENT_ADD_PHOTO => 10,
-        self::EVENT_SET_LOCATION => 20,
+        self::EVENT_ADD_PHOTO => array(
+            'price' => 10,
+            'name' => 'Добавление фото'
+        ),
+        self::EVENT_SET_LOCATION => array(
+            'price' => 20,
+            'name' => 'Привязка фото к карте'
+        ),
     );
 
-    public function init()
-    {
-        parent::init();
-        if (count(Score::model()->findAll()) == 0) {
-            foreach (self::$events as $event => $price) {
+
+    public static function createEvents(){
+        $scores = Score::model()->findAll();
+        if (count($scores) == 0) {
+            foreach (self::$events as $event => $data) {
                 $eventModel = new Score;
                 $eventModel->action = $event;
-                $eventModel->price = $price;
+                $eventModel->price = $data['price'];
+                $eventModel->name = $data['name'];
                 $eventModel->save();
             }
         }
@@ -75,6 +83,7 @@ class Score extends CActiveRecord
             'id' => 'ID',
             'action' => 'Action',
             'price' => 'Price',
+            'name' => 'Имя события'
         );
     }
 

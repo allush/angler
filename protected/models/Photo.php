@@ -5,6 +5,8 @@
  * @property integer $user_id
  * @property integer $filename
  * @property integer $is_confirmed
+ *
+ * @property User $user
  */
 class Photo extends CActiveRecord
 {

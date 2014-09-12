@@ -24,6 +24,7 @@ class User extends CActiveRecord
 public function credit()
 {
     $score= new Score;
+
 }
 
 	/**
