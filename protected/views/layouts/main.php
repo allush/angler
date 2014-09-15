@@ -34,6 +34,7 @@
                     array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
                     array('label' => 'Profile', 'url' => array('/profile/profile'), 'visible' => !Yii::app()->user->isGuest),
                     array('label' => 'All Photo', 'url' => array('/gallery/allphoto')),
+                    array('label' => 'News', 'url' => array('/news/index')),
                     array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
                 ),
                 'htmlOptions'=>array(

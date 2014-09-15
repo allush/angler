@@ -29,6 +29,7 @@
                     array('label' => 'Админская', 'url' => array('default/index')),
                     array('label' => 'Пользователи', 'url' => array('user/index')),
                     array('label' => 'Фотографии', 'url' => array('photo/index')),
+                    array('label' => 'Новости', 'url' => array('news/index')),
                     array('label' => 'Выход (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
                 ),
                 'htmlOptions'=>array(
