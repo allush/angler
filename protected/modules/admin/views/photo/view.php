@@ -26,7 +26,10 @@ $this->widget('zii.widgets.CMenu', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'user_id',
+        array(
+            'name' => 'user_id',
+            'value' => $model->user ? $model->user->username : '-',
+        ),
 		'filename',
         'is_confirmed',
 	),
