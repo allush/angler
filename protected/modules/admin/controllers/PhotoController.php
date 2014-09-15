@@ -48,15 +48,22 @@ class PhotoController extends AdminController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+$prevConfirmed=$model->is_confirmed;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Photo']))
 		{
 			$model->attributes=$_POST['Photo'];
-			if($model->save())
+			if($model->save()&& $model->is_confirmed==1 && $prevConfirmed==0)
+            {
+                $user=User::model()->findByPk($model->user_id);
+                $user->credit(Score::EVENT_ADD_PHOTO);
 				$this->redirect(array('view','id'=>$model->id));
+            }
+           elseif ($model->save()&& $model->is_confirmed==0)
+               $this->redirect(array('view','id'=>$model->id));
+
 		}
 
 		$this->render('update',array(
