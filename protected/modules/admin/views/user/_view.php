@@ -21,5 +21,9 @@
 	<?php echo CHtml::encode($data->password); ?>
 	<br />
 
+    <b><?php echo CHtml::encode($data->getAttributeLabel('score')); ?>:</b>
+    <?php echo CHtml::encode($data->score); ?>
+    <br />
+
 
 </div>

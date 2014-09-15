@@ -1,40 +1,51 @@
 <?php
 
 /**
- * This is the model class for table "user".
+ * This is the model class for table "score".
  *
- * The followings are the available columns in table 'user':
+ * The followings are the available columns in table 'score':
  * @property integer $id
- * @property string $username
- * @property string $email
- * @property string $password
- * @property integer $score
- * @property Photo[] $photos
+ * @property integer $action
+ * @property integer $price
+ * @property string $name
  */
-class User extends CActiveRecord
+class Score extends CActiveRecord
 {
+    const EVENT_ADD_PHOTO = 0;
+    const EVENT_SET_LOCATION = 1;
+
+    public static $events = array(
+        self::EVENT_ADD_PHOTO => array(
+            'price' => 10,
+            'name' => 'Добавление фото'
+        ),
+        self::EVENT_SET_LOCATION => array(
+            'price' => 20,
+            'name' => 'Привязка фото к карте'
+        ),
+    );
+
+
+    public static function createEvents(){
+        $scores = Score::model()->findAll();
+        if (count($scores) == 0) {
+            foreach (self::$events as $event => $data) {
+                $eventModel = new Score;
+                $eventModel->action = $event;
+                $eventModel->price = $data['price'];
+                $eventModel->name = $data['name'];
+                $eventModel->save();
+            }
+        }
+    }
+
 
     /**
      * @return string the associated database table name
      */
     public function tableName()
     {
-        return 'user';
-    }
-
-    public function credit($act)
-    {
-        /** @var Score $score */
-        $score =Score::model()->findByAttributes(array(
-            'action'=>$act
-        ));
-
-        if ($act == Score::EVENT_ADD_PHOTO)
-            $this->score+= $score->price;//то же самое, что $this->score=$this->score+ $score->price;
-        if ($act == Score::EVENT_SET_LOCATION)
-            $this->score += $score->price;
-
-        $this->save();
+        return 'score';
     }
 
     /**
@@ -45,9 +56,11 @@ class User extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('username, email, password', 'required'),
-            array('email', 'email'),
-            array('email', 'unique'),
+            array('action, price', 'required'),
+            array('action, price', 'numerical', 'integerOnly' => true),
+            // The following rule is used by search().
+            // @todo Please remove those attributes that should not be searched.
+            array('id, action, price', 'safe', 'on' => 'search'),
         );
     }
 
@@ -58,9 +71,7 @@ class User extends CActiveRecord
     {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
-        return array(
-            'photos' => array(self::HAS_MANY, 'Photo', 'user_id'),
-        );
+        return array();
     }
 
     /**
@@ -70,9 +81,9 @@ class User extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'username' => 'Username',
-            'email' => 'Email',
-            'password' => 'Password',
+            'action' => 'Action',
+            'price' => 'Price',
+            'name' => 'Имя события'
         );
     }
 
@@ -95,9 +106,8 @@ class User extends CActiveRecord
         $criteria = new CDbCriteria;
 
         $criteria->compare('id', $this->id);
-        $criteria->compare('username', $this->username, true);
-        $criteria->compare('email', $this->email, true);
-        $criteria->compare('password', $this->password, true);
+        $criteria->compare('action', $this->action);
+        $criteria->compare('price', $this->price);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
@@ -108,7 +118,7 @@ class User extends CActiveRecord
      * Returns the static model of the specified AR class.
      * Please note that you should have this exact method in all your CActiveRecord descendants!
      * @param string $className active record class name.
-     * @return User the static model class
+     * @return Score the static model class
      */
     public static function model($className = __CLASS__)
     {

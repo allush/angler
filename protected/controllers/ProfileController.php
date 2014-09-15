@@ -67,6 +67,9 @@ class ProfileController extends Controller
             }
 
             if ($model->save()) {
+
+              // $model->user->credit(Score::EVENT_ADD_PHOTO);
+
                 $this->redirect(Yii::app()->request->urlReferrer);
             }
         }

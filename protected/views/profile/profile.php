@@ -27,6 +27,12 @@ $user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
     <?php echo CHtml::label($user->email, '', '') ?>
 </div>
 
+<div class="row">
+    <?php echo CHtml::label('Score: ', '', '') ?>
+    <?php echo CHtml::label($user->score, '', '') ?>
+</div>
+
+
 
 
 
