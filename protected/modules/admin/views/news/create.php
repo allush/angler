@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List News', 'url'=>array('index')),
-	array('label'=>'Manage News', 'url'=>array('admin')),
+	array('label'=>'Все новости', 'url'=>array('index')),
+	array('label'=>'Управление новостями', 'url'=>array('admin')),
 );
 ?>
 
