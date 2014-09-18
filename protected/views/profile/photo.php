@@ -21,6 +21,7 @@ $this->breadcrumbs = array(
         'enctype' => 'multipart/form-data'
     )
 )); ?>
+
 <?php echo $form->hiddenField($model, 'user_id', array('value' => Yii::app()->user->id)); ?>
 
 <?php echo $form->labelEx($model, 'image'); ?>
@@ -29,4 +30,13 @@ $this->breadcrumbs = array(
 
 <?php echo CHtml::submitButton('Load Photo'); ?>
 
+
+
+
+
 <?php $this->endWidget(); ?>
+
+<?php echo Chtml::textField('coords','',array('id'=> 'coord-x'));?>
+<?php echo Chtml::textField('coords','',array('id'=> 'coord-y'));?>
+<div id="map"></div>
+

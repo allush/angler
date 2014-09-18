@@ -6,12 +6,29 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="language" content="en"/>
     <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css"/>
-
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
     <?php Yii::app()->getClientScript()->registerCoreScript('jquery');?>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+    <script type="text/javascript">
+        ymaps.ready(init);
+        var myMap;
+
+        function init() {
+            myMap = new ymaps.Map("map", {
+                center: [57.5262, 38.3061], // Углич
+                zoom: 11
+            });
+
+            myMap.events.add('click', function (e) {
+                    var coords = e.get('coords');
+                $('#coord-x').val(coords[0]);
+                $('#coord-y').val(coords[1]);
+                    console.log(coords);
+            });
+        }
+    </script>
 </head>
 
 <body>
