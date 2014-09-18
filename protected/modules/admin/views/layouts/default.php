@@ -10,6 +10,10 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css"/>
 
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
+
+    <script src="ckeditor/ckeditor.js"></script>
+
+
     <?php Yii::app()->getClientScript()->registerCoreScript('jquery');?>
 </head>
 

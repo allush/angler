@@ -26,8 +26,15 @@
 
 	<div class="form-group">
 		<h3><?php echo $form->labelEx($model,'content'); ?></h3>
-		<?php echo $form->textArea($model,'content',array('rows'=>16, 'class' => 'form-control')); ?>
-		<?php echo $form->error($model,'content'); ?>
+		<?php echo $form->textArea($model, 'content', array('rows'=>16, 'class' => 'form-control', 'id' => 'ck')); ?>
+
+        <script>
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace( 'ck' );
+        </script>
+
+        <?php echo $form->error($model,'content'); ?>
 	</div>
 
 	<div class="form-group">
