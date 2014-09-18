@@ -20,13 +20,13 @@
 
 	<div class="form-group">
 		<h3><?php echo $form->labelEx($model,'head'); ?></h3>
-		<?php echo $form->textArea($model,'head',array('rows'=>6, 'class' => 'form-control')); ?>
+		<?php echo $form->textArea($model,'head',array('rows'=>4, 'class' => 'form-control')); ?>
 		<?php echo $form->error($model,'head'); ?>
 	</div>
 
 	<div class="form-group">
 		<h3><?php echo $form->labelEx($model,'content'); ?></h3>
-		<?php echo $form->textArea($model, 'content', array('rows'=>16, 'class' => 'form-control', 'id' => 'ck')); ?>
+		<?php echo $form->textArea($model, 'content', array('class' => 'form-control', 'id' => 'ck')); ?>
 
         <script>
             // Replace the <textarea id="editor1"> with a CKEditor

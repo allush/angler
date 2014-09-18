@@ -35,7 +35,7 @@ $this->widget('zii.widgets.CMenu', array(
 <?php echo date('d.m.Y', $model->date);?>
 <br/><br/>
 
-<?php echo CHtml::encode($model->content);?>
+<?php echo ($model->content);?>
 <br/><br/>
 
 
