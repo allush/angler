@@ -26,7 +26,7 @@
 
 	<div class="form-group">
 		<h3><?php echo $form->labelEx($model,'content'); ?></h3>
-		<?php echo $form->textArea($model, 'content', array('class' => 'form-control', 'id' => 'ck')); ?>
+		<?php echo $form->textArea($model, 'content', array('rows' => 30, 'class' => 'form-control', 'id' => 'ck')); ?>
 
         <script>
             // Replace the <textarea id="editor1"> with a CKEditor
