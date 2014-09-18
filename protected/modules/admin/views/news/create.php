@@ -7,10 +7,16 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
-	array('label'=>'List News', 'url'=>array('index')),
-	array('label'=>'Manage News', 'url'=>array('admin')),
-);
+
+$this->widget('zii.widgets.CMenu', array(
+    'items' => array(
+        array('label'=>'Все новости', 'url'=>array('index')),
+        array('label'=>'Управление новостями', 'url'=>array('admin')),
+    ),
+    'htmlOptions'=>array(
+        'class'=>'nav nav-pills'
+    )
+));
 ?>
 
 <h1>Create News</h1>

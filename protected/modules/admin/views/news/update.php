@@ -8,12 +8,18 @@ $this->breadcrumbs=array(
 	'Update',
 );
 
-$this->menu=array(
-	array('label'=>'List News', 'url'=>array('index')),
-	array('label'=>'Create News', 'url'=>array('create')),
-	array('label'=>'View News', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage News', 'url'=>array('admin')),
-);
+
+$this->widget('zii.widgets.CMenu', array(
+    'items' => array(
+        array('label'=>'Все новости', 'url'=>array('index')),
+        array('label'=>'Создать новость', 'url'=>array('create')),
+        array('label'=>'Назад', 'url'=>array('view', 'id'=>$model->id)),
+        array('label'=>'Управление новостями', 'url'=>array('admin')),
+    ),
+    'htmlOptions'=>array(
+        'class'=>'nav nav-pills'
+    )
+));
 ?>
 
 <h1>Update News <?php echo $model->id; ?></h1>
