@@ -20,7 +20,7 @@ $this->widget('zii.widgets.CMenu', array(
         array('label'=>'Все новости', 'url'=>array('index')),
         array('label'=>'Создать новость', 'url'=>array('create')),
         array('label'=>'Редактирование', 'url'=>array('update', 'id'=>$model->id)),
-        array('label'=>'Удаление', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+        array('label'=>'Удаление', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Вы уверены, что хотите удалить данную новость?')),
         array('label'=>'Управление новостями', 'url'=>array('admin')),
     ),
     'htmlOptions'=>array(
