@@ -5,6 +5,8 @@
  * @property integer $user_id
  * @property integer $filename
  * @property integer $is_confirmed
+ * @property float $coord_x
+ * @property float $coord_y
  *
  * @property User $user
  */
@@ -31,6 +33,9 @@ class Photo extends CActiveRecord
             array('filename', 'length', 'max' => 255),
             array('image', 'file', 'types' => 'jpg, gif, png', 'allowEmpty' => true),
             array('is_confirmed', 'boolean'),
+            array('coord_x', 'numerical'),
+            array('coord_y', 'numerical'),
+
         );
     }
 
@@ -55,6 +60,8 @@ class Photo extends CActiveRecord
             'filename' => 'Filename',
             'image' => 'Photo',
             'is_confirmed'=> 'Confirmed',
+            'coord_x'=>'Shirota',
+            'coord_y'=>'Dolgota',
         );
     }
 
