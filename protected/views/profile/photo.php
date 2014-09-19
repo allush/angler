@@ -28,6 +28,9 @@ $this->breadcrumbs = array(
 <?php echo $form->fileField($model, 'image'); ?>
 <?php echo $form->error($model, 'image'); ?>
 
+<?php echo $form->textField($model,'coord_x',array('id'=> 'coord-x')) ;?>
+<?php echo $form->textField($model,'coord_y',array('id'=> 'coord-y')) ;?>
+
 <?php echo CHtml::submitButton('Load Photo'); ?>
 
 
@@ -36,7 +39,7 @@ $this->breadcrumbs = array(
 
 <?php $this->endWidget(); ?>
 
-<?php echo Chtml::textField('coords','',array('id'=> 'coord-x'));?>
-<?php echo Chtml::textField('coords','',array('id'=> 'coord-y'));?>
+<?php //echo Chtml::textField('coords','',array('id'=> 'coord-x'));?>
+<?php //echo Chtml::textField('coords','',array('id'=> 'coord-y'));?>
 <div id="map"></div>
 
