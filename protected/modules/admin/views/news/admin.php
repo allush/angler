@@ -8,15 +8,15 @@ $this->breadcrumbs=array(
 );
 
 
-$this->widget('zii.widgets.CMenu', array(
-    'items' => array(
-        array('label'=>'Все новости', 'url'=>array('index')),
-        array('label'=>'Добавить новость', 'url'=>array('create')),
-    ),
-    'htmlOptions'=>array(
-        'class'=>'nav nav-pills'
-    )
-));
+//$this->widget('zii.widgets.CMenu', array(
+//    'items' => array(
+//        array('label'=>'Все новости', 'url'=>array('index')),
+//        array('label'=>'Добавить новость', 'url'=>array('create')),
+//    ),
+//    'htmlOptions'=>array(
+//        'class'=>'nav nav-pills'
+//    )
+//));
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();

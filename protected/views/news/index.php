@@ -11,21 +11,18 @@ $this->breadcrumbs=array(
 //    array('label'=>'Manage News', 'url'=>array('admin')),
 //);
 
-
-?>
-<?php
-$this->widget('zii.widgets.CMenu', array(
-'items' => array(
-array('label'=>'Создать новость', 'url'=>array('create')),
-array('label'=>'Управление новостями', 'url'=>array('admin')),
-),
-'htmlOptions'=>array(
-'class'=>'nav nav-pills'
-)
-));
+//$this->widget('zii.widgets.CMenu', array(
+//    'items' => array(
+//        array('label'=>'Создать новость', 'url'=>array('create')),
+//        array('label'=>'Управление новостями', 'url'=>array('admin')),
+//    ),
+//    'htmlOptions'=>array(
+//        'class'=>'nav nav-pills'
+//    )
+//));
 ?>
 
-<h1>News</h1>
+<h1>Новости</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$dataProvider,
