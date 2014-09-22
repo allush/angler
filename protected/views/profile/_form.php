@@ -1,0 +1,44 @@
+<?php
+/**
+ * @var $model Photo
+ * @var $form CActiveForm
+ */
+
+$form = $this->beginWidget('CActiveForm', array(
+    'id' => 'upload-photo-form',
+    'htmlOptions' => array(
+        'enctype' => 'multipart/form-data'
+    )
+)); ?>
+
+<?php echo $form->hiddenField($model, 'user_id', array('value' => Yii::app()->user->id)); ?>
+
+<?php if ($model->isNewRecord) {
+    echo $form->labelEx($model, 'image');
+    echo $form->fileField($model, 'image');
+    echo $form->error($model, 'image');
+} ?>
+
+<div class="row">
+    <?php echo $form->labelEx($model, 'Широта:'); ?>
+    <?php echo $model->coord_x; ?>
+    <?php echo $form->hiddenField($model, 'coord_x', array('id' => 'coord-x')); ?>
+</div>
+
+<div class="row">
+
+    <?php echo $form->labelEx($model, 'Долгота:'); ?>
+    <?php echo $model->coord_y; ?>
+    <?php echo $form->hiddenField($model, 'coord_y', array('id' => 'coord-y')); ?>
+</div>
+
+<?php if ($model->isNewRecord) {
+ echo CHtml::submitButton('Load Photo');
+} else
+    echo CHtml::submitButton('Update Photo');
+?>
+
+<?php $this->endWidget(); ?>
+
+
+<div id="map"></div>

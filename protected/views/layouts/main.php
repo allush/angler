@@ -26,6 +26,18 @@
                 $('#coord-x').val(coords[0]);
                 $('#coord-y').val(coords[1]);
                     console.log(coords);
+                if (myMap.balloon.isOpen()) {
+                    myMap.balloon.close();
+                }
+                var coords = e.get('coords');
+                myMap.balloon.open(coords, {
+                    contentHeader:'',
+                    contentBody:'<p>Координаты фото: ' + [
+                        coords[0].toPrecision(6),
+                        coords[1].toPrecision(6)
+                    ].join(', ') + '</p>',
+                    contentFooter:''
+                });
             });
         }
     </script>
@@ -51,7 +63,7 @@
                     array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
                     array('label' => 'Profile', 'url' => array('/profile/profile'), 'visible' => !Yii::app()->user->isGuest),
                     array('label' => 'All Photo', 'url' => array('/gallery/allphoto')),
-                    array('label' => 'News', 'url' => array('/news/index')),
+                    array('label' => 'News', 'url' => array('news/index')),
                     array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
                 ),
                 'htmlOptions'=>array(
