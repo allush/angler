@@ -67,9 +67,6 @@ class ProfileController extends Controller
             }
 
             if ($model->save()) {
-
-              // $model->user->credit(Score::EVENT_ADD_PHOTO);
-
                 $this->redirect(Yii::app()->request->urlReferrer);
             }
         }
@@ -80,6 +77,25 @@ class ProfileController extends Controller
     {
         $this->render('myphoto', array('photos' => $this->getUser()->photos));
     }
+   public function actionUpdateMyPhoto( $id )
+   {
+$model=Photo::model()->findByPk($id);
+       if (isset($_POST['Photo'])) {
+           $model->attributes = $_POST['Photo'];
+
+           if ($model->validate()) {
+               $photo = Photo::model()->findByAttributes(array('id' => $model->id));
+               $photo->coord_x=$model->coord_x;
+               $photo->coord_y=$model->coord_y;
+               $photo->save();
+
+               $this->redirect(Yii::app()->homeUrl);
+           }
+       }
+
+
+       $this->render('updatemyphoto',array('model' => $model));
+   }
     /**
      * This is the action to handle external exceptions.
      */

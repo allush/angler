@@ -18,7 +18,7 @@ $this->breadcrumbs = array(
         ?>
         <div class="col-sm-2">
             <?php
-            echo CHtml::link(CHtml::image($photo->imageUrl(), 'tag', array('class' => 'gallery-item')), '#', array('class' => 'thumbnail'));
+            echo CHtml::link(CHtml::image($photo->imageUrl(), 'tag', array('class' => 'gallery-item')), array('updatemyphoto', 'id' => $photo->id), array('class' => 'thumbnail'));
             ?>
         </div>
     <?php

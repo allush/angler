@@ -32,5 +32,7 @@ $this->widget('zii.widgets.CMenu', array(
         ),
 		'filename',
         'is_confirmed',
+        'coord_x',
+        'coord_y',
 	),
 )); ?>

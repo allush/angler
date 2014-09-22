@@ -7,6 +7,7 @@ $this->pageTitle=Yii::app()->name . ' -Update Profile';
 $this->breadcrumbs=array(
     'Update Profile',
 );
+
 $user=User::model()->findByAttributes(array('id' => Yii::app()->user->id));
 ?>
 

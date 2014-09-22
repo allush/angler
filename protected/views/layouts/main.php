@@ -26,6 +26,18 @@
                 $('#coord-x').val(coords[0]);
                 $('#coord-y').val(coords[1]);
                     console.log(coords);
+                if (myMap.balloon.isOpen()) {
+                    myMap.balloon.close();
+                }
+                var coords = e.get('coords');
+                myMap.balloon.open(coords, {
+                    contentHeader:'',
+                    contentBody:'<p>Координаты фото: ' + [
+                        coords[0].toPrecision(6),
+                        coords[1].toPrecision(6)
+                    ].join(', ') + '</p>',
+                    contentFooter:''
+                });
             });
         }
     </script>
