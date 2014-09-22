@@ -18,7 +18,7 @@ $this->breadcrumbs=array(
 $this->widget('zii.widgets.CMenu', array(
     'items' => array(
         array('label'=>'Все новости', 'url'=>array('index')),
-       
+
         ),
     'htmlOptions'=>array(
         'class'=>'nav nav-pills'

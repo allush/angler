@@ -28,7 +28,7 @@ class NewsController extends AdminController
 		{
 			$model->attributes=$_POST['News'];
             $model->date=time();
-			if($model->save())
+            if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
@@ -128,4 +128,6 @@ class NewsController extends AdminController
 			Yii::app()->end();
 		}
 	}
+
+
 }

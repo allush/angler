@@ -37,6 +37,8 @@
         <?php echo $form->error($model,'content'); ?>
 	</div>
 
+<?php echo $form->textField($model, 'tempTags');?>
+
 	<div class="form-group">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-default')); ?>
 	</div>
