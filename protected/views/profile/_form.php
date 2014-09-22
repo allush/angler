@@ -20,20 +20,23 @@ $form = $this->beginWidget('CActiveForm', array(
 } ?>
 
 <div class="row">
-    <?php echo $form->labelEx($model, 'Широта:'); ?>
-    <?php echo $model->coord_x; ?>
-    <?php echo $form->hiddenField($model, 'coord_x', array('id' => 'coord-x')); ?>
+    <?php if (!$model->isNewRecord) {
+        echo $form->labelEx($model, 'Широта:');
+        echo $model->coord_x;
+        echo $form->hiddenField($model, 'coord_x', array('id' => 'coord-x'));
+    }?>
 </div>
 
 <div class="row">
-
-    <?php echo $form->labelEx($model, 'Долгота:'); ?>
-    <?php echo $model->coord_y; ?>
-    <?php echo $form->hiddenField($model, 'coord_y', array('id' => 'coord-y')); ?>
+    <?php if (!$model->isNewRecord) {
+        echo $form->labelEx($model, 'Долгота:');
+        echo $model->coord_y;
+        echo $form->hiddenField($model, 'coord_y', array('id' => 'coord-y'));
+    }?>
 </div>
 
 <?php if ($model->isNewRecord) {
- echo CHtml::submitButton('Load Photo');
+    echo CHtml::submitButton('Load Photo');
 } else
     echo CHtml::submitButton('Update Photo');
 ?>
