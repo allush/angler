@@ -115,33 +115,44 @@ class News extends CActiveRecord
         foreach ($exTags as $tag) {
             $tag = trim($tag);
 
-            /** @var Tags $find */
-            $find = Tags::model()->findByAttributes(array(
-                'tag' => $tag
-            ));
-            if (!$find) {
-                $t = new Tags();
-                $t->tag = $tag;
-                if ($t->save()) {
+            $transaction = Yii::app()->db->getCurrentTransaction();
+            if (!$transaction) {
+                $transaction = Yii::app()->db->beginTransaction();
+            }
+
+            try {
+                /** @var Tags $find */
+                $find = Tags::model()->findByAttributes(array(
+                    'tag' => $tag
+                ));
+                if (!$find) {
+                    $t = new Tags();
+                    $t->tag = $tag;
+                    if (!$t->save()) {
+                        throw new CException('Не сохранился тег!');
+                    }
+
                     $nt = new NewsTag();
                     $nt->news_id = $this->id;
                     $nt->tags_id = $t->id;
-                    $nt->save();
+                    if(!$nt->save()){
+                        throw new CException('Не сохранилась связь!');
+                    }
+
+                } else {
+                    $nt = new NewsTag();
+                    $nt->news_id = $this->id;
+                    $nt->tags_id = $find->id;
+                    if(!$nt->save()){
+                        throw new CException('Не сохранилась связь!');
+                    }
                 }
-            } else {
-                $nt = new NewsTag();
-                $nt->news_id = $this->id;
-                $nt->tags_id = $find->id;
-                $nt->save();
+                $transaction->commit();
+
+            } catch (CException $e) {
+                $transaction->rollback();
             }
-
         }
-        // если есть - связываем с новостью
-
-        // если нет в базе - создаем и связываем с новостью
-
-
-
     }
 
     protected function afterFind()

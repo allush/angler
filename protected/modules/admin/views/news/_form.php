@@ -41,7 +41,11 @@
 <?php echo $form->textField($model, 'tempTags');?><br/>
 
 
+<script type="text/javascript">
+    $.ajax({
 
+    })
+</script>
 
 
 	<div class="form-group">
