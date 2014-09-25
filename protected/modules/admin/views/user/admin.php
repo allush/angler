@@ -3,13 +3,12 @@
 /* @var $model User */
 
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
+	'Пользователи'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List User', 'url'=>array('index')),
-	array('label'=>'Create User', 'url'=>array('create')),
+	array('label'=>'Пользователи', 'url'=>array('index')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

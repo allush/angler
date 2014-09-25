@@ -1,16 +1,16 @@
 <?php
 /* @var $this SiteController */
 /* @var $photos Photo[] */
-$this->pageTitle = Yii::app()->name . ' - My Photo';
+$this->pageTitle = Yii::app()->name . ' - Мои фото';
 $this->breadcrumbs = array(
-    'My Photo',
+    'Мои фото',
 );
 ?>
 
 <?php $this->renderPartial('_menu');?>
-<h1>My photo</h1>
+<h1>Ваши фото</h1>
 
-<p>Here you can see all your photo</p>
+<p>Здесь вы можете просмотреть все Ваши фото, при нажатии на них вы сможете обновить их координаты</p>
 
 <div class="row">
     <?php

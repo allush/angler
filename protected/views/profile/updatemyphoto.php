@@ -2,9 +2,9 @@
 /* @var $this ProfileController */
 /* @var $model Photo */
 /* @var $form CActiveForm */
-$this->pageTitle = Yii::app()->name . ' - Update my Photo';
+$this->pageTitle = Yii::app()->name . ' - Обновить фото';
 $this->breadcrumbs = array(
-    'Update my Photo',
+    'Обновить фото',
 );
 $photo=Photo::model()->findByAttributes(array('id' => $model->id));
 ?>

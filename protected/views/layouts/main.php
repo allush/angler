@@ -56,15 +56,13 @@
 
             <?php $this->widget('zii.widgets.CMenu', array(
                 'items' => array(
-                    array('label' => 'Home', 'url' => array('/site/index')),
-                    array('label' => 'About', 'url' => array('/site/page', 'view' => 'about')),
-                    array('label' => 'Contact', 'url' => array('/site/contact')),
-                    array('label' => 'Register', 'url' => array('/site/register'), 'visible' => Yii::app()->user->isGuest),
-                    array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
-                    array('label' => 'Profile', 'url' => array('/profile/profile'), 'visible' => !Yii::app()->user->isGuest),
-                    array('label' => 'All Photo', 'url' => array('/gallery/allphoto')),
-                    array('label' => 'News', 'url' => array('news/index')),
-                    array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
+                    array('label' => 'Главная', 'url' => array('/site/index')),
+                    array('label' => 'Регстрация', 'url' => array('/site/register'), 'visible' => Yii::app()->user->isGuest),
+                    array('label' => 'Авторизация', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
+                    array('label' => 'Профиль', 'url' => array('/profile/profile'), 'visible' => !Yii::app()->user->isGuest),
+                    array('label' => 'Галерея', 'url' => array('/gallery/allphoto')),
+                    array('label' => 'Новости', 'url' => array('news/index')),
+                    array('label' => 'Выход (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
                 ),
                 'htmlOptions'=>array(
                     'class'=>'nav nav-pills nav-stacked'
@@ -85,8 +83,7 @@
 
         </div>
     </div>
-    Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-    All Rights Reserved.<br/>
+
     <?php echo Yii::powered(); ?>
 
 

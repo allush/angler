@@ -73,9 +73,15 @@ class User extends CActiveRecord
             'username' => 'Username',
             'email' => 'Email',
             'password' => 'Password',
+            'score' => 'Score',
         );
     }
 
+    protected function beforeDelete()
+    {
+      Photo::model()->deleteAllByAttributes(array('user_id'=>$this->id));
+        return parent::beforeDelete();
+    }
     /**
      * Retrieves a list of models based on the current search/filter conditions.
      *
