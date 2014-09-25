@@ -1,18 +1,15 @@
 <?php
-/* @var $this SiteController */
+/* @var $this ProfileController */
 /* @var $model Photo */
 /* @var $form CActiveForm */
 
-$this->pageTitle = Yii::app()->name . ' - Load Photo';
+$this->pageTitle = Yii::app()->name . ' - Загрузка фото';
 $this->breadcrumbs = array(
-    'Load Photo',
+    'Загрузка фото',
 );
 ?>
 <?php $this->renderPartial('_menu');?>
 
-<h1>Photo</h1>
-
-<p>Hi, that's a photo page.</p>
 
 <?php $this->renderPartial('_form' ,array('model' =>$model)); ?>
 

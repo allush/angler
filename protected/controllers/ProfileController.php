@@ -23,6 +23,7 @@ class ProfileController extends Controller
         $model = new ProfileForm;
         $this->render('profile');
     }
+
     /**
      * Displays the profile update page
      */
@@ -45,6 +46,7 @@ class ProfileController extends Controller
 
         $this->render('updateprofile', array('model' => $model));
     }
+
     /**
      * Displays the photo page
      */
@@ -63,6 +65,7 @@ class ProfileController extends Controller
                 $model->image->saveAs($path);
                 $model->filename = $filename;
 
+
                 // тут может быть обработка уже загруженного изображения
             }
 
@@ -73,29 +76,32 @@ class ProfileController extends Controller
 
         $this->render('photo', array('model' => $model));
     }
+
     public function actionMyPhoto()
     {
         $this->render('myphoto', array('photos' => $this->getUser()->photos));
     }
-   public function actionUpdateMyPhoto( $id )
-   {
-$model=Photo::model()->findByPk($id);
-       if (isset($_POST['Photo'])) {
-           $model->attributes = $_POST['Photo'];
 
-           if ($model->validate()) {
-               $photo = Photo::model()->findByAttributes(array('id' => $model->id));
-               $photo->coord_x=$model->coord_x;
-               $photo->coord_y=$model->coord_y;
-               $photo->save();
+    public function actionUpdateMyPhoto($id)
+    {
+        $model = Photo::model()->findByPk($id);
+        if (isset($_POST['Photo'])) {
+            $model->attributes = $_POST['Photo'];
 
-               $this->redirect(Yii::app()->homeUrl);
-           }
-       }
+            if ($model->validate()) {
+                $photo = Photo::model()->findByAttributes(array('id' => $model->id));
+                $photo->coord_x = $model->coord_x;
+                $photo->coord_y = $model->coord_y;
+                $photo->save();
+
+                $this->redirect(Yii::app()->request->urlReferrer);
+            }
+        }
 
 
-       $this->render('updatemyphoto',array('model' => $model));
-   }
+        $this->render('updatemyphoto', array('model' => $model));
+    }
+
     /**
      * This is the action to handle external exceptions.
      */

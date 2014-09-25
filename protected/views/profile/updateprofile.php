@@ -3,18 +3,18 @@
 /* @var $model ProfileForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' -Update Profile';
+$this->pageTitle=Yii::app()->name . ' -Обновить профиль';
 $this->breadcrumbs=array(
-    'Update Profile',
+    'Обновить профиль',
 );
 
 $user=User::model()->findByAttributes(array('id' => Yii::app()->user->id));
 ?>
 
 <?php $this->renderPartial('_menu');?>
-<h1>Profile</h1>
+<h1>Профиль</h1>
 
-<p>Update profile page</p>
+<p>Обновление страницы профиля</p>
 
 
 
@@ -29,27 +29,27 @@ $user=User::model()->findByAttributes(array('id' => Yii::app()->user->id));
 
 
     <div class="row">
-        <?php echo $form->labelEx($model,'Current username'); ?>
+        <?php echo $form->labelEx($model,'Имя пользователя:'); ?>
         <?php echo $form->labelEx($model,$user->username); ?>
         <?php echo $form->textField($model,'username'); ?>
         <?php echo $form->error($model,'username'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->labelEx($model,'Current email'); ?>
+        <?php echo $form->labelEx($model,'Электронная почта:'); ?>
         <?php echo $form->labelEx($model,$user->email); ?>
         <?php echo $form->textField($model,'email'); ?>
         <?php echo $form->error($model,'email'); ?>
     </div>
 
     <div class="row">
-        <?php echo $form->labelEx($model,'New password'); ?>
+        <?php echo $form->labelEx($model,'Новый пароль'); ?>
         <?php echo $form->passwordField($model,'password'); ?>
         <?php echo $form->error($model,'password'); ?>
     </div>
 
     <div class="row buttons">
-        <?php echo CHtml::submitButton('Update information'); ?>
+        <?php echo CHtml::submitButton('Обновить профиль'); ?>
     </div>
 
 

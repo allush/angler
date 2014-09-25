@@ -3,19 +3,17 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-<script src="js/bootstrap.min.js"></script>
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+<h1>Добро пожаловать на <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
-<p>You may change the content of this page by modifying the following two files:</p>
+<p>Поздравляем, вы успешно создали ваше Yii приложение</p>
+
+<p>Вы можете изменить содержимое этой страницы посредством редактирования слеующих файлов:</p>
 <ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
+	<li>Файл раз: <code><?php echo __FILE__; ?></code></li>
+	<li>Файл два: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
 </ul>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+<p>Для дальнейшего изучения изучайте <a href="http://www.yiiframework.com/doc/"> документацю</a>.
+Задавайте вопросы на данном <a href="http://www.yiiframework.com/forum/">форуме</a>,
+по интересующим вас вопросам.</p>

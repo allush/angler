@@ -4,31 +4,31 @@
  */
 
 
-$this->pageTitle = Yii::app()->name . ' - Profile';
+$this->pageTitle = Yii::app()->name . ' - Профиль';
 $this->breadcrumbs = array(
-    'Profile',
+    'Профиль',
 );
 $user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
 ?>
 
 <?php $this->renderPartial('_menu');?>
-<h1>Profile</h1>
+<h1>Профиль</h1>
 
-<p>Hi, that's a profile page.</p>
+
 
 
 <div class="row">
-    <?php echo CHtml::label('Username: ', '', '') ?>
+    <?php echo CHtml::label('Имя пользователя: ', '', '') ?>
     <?php echo CHtml::label($user->username, '', '') ?>
 </div>
 
 <div class="row">
-    <?php echo CHtml::label('Email: ', '', '') ?>
+    <?php echo CHtml::label('Электронная почта: ', '', '') ?>
     <?php echo CHtml::label($user->email, '', '') ?>
 </div>
 
 <div class="row">
-    <?php echo CHtml::label('Score: ', '', '') ?>
+    <?php echo CHtml::label('Баллы: ', '', '') ?>
     <?php echo CHtml::label($user->score, '', '') ?>
 </div>
 

@@ -1,10 +1,10 @@
 
 <?php $this->widget('zii.widgets.CMenu', array(
     'items' => array(
-        array('label' => 'Инфа', 'url' => array('/profile/profile')),
-        array('label' => 'My photo', 'url' => array('/profile/myphoto')),
-        array('label' => 'Upload photo', 'url' => array('/profile/photo')),
-        array('label' => 'Update profile', 'url' => array('/profile/updateprofile')),
+        array('label' => 'Информация', 'url' => array('/profile/profile')),
+        array('label' => 'Мои фото', 'url' => array('/profile/myphoto')),
+        array('label' => 'Загрузка фото', 'url' => array('/profile/photo')),
+        array('label' => 'Обновить профиль', 'url' => array('/profile/updateprofile')),
     ),
     'htmlOptions'=>array(
         'class'=>'nav nav-pills'

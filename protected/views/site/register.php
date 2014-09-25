@@ -3,16 +3,15 @@
 /* @var $model RegisterForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - Register';
+$this->pageTitle=Yii::app()->name . ' - Регистрация';
 $this->breadcrumbs=array(
-	'Register',
+	'Регистрация',
 );
 ?>
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-<script src="js/bootstrap.min.js"></script>
-<h1>Registration</h1>
 
-<p>Please fill out the following form with your information:</p>
+<h1>Регистрация</h1>
+
+<p>Пожалуйста, заполните поля ниже:</p>
 
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -25,25 +24,25 @@ $this->breadcrumbs=array(
 
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
+		<?php echo $form->labelEx($model,'Имя пользователя'); ?>
 		<?php echo $form->textField($model,'username'); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
+		<?php echo $form->labelEx($model,'Электронная почта'); ?>
 		<?php echo $form->textField($model,'email'); ?>
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
+		<?php echo $form->labelEx($model,'Пароль'); ?>
 		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Register'); ?>
+		<?php echo CHtml::submitButton('Зарегистрироваться'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
