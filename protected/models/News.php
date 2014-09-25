@@ -99,25 +99,29 @@ class News extends CActiveRecord
         return parent::model($className);
     }
 
-    protected function beforeSave()
+    protected function afterSave()
     {
+        parent::afterSave();
+
         NewsTag::model()->deleteAllByAttributes(array(
             'news_id' => $this->id,
         ));
 
         // разбираем теги по запятой
 
-        $exTags = explode(", ", $this->tempTags);
+        $exTags = explode(",", $this->tempTags);
 
         // каждый тег проверям в базе
         foreach ($exTags as $tag) {
+            $tag = trim($tag);
+
             /** @var Tags $find */
             $find = Tags::model()->findByAttributes(array(
                 'tag' => $tag
             ));
             if (!$find) {
                 $t = new Tags();
-                $t->tag = $find->tag;
+                $t->tag = $tag;
                 if ($t->save()) {
                     $nt = new NewsTag();
                     $nt->news_id = $this->id;
@@ -137,6 +141,16 @@ class News extends CActiveRecord
         // если нет в базе - создаем и связываем с новостью
 
 
-        return parent::beforeSave();
+
+    }
+
+    protected function afterFind()
+    {
+        foreach ($this->tags as $i => $tag) {
+            if ($i) {
+                $this->tempTags .= ', ';
+            }
+            $this->tempTags .= $tag->tag;
+        }
     }
 }

@@ -35,4 +35,11 @@ $this->widget('zii.widgets.CMenu', array(
 <?php echo ($model->content);?>
 <br/><br/>
 
+<?php
+foreach ($model->tags as $tag) {
+
+    echo '#'.$tag->tag.' ';
+}
+?>
+
 

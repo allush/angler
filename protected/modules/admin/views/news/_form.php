@@ -4,6 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 
+
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'news-form',
 )); ?>
@@ -37,7 +38,11 @@
         <?php echo $form->error($model,'content'); ?>
 	</div>
 
-<?php echo $form->textField($model, 'tempTags');?>
+<?php echo $form->textField($model, 'tempTags');?><br/>
+
+
+
+
 
 	<div class="form-group">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-default')); ?>
