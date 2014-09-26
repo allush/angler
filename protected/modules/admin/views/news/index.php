@@ -23,9 +23,11 @@ array('label'=>'Управление новостями', 'url'=>array('admin'))
 'class'=>'nav nav-pills'
 )
 ));
+
 ?>
 
 <h1>News</h1>
+
 
 <?php $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$dataProvider,

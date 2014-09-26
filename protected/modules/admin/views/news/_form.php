@@ -41,10 +41,32 @@
 <?php echo $form->textField($model, 'tempTags');?><br/>
 
 
-<script type="text/javascript">
-    $.ajax({
+<!--невидимый элемент селект, появляющийся при успешном аякс запрсе-->
+<select id="tagslist" style="display: none">
 
-    })
+</select>
+
+<script type="text/javascript">
+
+    $.ajax(
+        {
+            type: "POST",
+            success: function(msg)
+            {
+                var obj = document.getElementById('tagslist');
+                obj.style.display='block';
+                for(var i = 0; i<5; i++)
+                {
+                obj.options.length=i+1;
+                obj.options[i].text = "элемент "+i;
+                }
+                alert("success");
+            }
+
+        }
+    )
+
+
 </script>
 
 

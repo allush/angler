@@ -24,6 +24,7 @@ $this->breadcrumbs=array(
 
 <h1>Новости</h1>
 
+</script>
 <?php $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$dataProvider,
     'itemView'=>'_view',
