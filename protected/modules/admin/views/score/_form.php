@@ -10,23 +10,24 @@
         'id' => 'score-form',
     )); ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+
 
     <?php echo $form->errorSummary($model); ?>
 
     <div class="row">
+        <?php echo $form->labelEx($model, 'Событие: '); ?>
         <?= $model->name; ?>
     </div>
 
     <div class="row">
-        <?php echo $form->labelEx($model, 'price'); ?>
+        <?php echo $form->labelEx($model, 'Цена'); ?>
         <?php echo $form->numberField($model, 'price'); ?>
         <?php echo $form->error($model, 'price'); ?>
     </div>
 
 
     <div class="row buttons">
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>
     </div>
 
     <?php $this->endWidget(); ?>

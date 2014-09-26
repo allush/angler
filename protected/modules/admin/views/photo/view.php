@@ -3,16 +3,15 @@
 /* @var $model Photo */
 
 $this->breadcrumbs=array(
-	'Photos'=>array('index'),
+	'Информация о фото'=>array('index'),
 	$model->id,
 );
 
 
 $this->widget('zii.widgets.CMenu', array(
     'items' => array(
-        array('label'=>'List Photo', 'url'=>array('index')),
-        array('label'=>'Update Photo', 'url'=>array('update', 'id'=>$model->id)),
-        array('label'=>'Delete Photo', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+        array('label'=>'Список фото', 'url'=>array('index')),
+
     ),
     'htmlOptions'=>array(
         'class'=>'nav nav-pills'
@@ -20,7 +19,7 @@ $this->widget('zii.widgets.CMenu', array(
 ));
 ?>
 
-<h1>View Photo #<?php echo $model->id; ?></h1>
+<h1>Информация о фото #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

@@ -70,10 +70,10 @@ class User extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'username' => 'Username',
-            'email' => 'Email',
-            'password' => 'Password',
-            'score' => 'Score',
+            'username' => 'Имя пользователя',
+            'email' => 'Электронная почта',
+            'password' => 'Пароль',
+            'score' => 'Баллы',
         );
     }
 

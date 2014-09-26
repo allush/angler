@@ -56,12 +56,12 @@ class Photo extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'user_id' => 'Username',
-            'filename' => 'Filename',
-            'image' => 'Photo',
-            'is_confirmed'=> 'Confirmed',
-            'coord_x'=>'Shirota',
-            'coord_y'=>'Dolgota',
+            'user_id' => 'ID пользователя',
+            'filename' => 'Имя файла',
+            'image' => 'Фото',
+            'is_confirmed'=> 'Прошло модерацию',
+            'coord_x'=>'Широта',
+            'coord_y'=>'Долгота',
         );
     }
 
