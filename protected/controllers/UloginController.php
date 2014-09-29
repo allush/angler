@@ -3,7 +3,8 @@
 class UloginController extends Controller
 {
 
-    public function actionLogin() {
+    public function actionLogin()
+    {
 
         if (isset($_POST['token'])) {
             $ulogin = new UloginModel();
@@ -11,13 +12,11 @@ class UloginController extends Controller
             $ulogin->getAuthData();
             if ($ulogin->validate() && $ulogin->login()) {
                 $this->redirect(Yii::app()->user->returnUrl);
-            }
-            else {
+            } else {
 
                 $this->render('error');
             }
-        }
-        else {
+        } else {
 
             $this->redirect(Yii::app()->homeUrl, true);
         }

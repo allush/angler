@@ -4,7 +4,7 @@ class UloginUserIdentity implements IUserIdentity
 {
 
     private $id;
-    private $name;
+    private $email;
     private $isAuthenticated = false;
     private $states = array();
 
@@ -25,18 +25,19 @@ class UloginUserIdentity implements IUserIdentity
 
         if (null !== $user) {
             $this->id = $user->id;
-            $this->name = $user->full_name;
-        }
-        else {
+            $this->email = $user->email;
+        } else {
             $user = new User();
             $user->identity = $uloginModel->identity;
             $user->network = $uloginModel->network;
             $user->email = $uloginModel->email;
-            $user->full_name = $uloginModel->full_name;
+           // $user->username = $uloginModel->username;
+            $user->username = $uloginModel->email;
+            $user->password = '1234567';
             $user->save();
 
             $this->id = $user->id;
-            $this->name = $user->full_name;
+            $this->email = $user->email;
         }
         $this->isAuthenticated = true;
         return true;
@@ -54,7 +55,7 @@ class UloginUserIdentity implements IUserIdentity
 
     public function getName()
     {
-        return $this->name;
+        return $this->email;
     }
 
     public function getPersistentStates()
