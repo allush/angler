@@ -9,7 +9,7 @@
     'id' => 'news-form',
 )); ?>
 
-<p class="note">Fields with <span class="required">*</span> are required.</p>
+<p class="note">Поля, помеченные <span class="required">*,</span> обязательны к заполнению.</p>
 
 <?php echo $form->errorSummary($model); ?>
 
@@ -38,7 +38,11 @@
     <?php echo $form->error($model, 'content'); ?>
 </div>
 
-<?php echo $form->textField($model, 'tempTags'); ?><br/>
+<div class="form-group">
+
+<?php echo $form->textField($model, 'tempTags', array('class'=>'form-control')); ?>
+
+</div>
 
 
 <!--загрузка с сервера блок div со списком (ul)-->

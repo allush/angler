@@ -5,13 +5,15 @@ class NewsController extends AdminController
     public function actionGetTags($word = 0)
     {
 
+        if($word!="")
+        {
         $criteria = new CDbCriteria();
         $criteria->addSearchCondition('tag', $word);
 
         $tags = Tags::model()->findAll($criteria);
 
         $this->renderPartial('tags', array('tags' => $tags));
-        
+        }
     }
 
     /**

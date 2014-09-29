@@ -13,9 +13,9 @@
 
 ?>
 <div id="tagslist">
-    <ul id="list">
+    <ul class="list-group" id="tagsid">
         <?php foreach($tags as $tag){
-            echo '<li>'.$tag->tag.'</li>';
+            echo '<li class="list-group-item activate">'.$tag->tag.'</li>';
         }?>
         <!-- загружаемые элементы -->
     </ul>
