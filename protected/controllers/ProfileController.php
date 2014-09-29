@@ -70,6 +70,9 @@ class ProfileController extends Controller
             }
 
             if ($model->save()) {
+                if ($model->coord_x != null or $model->coord_y != null) {
+                    $model->user->credit(Score::EVENT_SET_LOCATION);
+                }
                 $this->redirect(Yii::app()->request->urlReferrer);
             }
         }
@@ -89,15 +92,33 @@ class ProfileController extends Controller
             $model->attributes = $_POST['Photo'];
 
             if ($model->validate()) {
+                /** @var Photo $photo */
                 $photo = Photo::model()->findByAttributes(array('id' => $model->id));
+
+                $hasCoords = false;
+                $oldX = null;
+                $oldY = null;
+                //Если есть коодрдинаты, то
+                if ($photo->coord_x and $photo->coord_y) {
+                    //установить флаг о том, что да
+                    $hasCoords = true;
+                    $oldX = $photo->coord_x;
+                    $oldY = $photo->coord_y;
+                }
+
+                // сохраняем то, что ввел пользователь
                 $photo->coord_x = $model->coord_x;
                 $photo->coord_y = $model->coord_y;
                 $photo->save();
 
+                // изменились ли координаты и были ли координаты ранее
+                // да: начислить баллы
+                if (($photo->coord_x != $oldX or $photo->coord_y != $oldY) and !$hasCoords) {
+                    $photo->user->credit(Score::EVENT_SET_LOCATION);
+                }
                 $this->redirect(Yii::app()->request->urlReferrer);
             }
         }
-
 
         $this->render('updatemyphoto', array('model' => $model));
     }

@@ -8,6 +8,8 @@
  * @property string $username
  * @property string $email
  * @property string $password
+ * @property string $identity
+ * @property string $network
  * @property integer $score
  * @property Photo[] $photos
  */
@@ -25,12 +27,13 @@ class User extends CActiveRecord
     public function credit($act)
     {
         /** @var Score $score */
-        $score =Score::model()->findByAttributes(array(
-            'action'=>$act
+        $score = Score::model()->findByAttributes(array(
+            'action' => $act
         ));
 
         if ($act == Score::EVENT_ADD_PHOTO)
-            $this->score+= $score->price;//то же самое, что $this->score=$this->score+ $score->price;
+            $this->score += $score->price;
+        //то же самое, что $this->score=$this->score+ $score->price;
         if ($act == Score::EVENT_SET_LOCATION)
             $this->score += $score->price;
 
@@ -45,6 +48,7 @@ class User extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
+            array('identity, network, email', 'length', 'max' => 255),
             array('username, email, password', 'required'),
             array('email', 'email'),
             array('email', 'unique'),
@@ -70,18 +74,21 @@ class User extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'username' => 'Username',
-            'email' => 'Email',
-            'password' => 'Password',
-            'score' => 'Score',
+            'username' => 'Имя пользователя',
+            'email' => 'Электронная почта',
+            'password' => 'Пароль',
+            'score' => 'Баллы',
+            'identity' => 'Identity',
+            'network' => 'Network',
         );
     }
 
     protected function beforeDelete()
     {
-      Photo::model()->deleteAllByAttributes(array('user_id'=>$this->id));
+        Photo::model()->deleteAllByAttributes(array('user_id' => $this->id));
         return parent::beforeDelete();
     }
+
     /**
      * Retrieves a list of models based on the current search/filter conditions.
      *
@@ -104,6 +111,8 @@ class User extends CActiveRecord
         $criteria->compare('username', $this->username, true);
         $criteria->compare('email', $this->email, true);
         $criteria->compare('password', $this->password, true);
+        $criteria->compare('identity', $this->identity, true);
+        $criteria->compare('network', $this->network, true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

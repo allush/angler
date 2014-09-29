@@ -81,8 +81,8 @@ class Score extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'action' => 'Action',
-            'price' => 'Price',
+            'action' => 'Действие',
+            'price' => 'Цена',
             'name' => 'Имя события'
         );
     }

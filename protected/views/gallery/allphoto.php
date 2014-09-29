@@ -1,14 +1,14 @@
 <?php
 /* @var $this GalleryController */
 /* @var $photos Photo[] */
-$this->pageTitle = Yii::app()->name . ' - All Photo';
+$this->pageTitle = Yii::app()->name . ' - Галерея';
 $this->breadcrumbs = array(
-    'All Photo',
+    'Галерея',
 );
 ?>
-<h1>All photo</h1>
+<h1>Галерея</h1>
 
-<p>Here you can see all photo</p>
+
 
 
 <div class="row">

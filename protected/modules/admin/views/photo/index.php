@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Photos',
+	'Фото',
 );
 
 $this->menu=array(
@@ -12,7 +12,7 @@ array('label'=>'Подтверждённые фото','url'=>array('/admin/phot
 );
 ?>
 
-<h1>Photos</h1>
+<h1>Фото</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

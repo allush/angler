@@ -19,13 +19,11 @@ class UserIdentity extends CUserIdentity
         $email = strtolower($this->username);
 
         $user = User::model()->findByAttributes(array('email' => $email));
-        if ($user === null){
+        if ($user === null) {
             $this->errorCode = self::ERROR_USERNAME_INVALID;
-        }
-        else if (!CPasswordHelper::verifyPassword($this->password, $user->password)){
+        } else if (!CPasswordHelper::verifyPassword($this->password, $user->password)) {
             $this->errorCode = self::ERROR_PASSWORD_INVALID;
-        }
-        else {
+        } else {
             $this->_id = $user->id;
             $this->errorCode = self::ERROR_NONE;
         }

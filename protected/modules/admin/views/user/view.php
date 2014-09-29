@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Список пользователей', 'url'=>array('index')),
-	array('label'=>'Удалить пользователя', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Удалить пользователя', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Вы уверены в удалении?')),
 
 );
 ?>
 
-<h1>View User #<?php echo $model->id; ?></h1>
+
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
