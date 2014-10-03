@@ -14,34 +14,7 @@
 ?>
 
 
-<script type="text/javascript">
 
-    // !! ДОДЕЛАТЬ ВСТАВКУ ТЕКСТА В ПОЛЕ ВВОДА !!!
-
-
-    $("#tagslist li").click(function() {
-
-        //считать строку
-        //разбить на элементы
-        //последний заменить на выбранный
-        //вывести в инпут
-
-        var StrTags = $('#News_tempTags').val();
-        var TagsInputArr = StrTags.split(',');
-        TagsInputArr[TagsInputArr.length-1] = $(this).text();
-        var out="";
-        for(var i=0; i < TagsInputArr.length-1; i++)
-        {
-            out+=TagsInputArr[i]+",";
-        }
-        out+=" "+TagsInputArr[TagsInputArr.length-1];
-        $('#News_tempTags').val(out);   //если элемент первый, то строка будет начинаться с пробела
-
-        $('#News_tempTags').focus();
-
-    });
-
-</script>
 
 <div id="tagslist">
     <ul class="list-group" id="tagsid">
@@ -52,3 +25,32 @@
     </ul>
 </div>
 
+<script type="text/javascript">
+
+
+
+
+    $("#tagslist li").click(function() {
+
+        //считать строку
+        //разбить на элементы
+        //последний заменить на выбранный
+        //вывести в инпут
+
+       
+        var TagsInputArr = $('#News_tempTags').val().split(',');
+        TagsInputArr[TagsInputArr.length-1] = $(this).text();
+        var out="";
+        for(var i=0; i < TagsInputArr.length-1; i++)
+        {
+            out+= $.trim(TagsInputArr[i])+", ";
+        }
+        out+=TagsInputArr[TagsInputArr.length-1];
+
+        $('#News_tempTags').val(out);
+
+        $('#News_tempTags').focus();
+
+    });
+
+</script>

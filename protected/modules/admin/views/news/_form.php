@@ -53,7 +53,7 @@
 
 <script type="text/javascript">
 
-    // !! ПЕРЕДАВАТЬ НЕ ВСЕ ВВЕДЕННЫЕ СИМВОЛЫ, А ТОЛЬКО ПОСЛЕ ЗАПЯТОЙ (РАЗДЕЛЯТЬ ТЕГИ) !!!
+
 
     $(function(){
         $('#News_tempTags').keyup(function(){
