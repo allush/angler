@@ -57,13 +57,17 @@
 
     $(function(){
         $('#News_tempTags').keyup(function(){
+
+
+            var inputTags = $('#News_tempTags').val().split(',');
+
             $.ajax({
                 type: "GET",
                 url: "index.php",
                 dataType: "html",
                 data:{
                     r:  'admin/news/getTags',
-                    word: $('#News_tempTags').val()
+                    word: $.trim(inputTags[inputTags.length-1])
                 },
                 //возвращение страницы tags.php
                 success: function (data) {

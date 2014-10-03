@@ -21,8 +21,24 @@
 
     $("#tagslist li").click(function() {
 
+        //считать строку
+        //разбить на элементы
+        //последний заменить на выбранный
+        //вывести в инпут
 
-        alert($(this).text());
+        var StrTags = $('#News_tempTags').val();
+        var TagsInputArr = StrTags.split(',');
+        TagsInputArr[TagsInputArr.length-1] = $(this).text();
+        var out="";
+        for(var i=0; i < TagsInputArr.length-1; i++)
+        {
+            out+=TagsInputArr[i]+",";
+        }
+        out+=" "+TagsInputArr[TagsInputArr.length-1];
+        $('#News_tempTags').val(out);   //если элемент первый, то строка будет начинаться с пробела
+
+        $('#News_tempTags').focus();
+
     });
 
 </script>
