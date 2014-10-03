@@ -37,7 +37,7 @@
         //последний заменить на выбранный
         //вывести в инпут
 
-       
+
         var TagsInputArr = $('#News_tempTags').val().split(',');
         TagsInputArr[TagsInputArr.length-1] = $(this).text();
         var out="";

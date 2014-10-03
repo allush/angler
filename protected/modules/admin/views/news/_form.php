@@ -32,7 +32,8 @@
     <script>
         // Replace the <textarea id="editor1"> with a CKEditor
         // instance, using default configuration.
-        CKEDITOR.replace('ck');
+        var CKEdit = CKEDITOR.replace('ck');
+        CKFinder.setupCKEditor(CKEdit, '/ckfinder/');
     </script>
 
     <?php echo $form->error($model, 'content'); ?>

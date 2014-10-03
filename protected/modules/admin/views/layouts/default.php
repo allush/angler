@@ -15,6 +15,7 @@
     <?php Yii::app()->getClientScript()->registerCoreScript('jquery');?>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <script src="ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="ckfinder/ckfinder.js"></script>
 </head>
 
 <body>
