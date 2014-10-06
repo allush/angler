@@ -125,11 +125,14 @@ class NewsController extends Controller
         {
             $model->attributes = $_POST['SearchForm'];
 
+            //сравнить полученные данные ($model->keyword) с базой данных
+
             if ($model->validate())
                 $this->redirect(Yii::app()->user->returnUrl);
+
         }
 
-        $this->render('search', array('model'=>$model));
+        $this->render('news', array('model'=>$model));
     }
 
 	/**

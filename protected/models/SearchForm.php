@@ -6,8 +6,9 @@
  * Time: 15:50
  */
 
-class SerachForm extends CFormModel
+class SearchForm extends CFormModel
 {
+    //добавить еще одну переменную, отвечающую за критерий поиска (загаловок, тег, содержание)
     public $keyword;
 
     public function rules()
