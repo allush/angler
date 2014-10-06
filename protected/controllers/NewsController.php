@@ -116,6 +116,22 @@ class NewsController extends Controller
 		return $model;
 	}
 
+
+    public function actionSearch()
+    {
+        $model = new RegisterForm;
+
+        if(isset($_POST['SearchForm']))
+        {
+            $model->attributes = $_POST['SearchForm'];
+
+            if ($model->validate())
+                $this->redirect(Yii::app()->user->returnUrl);
+        }
+
+        $this->render('search', array('model'=>$model));
+    }
+
 	/**
 	 * Performs the AJAX validation.
 	 * @param News $model the model to be validated

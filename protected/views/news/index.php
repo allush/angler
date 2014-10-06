@@ -1,6 +1,7 @@
 <?php
 /* @var $this NewsController */
 /* @var $dataProvider CActiveDataProvider */
+/* @var $model SearchForm */
 
 $this->breadcrumbs=array(
     'News',
@@ -23,6 +24,21 @@ $this->breadcrumbs=array(
 ?>
 
 <h1>Новости</h1>
+
+<div class="form">
+
+    <?php echo CHtml::beginForm(); ?>
+
+    <?php echo CHtml::textField($model, 'keyword'); ?>
+
+<!--    Добавить критерий поиска (по заголовку, тегу, содержанию)-->
+
+    <?php echo CHtml::submitButton('Поиск'); ?>
+
+    <?php echo CHtml::endForm(); ?>
+
+</div>
+
 
 </script>
 <?php $this->widget('zii.widgets.CListView', array(
