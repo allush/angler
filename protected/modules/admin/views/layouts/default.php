@@ -5,16 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="language" content="en"/>
     <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css"/>
 
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
-    <script src="ckeditor/ckeditor.js"></script>
 
 
     <?php Yii::app()->getClientScript()->registerCoreScript('jquery');?>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script src="ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="ckfinder/ckfinder.js"></script>
 </head>
 
 <body>
