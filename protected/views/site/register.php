@@ -45,5 +45,17 @@ $this->breadcrumbs=array(
 		<?php echo CHtml::submitButton('Зарегистрироваться'); ?>
 	</div>
 
+    <div class="row">
+        <?php  $this->widget('application.components.UloginWidget',
+            array(
+                'params'=>array(
+                    'redirect'=>'http://'.$_SERVER['HTTP_HOST'].'/index.php?r=ulogin/login'
+//Адрес, на который ulogin будет редиректить браузер клиента. Он должен соответствовать контроллеру ulogin и действию login
+                )
+            )); ?>
+
+
+    </div>
+
 <?php $this->endWidget(); ?>
 </div><!-- form -->
