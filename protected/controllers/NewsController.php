@@ -133,6 +133,41 @@ class NewsController extends Controller
             $criteria = new CDbCriteria();
             $criteria->addSearchCondition('head', $model->keyword);
 
+
+
+
+
+            //Выбрать записи из news, где head = $model->keyword
+
+
+
+
+            //Выбрать id из tags, где tag = $model->keyword
+
+            //Выбрать news_id из news_tag с выбранным id
+
+            //Выбать записи из news с выбранным id
+
+
+//            $tagS = Yii::app()->db->createCommand()
+//                ->select('id')
+//                ->from('tags')
+//                ->where('tags=$model->keyword')
+//                ->queryRow();
+//
+//            $idS = Yii::app()->db->createCommand()
+//                ->select('news_id')
+//                ->from('news_tag')
+//                ->where('tags_id=$tagS')
+//                ->queryRow();
+//
+//            $news = Yii::app()->db->createCommand()
+//                ->
+
+
+
+
+
             $dataProvider=new CActiveDataProvider('News', array(
                 'criteria'=>$criteria
             ));
