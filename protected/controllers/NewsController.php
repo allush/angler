@@ -81,8 +81,12 @@ class NewsController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('News');
+
+        $model = new SearchForm();
+
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+            'model'=>$model
 		));
 	}
 
@@ -119,20 +123,62 @@ class NewsController extends Controller
 
     public function actionSearch()
     {
-        $model = new RegisterForm;
+        $model = new SearchForm();
+
 
         if(isset($_POST['SearchForm']))
         {
             $model->attributes = $_POST['SearchForm'];
 
-            //сравнить полученные данные ($model->keyword) с базой данных
+            $criteria = new CDbCriteria();
+            $criteria->addSearchCondition('head', $model->keyword);
 
-            if ($model->validate())
-                $this->redirect(Yii::app()->user->returnUrl);
 
+
+
+
+            //Выбрать записи из news, где head = $model->keyword
+
+
+
+
+            //Выбрать id из tags, где tag = $model->keyword
+
+            //Выбрать news_id из news_tag с выбранным id
+
+            //Выбать записи из news с выбранным id
+
+
+//            $tagS = Yii::app()->db->createCommand()
+//                ->select('id')
+//                ->from('tags')
+//                ->where('tags=$model->keyword')
+//                ->queryRow();
+//
+//            $idS = Yii::app()->db->createCommand()
+//                ->select('news_id')
+//                ->from('news_tag')
+//                ->where('tags_id=$tagS')
+//                ->queryRow();
+//
+//            $news = Yii::app()->db->createCommand()
+//                ->
+
+
+
+
+
+            $dataProvider=new CActiveDataProvider('News', array(
+                'criteria'=>$criteria
+            ));
+        }else{
+            $dataProvider=new CActiveDataProvider('News');
         }
 
-        $this->render('news', array('model'=>$model));
+        $this->render('index', array(
+            'dataProvider'=>$dataProvider,
+            'model'=>$model
+        ));
     }
 
 	/**
