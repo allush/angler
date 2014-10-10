@@ -26,7 +26,7 @@ $this->breadcrumbs=array(
 
 <h1>Новости</h1>
 
-<div class="form">
+<div class="form-group">
 
 <?php $form = $this->beginWidget('CActiveForm', array(
         'id' => 'search-form',
@@ -34,8 +34,9 @@ $this->breadcrumbs=array(
     ));
 ?>
 
-<?php echo $form->textField($model, 'keyword'); ?>
-<?= CHtml::submitButton('Найти');?>
+<?php echo $form->textField($model, 'keyword', array('class'=>'form-control')); ?>
+<?= CHtml::submitButton('Найти', array('class'=>'btn btn-default'));?>
+
 <?php $this->endWidget(); ?>
 
 </div>

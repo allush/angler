@@ -131,7 +131,7 @@ class NewsController extends Controller
             $model->attributes = $_POST['SearchForm'];
 
             $criteria = new CDbCriteria();
-            $criteria->addSearchCondition('head', $model->keyword);
+//            $criteria->addSearchCondition('head', $model->keyword);
 
 
 
@@ -149,20 +149,23 @@ class NewsController extends Controller
             //Выбать записи из news с выбранным id
 
 
-//            $tagS = Yii::app()->db->createCommand()
-//                ->select('id')
-//                ->from('tags')
-//                ->where('tags=$model->keyword')
-//                ->queryRow();
+
+//            $sql = "SELECT * FROM news WHERE id IN (
+//                    SELECT news_id FROM news_tag WHERE tags_id IN (
+//                    SELECT id FROM tags WHERE tag LIKE '%:keyword%'))
+//                    OR head LIKE '%:keyword%'";
 //
-//            $idS = Yii::app()->db->createCommand()
-//                ->select('news_id')
-//                ->from('news_tag')
-//                ->where('tags_id=$tagS')
-//                ->queryRow();
-//
-//            $news = Yii::app()->db->createCommand()
-//                ->
+//            $command = Yii::app()->db->createCommand();
+//            $command->setText($sql);
+//            $command->execute(array(':keyword'=>$model->keyword));
+
+
+
+            $criteria->addCondition(" head LIKE '".$model->keyword."' OR id IN (
+                                    SELECT news_id FROM news_tag WHERE tags_id IN (
+                                        SELECT id FROM tags WHERE tag LIKE '".$model->keyword."'
+                                    )
+                                ) ");
 
 
 
