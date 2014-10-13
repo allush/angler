@@ -16,18 +16,63 @@
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <script src="ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="ckfinder/ckfinder.js"></script>
+
+
+
+<!--    BOOSTBOX-->
+    <!-- BEGIN META -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="your,keywords">
+    <meta name="description" content="Short explanation about this website">
+
+    <!-- BEGIN STYLESHEETS -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700,800' rel='stylesheet' type='text/css'/>
+    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-default/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-default/boostbox.css" />
+    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-default/boostbox_responsive.css" />
+    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-default/font-awesome.min.css" />
+    <!-- Additional CSS includes -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="/js/boostbox/libs/utils/html5shiv.js"></script>
+    <script type="text/javascript" src="/js/boostbox/libs/utils/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 
 <body>
 
 
-<div class="container" id="page">
+<!-- BEGIN JAVASCRIPT -->
+<script src="/js/boostbox/libs/jquery/jquery-1.11.0.min.js"></script>
+<script src="/js/boostbox/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/boostbox/core/BootstrapFixed.js"></script>
+<script src="/js/boostbox/libs/bootstrap/bootstrap.min.js"></script>
+<!-- Additional JS includes -->
 
+<!-- Always put App.js last in your javascript imports -->
+<script src="/js/boostbox/core/App.js"></script>
+
+
+
+<header id="header">
     <?php echo CHtml::encode(Yii::app()->name); ?>
-    <!-- header -->
-    <div class="row">
+</header>
 
-        <div class="col-sm-2">
+
+   <!-- header -->
+    <div id="base">
+
+        <div id="sidebar">
+            <div class="sidebar-back"></div>
+            <div class="sidebar-content">
+                <div class="nav-brand">
+                    <a class="main-brand" href="#"><h3 class="text-light text-white">логотип</h3> </a>
+                </div>
+
 
             <?php $this->widget('zii.widgets.CMenu', array(
                 'items' => array(
@@ -39,14 +84,16 @@
                     array('label' => 'Выход (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
                 ),
                 'htmlOptions'=>array(
-                    'class'=>'nav nav-pills nav-stacked'
+                    'class'=>'main-menu'
                 )
             )); ?>
+
+                </div>
 
             <!-- mainmenu -->
         </div>
 
-        <div class="col-sm-8">
+        <div id="content">
             <?php if (isset($this->breadcrumbs)): ?>
                 <?php $this->widget('zii.widgets.CBreadcrumbs', array(
                     'links' => $this->breadcrumbs,
@@ -72,7 +119,7 @@
 
 
     <!-- footer -->
-</div>
+
 
 <!-- page -->
 
