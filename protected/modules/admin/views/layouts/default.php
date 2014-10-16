@@ -72,12 +72,6 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <a class="btn btn-transparent btn-equal btn-menu" href="javascript:void(0);"><i class="fa fa-bars fa-lg"></i></a>
-            <div class="navbar-brand">
-                <a class="main-brand" href="../dashboards/dashboard.html">
-                    <h3 class="text-light text-white"><span>Boost<strong>Box</strong> </span><i class="fa fa-rocket fa-fw"></i></h3>
-                </a>
-            </div><!--end .navbar-brand -->
-            <a class="btn btn-transparent btn-equal navbar-toggle" data-toggle="collapse" data-target="#header-navbar-collapse"><i class="fa fa-wrench fa-lg"></i></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -108,13 +102,27 @@
 <!--каждая новость в отдельном <section> -->
 <!--изменить горизонтальное меню-->
 <!--Обернуть элементы меню в <span> -->
-            <?php $this->widget('zii.widgets.CMenu', array(
+
+
+            <?php
+
+            $this->widget('zii.widgets.CMenu', array(
                 'items' => array(
-                    array('label' => 'Админская', 'url' => array('default/index')),
+                    array('label' => 'Админка', 'url' => array('default/index')),
                     array('label' => 'Пользователи', 'url' => array('user/index')),
-                    array('label' => 'Баллы', 'url' => array('score/index')),
-                    array('label' => 'Фото', 'url' => array('photo/index')),
-                    array('label' => 'Новости', 'url' => array('news/index')),
+                    array('label' => 'Баллы', 'url'=>'', 'items'=>array(
+                        array('label'=>'Все события', 'url' => array('score/index')),
+                        array('label'=>'Генерировать события', 'url'=>array('createEvents')),
+                    )),
+                    array('label' => 'Фото', 'url'=>'', 'items'=>array(
+                        array('label'=>'Новые','url'=>array('/admin/photo/index')),
+                        array('label'=>'Подтверждённые фото','url'=>array('/admin/photo/confirmed')),
+                    )),
+                    array('label' => 'Новости', 'url'=>'', 'items'=>array(
+                        array('label'=>'Все новости', 'url'=>array('news/index')),
+                        array('label'=>'Создать новость', 'url'=>array('create')),
+                        array('label'=>'Управление новостями', 'url'=>array('admin')),
+                    )),
                     array('label' => 'Выход (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
                 ),
                 'htmlOptions'=>array(

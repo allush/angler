@@ -6,10 +6,10 @@ $this->breadcrumbs=array(
     'События',
 );
 
-$this->menu=array(
-    array('label'=>'Генерировать события', 'url'=>array('createEvents')),
-
-);
+//$this->menu=array(
+//    array('label'=>'Генерировать события', 'url'=>array('createEvents')),
+//
+//);
 
 ?>
 

@@ -14,17 +14,17 @@ $this->breadcrumbs=array(
 
 ?>
 <?php
-$this->widget('zii.widgets.CMenu', array(
-'items' => array(
-array('label'=>'Создать новость', 'url'=>array('create')),
-array('label'=>'Управление новостями', 'url'=>array('admin')),
-),
-'htmlOptions'=>array(
-'class'=>'nav nav-pills'
-)
-));
-
-?>
+//$this->widget('zii.widgets.CMenu', array(
+//'items' => array(
+//array('label'=>'Создать новость', 'url'=>array('create')),
+//array('label'=>'Управление новостями', 'url'=>array('admin')),
+//),
+//'htmlOptions'=>array(
+//'class'=>'nav nav-pills'
+//)
+//));
+//
+//?>
 
 <h1>News</h1>
 

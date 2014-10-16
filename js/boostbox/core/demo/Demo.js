@@ -122,7 +122,7 @@
 		
 		$('link').each(function(){
 			var href = $(this).attr('href');
-			href = href.replace(/(assets\/css\/)(.*)(\/)/g, 'assets/css/' + newTheme + '/');
+			href = href.replace(/(css\/boostbox\/)(.*)(\/)/g, 'css/boostbox' + newTheme + '/');
 			$(this).attr('href', href);
 		});
 	};
