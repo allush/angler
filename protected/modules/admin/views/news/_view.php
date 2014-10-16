@@ -6,7 +6,8 @@
 <div class="view">
 
 
-
+    <section>
+        <br>
     <?php echo date('d.m.Y', $data->date); ?>
     <h3><?php echo $data->head; ?></h3>
 	 <?php
@@ -19,7 +20,8 @@
      ));
      $pieces[0] = $p->purify($pieces[0]);
     ?>
-    <?php echo CHtml::link("Читать далее", array('view', 'id'=>$data->id) ); ?>
-	<br /><br/><br /><br/>
+        <br>
+    <?php echo CHtml::link("Читать далее", array('view', 'id'=>$data->id), array('class'=>'link') ); ?>
+    </section>
 
 </div>

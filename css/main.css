@@ -7,3 +7,12 @@
     width: 500px;
     height: 500px;
 }
+
+.linkbtn
+{
+    cursor: default;
+}
+
+.link{
+    color: blue;
+}

@@ -100,30 +100,31 @@
                 </div>
 
 <!--каждая новость в отдельном <section> -->
-<!--изменить горизонтальное меню-->
+
 <!--Обернуть элементы меню в <span> -->
 
 
             <?php
 
             $this->widget('zii.widgets.CMenu', array(
+                'encodeLabel'=>false,
                 'items' => array(
-                    array('label' => 'Админка', 'url' => array('default/index')),
-                    array('label' => 'Пользователи', 'url' => array('user/index')),
-                    array('label' => 'Баллы', 'url'=>'', 'items'=>array(
-                        array('label'=>'Все события', 'url' => array('score/index')),
-                        array('label'=>'Генерировать события', 'url'=>array('createEvents')),
+                    array('label' => '<span>Админка</span>', 'url' => array('default/index'), 'linkOptions'=>array('class'=>'linkbtn')),
+                    array('label' => '<span>Пользователи</span>', 'url' => array('user/index'), 'linkOptions'=>array('class'=>'linkbtn')),
+                    array('label' => '<span>Баллы</span>', 'linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
+                        array('label'=>'Все события', 'url' => array('score/index'),'linkOptions'=>array('class'=>'linkbtn')),
+                        array('label'=>'Генерировать события', 'url'=>array('createEvents'),'linkOptions'=>array('class'=>'linkbtn')),
                     )),
-                    array('label' => 'Фото', 'url'=>'', 'items'=>array(
-                        array('label'=>'Новые','url'=>array('/admin/photo/index')),
-                        array('label'=>'Подтверждённые фото','url'=>array('/admin/photo/confirmed')),
+                    array('label' => 'Фото','linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
+                        array('label'=>'Новые','url'=>array('/admin/photo/index'),'linkOptions'=>array('class'=>'linkbtn')),
+                        array('label'=>'Подтверждённые фото','url'=>array('/admin/photo/confirmed'),'linkOptions'=>array('class'=>'linkbtn')),
                     )),
-                    array('label' => 'Новости', 'url'=>'', 'items'=>array(
-                        array('label'=>'Все новости', 'url'=>array('news/index')),
-                        array('label'=>'Создать новость', 'url'=>array('create')),
-                        array('label'=>'Управление новостями', 'url'=>array('admin')),
+                    array('label' => 'Новости', 'url'=>'','linkOptions'=>array('class'=>'linkbtn'), 'items'=>array(
+                        array('label'=>'Все новости', 'url'=>array('news/index'),'linkOptions'=>array('class'=>'linkbtn')),
+                        array('label'=>'Создать новость', 'url'=>array('create'),'linkOptions'=>array('class'=>'linkbtn')),
+                        array('label'=>'Управление новостями', 'url'=>array('admin'),'linkOptions'=>array('class'=>'linkbtn')),
                     )),
-                    array('label' => 'Выход (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
+                    array('label' => 'Выход (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest,'linkOptions'=>array('class'=>'linkbtn'))
                 ),
                 'htmlOptions'=>array(
                     'class'=>'main-menu'
