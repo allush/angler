@@ -19,6 +19,11 @@ $this->widget('zii.widgets.CMenu', array(
 ));
 ?>
 
-<h1>Create News</h1>
-
+<section>
+    <div class="section-header">
+<h1>Создание новости</h1>
+    </div>
+<div class="section-body">
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
+</div>
+</section>

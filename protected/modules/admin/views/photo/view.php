@@ -18,9 +18,11 @@ $this->widget('zii.widgets.CMenu', array(
     )
 ));
 ?>
-
+<section>
+    <div class="section-header">
 <h1>Информация о фото #<?php echo $model->id; ?></h1>
-
+    </div>
+    <div class="section-body">
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
@@ -35,3 +37,5 @@ $this->widget('zii.widgets.CMenu', array(
         'coord_y',
 	),
 )); ?>
+    </div>
+</section>

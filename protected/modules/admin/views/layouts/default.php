@@ -109,7 +109,7 @@
             $this->widget('zii.widgets.CMenu', array(
                 'encodeLabel'=>false,
                 'items' => array(
-                    array('label' => 'А<span class="title">дминка</span>', 'url' => array('default/index'), 'linkOptions'=>array('class'=>'linkbtn')),
+                    array('label' => 'А<span class="title">дминcкаz</span>', 'url' => array('default/index'), 'linkOptions'=>array('class'=>'linkbtn')),
                     array('label' => 'П<span class="title" >ользователи</span>', 'url' => array('user/index'), 'linkOptions'=>array('class'=>'linkbtn')),
                     array('label' => 'Б<span class="title">аллы<span class="expand-sign">+</span></span>', 'linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
                         array('label'=>'Все события', 'url' => array('score/index'),'linkOptions'=>array('class'=>'linkbtn')),
@@ -124,10 +124,11 @@
                         array('label'=>'Создать новость', 'url'=>array('create'),'linkOptions'=>array('class'=>'linkbtn')),
                         array('label'=>'Управление новостями', 'url'=>array('admin'),'linkOptions'=>array('class'=>'linkbtn')),
                     )),
+                    array('label' => 'В<span class="title">ыход из админcкой</span>', 'url' => 'index.php', 'linkOptions'=>array('class'=>'linkbtn')),
                     array('label' => 'В<span class="title">ыход (' . Yii::app()->user->name . ')</span>', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest,'linkOptions'=>array('class'=>'linkbtn'))
                 ),
                 'htmlOptions'=>array(
-                    'class'=>'main-menu'
+                    'class'=>'main-menu nav'
                 )
             )); ?>
 
@@ -152,11 +153,11 @@
                     'class'=>'nav nav-pills nav-stacked'
                 )
             )); ?>
-            <section>
-            <div class="section-body contain-lg">
+
+
             <?php echo $content; ?>
-                </div>
-            </section>
+
+
 
         </div>
     </div>

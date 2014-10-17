@@ -21,7 +21,11 @@ $this->widget('zii.widgets.CMenu', array(
     )
 ));
 ?>
-
-<h1>Update News <?php echo $model->id; ?></h1>
-
+<section>
+    <div class="section-header">
+<h1>Обновление <?php echo $model->id; ?></h1>
+    </div>
+    <div class="section-body">
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
+    </div>
+</section>

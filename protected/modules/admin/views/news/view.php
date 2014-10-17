@@ -29,9 +29,11 @@ $this->widget('zii.widgets.CMenu', array(
 ));
 
 ?>
-
+<section>
+    <div class="section-header">
 <h1><?php echo CHtml::encode($model->head);?></h1>
-
+    </div>
+    <div class="section-body">
 <?php echo date('d.m.Y', $model->date);?>
 <br/><br/>
 
@@ -46,3 +48,5 @@ foreach ($model->tags as $tag) {
 }
 
 ?>
+    </div>
+</section>
