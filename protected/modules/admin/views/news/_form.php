@@ -18,16 +18,16 @@
 <!--		--><?php //echo $form->textField($model,'date'); ?>
 <!--		--><?php //echo $form->error($model,'date'); ?>
 <!--	</div>-->
-
+<form class="form-vertical form-borded">
 <div class="form-group">
     <h3><?php echo $form->labelEx($model, 'head'); ?></h3>
-    <?php echo $form->textArea($model, 'head', array('rows' => 4, 'class' => 'form-control')); ?>
+    <?php echo $form->textArea($model, 'head', array('class' => 'form-control')); ?>
     <?php echo $form->error($model, 'head'); ?>
 </div>
 
 <div class="form-group">
     <h3><?php echo $form->labelEx($model, 'content'); ?></h3>
-    <?php echo $form->textArea($model, 'content', array('rows' => 30, 'class' => 'form-control', 'id' => 'ck')); ?>
+    <?php echo $form->textArea($model, 'content', array('class' => 'form-control control-12-rows', 'id' => 'ck')); ?>
 
     <script>
         // Replace the <textarea id="editor1"> with a CKEditor
@@ -48,9 +48,7 @@
 
 <!--загрузка с сервера блок div со списком (ul)-->
 
-<div id="result">
 
-</div>
 
 <script type="text/javascript">
 
@@ -87,5 +85,5 @@
 <div class="form-group">
     <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-default')); ?>
 </div>
-
+</form>
 <?php $this->endWidget(); ?>
