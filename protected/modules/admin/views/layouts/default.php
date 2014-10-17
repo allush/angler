@@ -29,10 +29,10 @@
 
     <!-- BEGIN STYLESHEETS -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700,800' rel='stylesheet' type='text/css'/>
-    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-default/bootstrap.css" />
-    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-default/boostbox.css" />
-    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-default/boostbox_responsive.css" />
-    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-default/font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-1/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-1/boostbox.css" />
+    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-1/boostbox_responsive.css" />
+    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-1/font-awesome.min.css" />
     <!-- Additional CSS includes -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -51,11 +51,11 @@
 <script src="/js/boostbox/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
 <script src="/js/boostbox/core/BootstrapFixed.js"></script>
 <script src="/js/boostbox/libs/bootstrap/bootstrap.min.js"></script>
-<script src="../assets/js/libs/jquery-ui/jquery-ui-1.10.3.custom.min.js"></script>
-<script src="../assets/js/libs/spin.js/spin.min.js"></script>
-<script src="../assets/js/libs/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="../assets/js/core/demo/DemoDocs.js"></script>
-<script src="../assets/js/core/demo/Demo.js"></script>
+<script src="../js/boostbox/libs/jquery-ui/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="../js/boostbox/libs/spin.js/spin.min.js"></script>
+<script src="../js/boostbox/libs/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../js/boostbox/core/demo/DemoDocs.js"></script>
+<script src="../js/boostbox/core/demo/Demo.js"></script>
 <!-- Additional JS includes -->
 
 <!-- Always put App.js last in your javascript imports -->
@@ -94,14 +94,14 @@
                 <div class="nav-brand">
                     <a class="main-brand" href="#">
                         <h3 class="text-light text-white">
-                            Л<span>оготип</span>
+                            A<span>ngler</span>
                         </h3>
                     </a>
                 </div>
 
-<!--каждая новость в отдельном <section> -->
 
-<!--Обернуть элементы меню в <span> -->
+
+
 
 
             <?php
@@ -109,22 +109,22 @@
             $this->widget('zii.widgets.CMenu', array(
                 'encodeLabel'=>false,
                 'items' => array(
-                    array('label' => '<span>Админка</span>', 'url' => array('default/index'), 'linkOptions'=>array('class'=>'linkbtn')),
-                    array('label' => '<span>Пользователи</span>', 'url' => array('user/index'), 'linkOptions'=>array('class'=>'linkbtn')),
-                    array('label' => '<span>Баллы</span>', 'linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
+                    array('label' => 'А<span class="title">дминка</span>', 'url' => array('default/index'), 'linkOptions'=>array('class'=>'linkbtn')),
+                    array('label' => 'П<span class="title" >ользователи</span>', 'url' => array('user/index'), 'linkOptions'=>array('class'=>'linkbtn')),
+                    array('label' => 'Б<span class="title">аллы<span class="expand-sign">+</span></span>', 'linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
                         array('label'=>'Все события', 'url' => array('score/index'),'linkOptions'=>array('class'=>'linkbtn')),
                         array('label'=>'Генерировать события', 'url'=>array('createEvents'),'linkOptions'=>array('class'=>'linkbtn')),
                     )),
-                    array('label' => 'Фото','linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
+                    array('label' => 'Ф<span class="title">ото<span class="expand-sign">+</span></span>','linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
                         array('label'=>'Новые','url'=>array('/admin/photo/index'),'linkOptions'=>array('class'=>'linkbtn')),
                         array('label'=>'Подтверждённые фото','url'=>array('/admin/photo/confirmed'),'linkOptions'=>array('class'=>'linkbtn')),
                     )),
-                    array('label' => 'Новости', 'url'=>'','linkOptions'=>array('class'=>'linkbtn'), 'items'=>array(
+                    array('label' => 'Н<span class="title">овости<span class="expand-sign">+</span></span>', 'url'=>'','linkOptions'=>array('class'=>'linkbtn'), 'items'=>array(
                         array('label'=>'Все новости', 'url'=>array('news/index'),'linkOptions'=>array('class'=>'linkbtn')),
                         array('label'=>'Создать новость', 'url'=>array('create'),'linkOptions'=>array('class'=>'linkbtn')),
                         array('label'=>'Управление новостями', 'url'=>array('admin'),'linkOptions'=>array('class'=>'linkbtn')),
                     )),
-                    array('label' => 'Выход (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest,'linkOptions'=>array('class'=>'linkbtn'))
+                    array('label' => 'В<span class="title">ыход (' . Yii::app()->user->name . ')</span>', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest,'linkOptions'=>array('class'=>'linkbtn'))
                 ),
                 'htmlOptions'=>array(
                     'class'=>'main-menu'
