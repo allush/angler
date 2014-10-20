@@ -18,7 +18,7 @@
 <!--		--><?php //echo $form->textField($model,'date'); ?>
 <!--		--><?php //echo $form->error($model,'date'); ?>
 <!--	</div>-->
-<form class="form-vertical form-borded">
+<form class="form-vertical form-striped">
 <div class="form-group">
     <h3><?php echo $form->labelEx($model, 'head'); ?></h3>
     <?php echo $form->textArea($model, 'head', array('class' => 'form-control')); ?>

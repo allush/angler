@@ -43,7 +43,7 @@
 
 </head>
 
-<body>
+<body class="body-striped-inverse">
 
 
 <!-- BEGIN JAVASCRIPT -->
@@ -72,12 +72,14 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <a class="btn btn-transparent btn-equal btn-menu" href="javascript:void(0);"><i class="fa fa-bars fa-lg"></i></a>
+            <a class="btn btn-transparent" href="http://angler/index.php?r=admin/default/index"><i class="fa fa-home fa-lg"></i></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="header-navbar-collapse">
+
             <ul class="nav navbar-nav navbar-right">
-                <h1><?php echo CHtml::encode(Yii::app()->name); ?></h1>
+                <h3><?php echo CHtml::encode(Yii::app()->name); ?></h3>
             </ul><!--end .nav -->
         </div><!--end #header-navbar-collapse -->
     </nav>
