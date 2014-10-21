@@ -18,10 +18,10 @@ $this->breadcrumbs=array(
 <h1>Фото</h1>
     </div>
 
-<div class="section-body">
+
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 )); ?>
-</div>
+
 </section>
