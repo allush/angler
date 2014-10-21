@@ -24,35 +24,35 @@
                 <div class="box-head">
                     <ul class="nav nav-tabs pull-left" data-toggle="tabs">
                         <li class="active">
-                            <a href="#userid">id</a>
+                            <a href=<?= "#userid".$data->id; ?>>id</a>
                         </li>
                         <li>
-                            <a href="#usermail">e-mail</a>
+                            <a href=<?= "#usermail".$data->id; ?>>e-mail</a>
                         </li>
                         <li>
-                            <a href="#userpass">Пароль</a>
+                            <a href=<?= "#userpass".$data->id; ?>>Пароль</a>
                         </li>
                         <li>
-                            <a href="#userscore">Баллы</a>
+                            <a href=<?= "#userscore".$data->id; ?>>Баллы</a>
                         </li>
                     </ul>
 
                 </div>
 
                 <div class="box-body tab-content">
-                    <div class="tab-pane active" id="userid">
+                    <div class="tab-pane active" id=<?= "userid".$data->id; ?>>
                         <?php echo CHtml::encode($data->id); ?>
                     </div>
 
-                    <div class="tab-pane" id="usermail">
+                    <div class="tab-pane" id=<?= "usermail".$data->id; ?>>
                         <?php echo CHtml::encode($data->email); ?>
                     </div>
 
-                    <div class="tab-pane" id="userpass">
+                    <div class="tab-pane" id=<?= "userpass".$data->id; ?>>
                         <?php echo CHtml::encode($data->password); ?>
                     </div>
 
-                    <div class="tab-pane" id="userscore">
+                    <div class="tab-pane" id=<?= "userscore".$data->id; ?>>
                         <?php echo CHtml::encode($data->score); ?>
                     </div>
                 </div>
