@@ -35,6 +35,9 @@
                         <li>
                             <a href=<?= "#userscore".$data->id; ?>>Баллы</a>
                         </li>
+                        <li>
+                            <a href=<?= "#useridentity".$data->id; ?>>Идентификация</a>
+                        </li>
                     </ul>
 
                 </div>
@@ -54,6 +57,10 @@
 
                     <div class="tab-pane" id=<?= "userscore".$data->id; ?>>
                         <?php echo CHtml::encode($data->score); ?>
+                    </div>
+
+                    <div class="tab-pane" id=<?= "useridentity".$data->id; ?>>
+                        <?php echo CHtml::link($data->network, $data->identity, array('target'=>'_blank')); ?>
                     </div>
                 </div>
             </div>

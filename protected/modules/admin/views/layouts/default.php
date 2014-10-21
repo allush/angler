@@ -29,10 +29,10 @@
 
     <!-- BEGIN STYLESHEETS -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700,800' rel='stylesheet' type='text/css'/>
-    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-1/bootstrap.css" />
-    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-1/boostbox.css" />
-    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-1/boostbox_responsive.css" />
-    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-1/font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-default/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-default/boostbox.css" />
+    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-default/boostbox_responsive.css" />
+    <link type="text/css" rel="stylesheet" href="/css/boostbox/theme-default/font-awesome.min.css" />
     <!-- Additional CSS includes -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

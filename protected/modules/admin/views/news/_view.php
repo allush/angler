@@ -7,7 +7,7 @@
 
 
     <div class="box box-type-pricing indent-bottom">
-        <div class="box-body text-left style-inverse">
+        <div class="box-body text-left style-primary-gradient">
             <h2 class="text-light"><?php echo $data->head; ?></h2>
             <br/>
             <p class="opacity-50"><em><?php echo date('d.m.Y', $data->date); ?></em></p>
