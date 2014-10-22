@@ -71,15 +71,16 @@
     <nav class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="btn btn-transparent btn-equal btn-menu" href="javascript:void(0);"><i class="fa fa-bars fa-lg"></i></a>
-            <a class="btn btn-transparent" href="http://angler/index.php?r=admin/default/index"><i class="fa fa-home fa-lg"></i></a>
+<!--            <a class="btn btn-transparent btn-equal btn-menu" href="javascript:void(0);"><i class="fa fa-bars fa-lg"></i></a>-->
+<!--            <a class="btn btn-transparent" href="http://angler/index.php?r=admin/default/index"><i class="fa fa-home fa-lg"></i></a>-->
+            <h3><?php echo CHtml::encode(Yii::app()->name); ?></h3>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="header-navbar-collapse">
 
             <ul class="nav navbar-nav navbar-right">
-                <h3><?php echo CHtml::encode(Yii::app()->name); ?></h3>
+<!--                <h3>--><?php //echo CHtml::encode(Yii::app()->name); ?><!--</h3>-->
             </ul><!--end .nav -->
         </div><!--end #header-navbar-collapse -->
     </nav>
@@ -95,9 +96,9 @@
             <div class="sidebar-back"></div>
             <div class="sidebar-content">
                 <div class="nav-brand">
-                    <a class="main-brand" href="#">
+                    <a class="main-brand" href="">
                         <h3 class="text-light text-white">
-                            A<span>ngler</span>
+                            <i class="fa fa-ban"></i> <span>Angler</span>
                         </h3>
                     </a>
                 </div>
@@ -112,6 +113,7 @@
             $this->widget('zii.widgets.CMenu', array(
                 'encodeLabel'=>false,
                 'items' => array(
+                    array('label' => '<i class="fa fa-bars"></i><span class="title">Меню</span>', 'url' => 'javascript:void(0);', 'linkOptions'=>array('class'=>'btn btn-transparent btn-menu')),
                     array('label' => '<i class="fa fa-home"></i> <span class="title">Админcкаz</span>', 'url' => array('default/index'), 'linkOptions'=>array('class'=>'linkbtn')),
                     array('label' => '<i class="fa fa-users"></i> <span class="title" >Пользователи</span>', 'url' => array('user/index'), 'linkOptions'=>array('class'=>'linkbtn')),
                     array('label' => '<i class="fa fa-thumbs-up"></i> <span class="title">Баллы<span class="expand-sign">+</span></span>', 'linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
