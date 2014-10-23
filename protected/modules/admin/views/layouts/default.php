@@ -43,7 +43,7 @@
 
 </head>
 
-<body class="body-striped-inverse">
+<body>
 
 
 <!-- BEGIN JAVASCRIPT -->

@@ -28,13 +28,21 @@ $this->breadcrumbs=array(
 
 <section>
     <div class="section-header">
-<h1>Новости</h1>
+<h1 class="text-standard">Новости</h1>
     </div>
 
-<div class="section-body">
+<div class="section-body contain-lg">
 <?php $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$dataProvider,
     'itemView'=>'_view',
+    'sortableAttributes' => array('date'),
+    'summaryText' => false,
+    'pager' => array(
+        'class'=> 'CLinkPager',
+        'htmlOptions' => array('class'=>'pagination pagination-lg'),
+        'selectedPageCssClass' => 'active',
+    )
+
 )); ?>
 </div>
 </section>
