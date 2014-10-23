@@ -32,17 +32,19 @@ $this->breadcrumbs=array(
     </div>
 
 <div class="section-body contain-lg">
-<?php $this->widget('zii.widgets.CListView', array(
+<?php
+$dataProvider->sort->defaultOrder = "date DESC";
+$this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$dataProvider,
     'itemView'=>'_view',
-    'sortableAttributes' => array('date'),
+    //'sortableAttributes' => array('date'),
     'summaryText' => false,
     'pager' => array(
         'class'=> 'CLinkPager',
         'htmlOptions' => array('class'=>'pagination pagination-lg'),
         'selectedPageCssClass' => 'active',
-    )
-
+        'header' => '',
+    ),
 )); ?>
 </div>
 </section>
