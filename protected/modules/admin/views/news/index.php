@@ -43,7 +43,7 @@ $this->widget('zii.widgets.CListView', array(
         'class'=> 'CLinkPager',
         'htmlOptions' => array('class'=>'pagination pagination-lg'),
         'selectedPageCssClass' => 'active',
-        'header' => '',
+        'header' => false,
     ),
 )); ?>
 </div>

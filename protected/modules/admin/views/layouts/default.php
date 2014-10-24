@@ -71,16 +71,20 @@
     <nav class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-<!--            <a class="btn btn-transparent btn-equal btn-menu" href="javascript:void(0);"><i class="fa fa-bars fa-lg"></i></a>-->
+            <a class="btn btn-transparent btn-equal btn-menu" href="javascript:void(0);"><i class="fa fa-bars fa-lg"></i></a>
+
 <!--            <a class="btn btn-transparent" href="http://angler/index.php?r=admin/default/index"><i class="fa fa-home fa-lg"></i></a>-->
-            <h3><?php echo CHtml::encode(Yii::app()->name); ?></h3>
+
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="header-navbar-collapse">
 
             <ul class="nav navbar-nav navbar-right">
-<!--                <h3>--><?php //echo CHtml::encode(Yii::app()->name); ?><!--</h3>-->
+                <li><span class="navbar-text"><strong><?php echo CHtml::encode(Yii::app()->name); ?></strong></span></li>
+                <li><span class="navbar-devider"></span> </li>
+                <li><span class="navbar-text"><?php echo Yii::powered(); ?></span></li>
+
             </ul><!--end .nav -->
         </div><!--end #header-navbar-collapse -->
     </nav>
@@ -95,17 +99,17 @@
         <div id="sidebar" class="sidebar-fixed">
             <div class="sidebar-back"></div>
             <div class="sidebar-content">
-                <div class="nav-brand">
-                    <a class="main-brand" href="">
-                        <h3 class="text-light text-white">
-                            <i class="fa fa-ban"></i> <span>Angler</span>
-                        </h3>
-                    </a>
-                </div>
+<!--                <div class="nav-brand">-->
+<!--                    <a class="main-brand" href="">-->
+<!--                        <h3 class="text-light text-white">-->
+<!--                            <i class="fa fa-ban"></i> <span>Angler</span>-->
+<!--                        </h3>-->
+<!--                    </a>-->
+<!--                </div>-->
 
 
 
-<!-- меню работает хреново-->
+<!-- изменить класс активного жлемента-->
 
 
             <?php
@@ -114,26 +118,28 @@
                 'encodeLabel'=>false,
                 'activateItems'=>true,
                 'activateParents'=>true,
-                'activeCssClass'=>'active expanded',
+                'activeCssClass'=>'active',
                 'items' => array(
-                    array('label' => '<i class="fa fa-bars"></i><span class="title">Меню</span>', 'url' => 'javascript:void(0);', 'linkOptions'=>array('class'=>'btn btn-transparent btn-menu')),
-                    array('label' => '<i class="fa fa-home"></i> <span class="title">Админcкая</span>', 'url' => array('default/index'), 'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(($this->id == 'default')&&($this->action->id=='index'))),
-                    array('label' => '<i class="fa fa-users"></i> <span class="title" >Пользователи</span>', 'url' => array('user/index'), 'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(($this->id=='user')&&($this->action->id == 'index'))),
+                    array('label' => '<i class="fa fa-home"></i> <span class="title">Админcкаz</span>', 'url' => array('default/index'), 'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='default')),
+                    array('label' => '<i class="fa fa-users"></i> <span class="title" >Пользователи</span>', 'url' => array('user/index'), 'linkOptions'=>array('class'=>'linkbtn'), 'active'=>Yii::app()->controller->getId() == 'user'),
+
+
                     array('label' => '<i class="fa fa-thumbs-up"></i> <span class="title">Баллы<span class="expand-sign">+</span></span>', 'linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
-                        array('label'=>'<i class="fa fa-list-ul"></i> Все события', 'url' => array('score/index'),'linkOptions'=>array('class'=>'linkbtn'), 'action'=>(($this->id=='score')&&($this->action->id=='index'))),
+                        array('label'=>'<i class="fa fa-list-ul"></i> Все события', 'url' => array('score/index'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='score')&&(Yii::app()->controller->action->getId()=='index')),
                         array('label'=>'<i class="fa fa-bolt"></i> Генерировать события', 'url'=>array('createEvents'),'linkOptions'=>array('class'=>'linkbtn')),
                     )),
                     array('label' => '<i class="fa fa-picture-o"></i> <span class="title">Фото<span class="expand-sign">+</span></span>','linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
-                        array('label'=>'<i class="fa fa-question-circle"></i> Новые','url'=>array('photo/index'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(($this->id == 'photo')&&($this->action->id=='index'))),
-                        array('label'=>'<i class="fa fa-check-circle"></i> Подтверждённые фото','url'=>array('photo/confirmed'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(($this->id == 'photo')&&($this->action->id=='confirmed'))),
+                        array('label'=>'<i class="fa fa-question-circle"></i> Новые','url'=>array('photo/index'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='photo')&&(Yii::app()->controller->action->getId()=='index')),
+                        array('label'=>'<i class="fa fa-check-circle"></i> Подтверждённые фото','url'=>array('photo/confirmed'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='photo')&&(Yii::app()->controller->action->getId()=='confirmed')),
                     )),
                     array('label' => '<i class="fa fa-info"></i> <span class="title">Новости<span class="expand-sign">+</span></span>', 'url'=>'','linkOptions'=>array('class'=>'linkbtn'), 'items'=>array(
-                        array('label'=>'<i class="fa fa-list-alt"></i> Все новости', 'url'=>array('news/index'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(($this->id == 'news')&&($this->action->id=='index'))),
-                        array('label'=>'<i class="fa fa-pencil-square-o"></i> Создать новость', 'url'=>array('news/create'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(($this->id == 'news')&&($this->action->id=='create'))),
-                        array('label'=>'<i class="fa fa-cogs"></i> Управление новостями', 'url'=>array('news/admin'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(($this->id == 'news')&&($this->action->id=='admin'))),
+                        array('label'=>'<i class="fa fa-list-alt"></i> Все новости', 'url'=>array('news/index'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='news')&&(Yii::app()->controller->action->getId()=='index')),
+                        array('label'=>'<i class="fa fa-pencil-square-o"></i> Создать новость', 'url'=>array('news/create'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='photo')&&(Yii::app()->controller->action->getId()=='create')),
+                        //array('label'=>'<i class="fa fa-cogs"></i> Управление новостями', 'url'=>array('news/admin'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='photo')&&(Yii::app()->controller->action->getId()=='admin')),
                     )),
                     array('label' => '<i class="fa fa-reply"></i> <span class="title">Выход из админcкой</span>', 'url' => 'index.php', 'linkOptions'=>array('class'=>'linkbtn')),
-                    array('label' => '<i class="fa fa-reply-all"></i> <span class="title">Выход (' . Yii::app()->user->name . ')</span>', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest,'linkOptions'=>array('class'=>'linkbtn'))
+                    array('label' => '<i class="fa fa-reply-all"></i> <span class="title">Выход (' . Yii::app()->user->name . ')</span>', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest,'linkOptions'=>array('class'=>'linkbtn')),
+
                 ),
                 'htmlOptions'=>array(
                     'class'=>'main-menu nav',
@@ -170,11 +176,11 @@
 
         </div>
     </div>
+
+
 <!--    Copyright &copy; --><?php //echo date('Y'); ?><!-- by My Company.<br/>-->
 <!--    All Rights Reserved.<br/>-->
-    <?php echo Yii::powered(); ?>
-
-
+<?php //echo Yii::powered(); ?>
     <!-- footer -->
 
 

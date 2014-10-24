@@ -5,14 +5,14 @@
 
 <div class="view">
 
+    <tbody>
+    <tr>
+        <td><?= $data->name ?></td>
+        <td><?= $data->price ?></td>
+        <td><?php echo CHtml::link('Edit', array('update', 'id'=>$data->id), array('class'=>'btn btn-support3 btn-xs btn-rounded')); ?></td>
+    </tr>
+    </tbody>
 
-    <b><?php echo CHtml::encode($data->getAttributeLabel('price')); ?>:</b>
-    <?php echo CHtml::encode($data->price); ?>
-    <br />
-
-    <b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
-    <?php echo CHtml::link(CHtml::encode($data->name), array('update', 'id'=>$data->id)); ?>
-    <br />
 
 
 </div>

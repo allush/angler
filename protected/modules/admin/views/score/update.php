@@ -8,11 +8,19 @@ $this->breadcrumbs=array(
 	'Обновить',
 );
 
-$this->menu=array(
-	array('label'=>'Список событий', 'url'=>array('index')),
-);
+//$this->menu=array(
+//	array('label'=>'Список событий', 'url'=>array('index')),
+//);
 ?>
 
+<section>
 
 
+
+    <div class="section-body">
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
+    </div>
+
+
+
+</section>
