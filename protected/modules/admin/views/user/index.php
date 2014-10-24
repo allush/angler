@@ -34,6 +34,7 @@ $this->menu=array(
         'htmlOptions' => array('class'=>'pagination pagination-lg'),
         'selectedPageCssClass' => 'active',
         'header' => false,
+        'maxButtonCount'=>3,
     ),
     'summaryText'=>false,
 )); ?>

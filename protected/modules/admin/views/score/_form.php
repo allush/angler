@@ -4,32 +4,58 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+<?php $form = $this->beginWidget('CActiveForm', array(
+    'id' => 'score-form',
+)); ?>
 
-    <?php $form = $this->beginWidget('CActiveForm', array(
-        'id' => 'score-form',
-    )); ?>
+<div class="box box-outlined style-body">
+    <div class="box-body">
 
-
-
-    <?php echo $form->errorSummary($model); ?>
-
-    <div class="row">
-        <?php echo $form->labelEx($model, 'Событие: '); ?>
-        <?= $model->name; ?>
+<form class="form-vertical form-stripped">
+    <div class="form-group">
+        <?php echo $form->errorSummary($model); ?>
     </div>
-
-    <div class="row">
+    <div class="form-group">
+        <?php echo $form->labelEx($model, 'Событие: '); ?>
+        <span class="text-support1"><?= $model->name; ?></span>
+    </div>
+    <div class="form-group">
         <?php echo $form->labelEx($model, 'Цена'); ?>
-        <?php echo $form->numberField($model, 'price'); ?>
+        <?php echo $form->numberField($model, 'price', array('class'=>'form-control control-width-mini')); ?>
         <?php echo $form->error($model, 'price'); ?>
     </div>
-
-
-    <div class="row buttons">
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>
+    <div class="form-group">
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить', array('class'=>'btn btn-primary')); ?>
+        <?= CHtml::link('Отмена', array('score/index'), array('class'=>'btn btn-default')); ?>
     </div>
-
-    <?php $this->endWidget(); ?>
-
-</div><!-- form -->
+</form>
+</div>
+    </div>
+<?php $this->endWidget(); ?>
+<!--<div class="form">-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--    <div class="row">-->
+<!--        --><?php //echo $form->labelEx($model, 'Событие: '); ?>
+<!--        --><?//= $model->name; ?>
+<!--    </div>-->
+<!---->
+<!--    <div class="row">-->
+<!--        --><?php //echo $form->labelEx($model, 'Цена'); ?>
+<!--        --><?php //echo $form->numberField($model, 'price'); ?>
+<!--        --><?php //echo $form->error($model, 'price'); ?>
+<!--    </div>-->
+<!---->
+<!---->
+<!--    <div class="row buttons">-->
+<!--        --><?php //echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>
+<!--    </div>-->
+<!---->
+<!--   -->
+<!---->
+<!--</div><!-- form -->

@@ -12,14 +12,14 @@
         if ($data->is_confirmed == 0) {
             echo '<br>' . CHtml::link('<i class="glyphicon glyphicon-ok"></i>',
                     array('confirmation', 'id' => $data->id),
-                    array('class' => 'btn btn-success btn-sm'));
+                    array('class' => 'btn btn-primary btn-equal btn-sm'));
         } else {
             echo CHtml::label('Прошло модерацию', 0);
         }
         echo CHtml::link('<i class="glyphicon glyphicon-remove"></i>', '#', array(
             'submit' => array('delete', 'id' => $data->id),
             'confirm' => 'Вы уверены?',
-            'class' => 'btn btn-danger btn-sm'
+            'class' => 'btn btn-default btn-sm btn-equal'
         ));
         ?>
     </li>

@@ -18,10 +18,28 @@ $this->breadcrumbs=array(
     </div>
 
 <div class="section-body">
-<?php $this->widget('zii.widgets.CListView', array(
-    'dataProvider'=>$dataProvider,
-    'itemView'=>'_view',
-)); ?>
+    <div class="box box-outlined style-body">
+<table class="table">
+    <thead>
+    <tr>
+        <th>Событие</th>
+        <th>Цена</th>
+        <th></th>
+    </tr>
+    </thead>
+    <?php $this->widget('zii.widgets.CListView', array(
+        'dataProvider'=>$dataProvider,
+        'itemView'=>'_view',
+        'summaryText'=>false,
+        'pager' => array(
+            'class'=> 'CLinkPager',
+            'htmlOptions' => array('class'=>'pagination pagination-lg'),
+            'selectedPageCssClass' => 'active',
+            'header' => false,
+        ),
+    )); ?>
+</table>
+    </div>
 </div>
 
 </section>
