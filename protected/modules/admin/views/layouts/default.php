@@ -117,8 +117,11 @@
                 'activeCssClass'=>'active',
                 'items' => array(
                     array('label' => '<i class="fa fa-bars"></i><span class="title">Меню</span>', 'url' => 'javascript:void(0);', 'linkOptions'=>array('class'=>'btn btn-transparent btn-menu')),
+
                     array('label' => '<i class="fa fa-home"></i> <span class="title">Админcкаz</span>', 'url' => array('default/index'), 'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='default')),
                     array('label' => '<i class="fa fa-users"></i> <span class="title" >Пользователи</span>', 'url' => array('user/index'), 'linkOptions'=>array('class'=>'linkbtn'), 'active'=>Yii::app()->controller->getId() == 'user'),
+
+
                     array('label' => '<i class="fa fa-thumbs-up"></i> <span class="title">Баллы<span class="expand-sign">+</span></span>', 'linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
                         array('label'=>'<i class="fa fa-list-ul"></i> Все события', 'url' => array('score/index'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='score')&&(Yii::app()->controller->action->getId()=='index')),
                         array('label'=>'<i class="fa fa-bolt"></i> Генерировать события', 'url'=>array('createEvents'),'linkOptions'=>array('class'=>'linkbtn')),
