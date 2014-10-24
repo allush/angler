@@ -117,7 +117,7 @@
                 'activeCssClass'=>'active expanded',
                 'items' => array(
                     array('label' => '<i class="fa fa-bars"></i><span class="title">Меню</span>', 'url' => 'javascript:void(0);', 'linkOptions'=>array('class'=>'btn btn-transparent btn-menu')),
-                    array('label' => '<i class="fa fa-home"></i> <span class="title">Админcкаz</span>', 'url' => array('default/index'), 'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(($this->id == 'default')&&($this->action->id=='index'))),
+                    array('label' => '<i class="fa fa-home"></i> <span class="title">Админcкая</span>', 'url' => array('default/index'), 'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(($this->id == 'default')&&($this->action->id=='index'))),
                     array('label' => '<i class="fa fa-users"></i> <span class="title" >Пользователи</span>', 'url' => array('user/index'), 'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(($this->id=='user')&&($this->action->id == 'index'))),
                     array('label' => '<i class="fa fa-thumbs-up"></i> <span class="title">Баллы<span class="expand-sign">+</span></span>', 'linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
                         array('label'=>'<i class="fa fa-list-ul"></i> Все события', 'url' => array('score/index'),'linkOptions'=>array('class'=>'linkbtn'), 'action'=>(($this->id=='score')&&($this->action->id=='index'))),

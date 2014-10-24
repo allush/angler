@@ -24,6 +24,12 @@ class User extends CActiveRecord
         return 'user';
     }
 
+    public function sertificat($act)
+    {
+        $this->score -= $act;
+        $this->save();
+    }
+
     public function credit($act)
     {
         /** @var Score $score */

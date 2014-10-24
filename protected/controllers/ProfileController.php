@@ -1,11 +1,12 @@
 <?php
-
+include(Yii::app()->getBasePath() . '/..' . '/mpdf/mpdf.php');
 
 class ProfileController extends Controller
 {
     /**
      * Declares class-based actions.
      */
+
     public function actions()
     {
         return array(
@@ -83,6 +84,20 @@ class ProfileController extends Controller
     public function actionMyPhoto()
     {
         $this->render('myphoto', array('photos' => $this->getUser()->photos));
+    }
+
+    public function actionSertifikat()
+    {
+        $this->render('sertifikat');
+    }
+
+    public function actionGetsertifikat($id)
+    {
+        $mpdf = new mPDF();
+        $mpdf->WriteHTML('Поздравляем! Вам выдано полтонны щебёнки и '.$id. ' англеров');
+        $mpdf->Output();
+        exit;
+        $this->redirect(Yii::app()->request->urlReferrer);
     }
 
     public function actionUpdateMyPhoto($id)

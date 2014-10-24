@@ -13,7 +13,9 @@ class Score extends CActiveRecord
 {
     const EVENT_ADD_PHOTO = 0;
     const EVENT_SET_LOCATION = 1;
-
+    const SERT_200 = 200;
+    const SERT_500 = 500;
+    const SERT_1000 = 1000;
     public static $events = array(
         self::EVENT_ADD_PHOTO => array(
             'price' => 10,
@@ -26,7 +28,8 @@ class Score extends CActiveRecord
     );
 
 
-    public static function createEvents(){
+    public static function createEvents()
+    {
         $scores = Score::model()->findAll();
         if (count($scores) == 0) {
             foreach (self::$events as $event => $data) {
