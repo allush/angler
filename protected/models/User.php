@@ -24,7 +24,7 @@ class User extends CActiveRecord
         return 'user';
     }
 
-    public function sertificat($act)
+    public function sertifikat($act)
     {
         $this->score -= $act;
         $this->save();

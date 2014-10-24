@@ -93,10 +93,13 @@ class ProfileController extends Controller
 
     public function actionGetsertifikat($id)
     {
+        $user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
         $mpdf = new mPDF();
         $mpdf->WriteHTML('Поздравляем! Вам выдано полтонны щебёнки и '.$id. ' англеров');
         $mpdf->Output();
+        $user->sertifikat($id);
         exit;
+
         $this->redirect(Yii::app()->request->urlReferrer);
     }
 
