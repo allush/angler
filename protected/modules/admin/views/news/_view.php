@@ -6,6 +6,8 @@
 <div class="view">
 
 
+
+
 <div class="box box-tiles style-gray">
     <article>
         <div class="box-body style-inverse">

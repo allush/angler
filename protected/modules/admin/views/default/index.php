@@ -11,16 +11,17 @@ $this->breadcrumbs=array(
 </div>
 
 <div class="section-body">
+    <div class="box box-body style-white">
 <p>
 Добро пожаловать в админскую <br>
-Это представление действия "<?php echo $this->action->id; ?>"
-которое принадлежит контроллеру "<?php echo get_class($this); ?>"
-модуля "<?php echo $this->module->id; ?>"
+Это представление действия '<code><?php echo $this->action->id; ?></code>'
+которое принадлежит контроллеру '<code><?php echo get_class($this); ?></code>'
+модуля '<code><?php echo $this->module->id; ?></code>'
 </p>
 <p>
-Возможно редактирование этой страницы путём модификации файла <tt><?php echo __FILE__; ?></tt>
+Возможно редактирование этой страницы путём модификации файла '<code><tt><?php echo __FILE__; ?></tt></code>'
 </p>
-
+    </div>
 </div>
 
 </section>
