@@ -1,6 +1,5 @@
 <?php
 include(Yii::app()->getBasePath() . '/..' . '/mpdf/mpdf.php');
-
 class ProfileController extends Controller
 {
     /**
@@ -88,19 +87,25 @@ class ProfileController extends Controller
 
     public function actionSertifikat()
     {
-        $this->render('sertifikat');
+        $this->render('sertifikat', array('serts' => $this->getUser()->serts));
     }
 
     public function actionGetsertifikat($id)
     {
         $user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
-        $mpdf = new mPDF();
-        $mpdf->WriteHTML('Поздравляем! Вам выдано полтонны щебёнки и ' . $id . ' англеров');
-        $mpdf->Output();
-        $user->sertifikat($id);
-        exit;
+        $sert = new Sertifikat;
+        $sert->user_id = $user->id;
+        $sert->price = $id;
+        if ($sert->save()) {
+            $mpdf = new mPDF();
+            $mpdf->WriteHTML('Поздравляем! Вам выдан сертификат на ' . $id . ' англеров');
+           // $mpdf->Output($id,Yii::app()->getBasePath() . '/..' . '/sertifikat/');
+            $mpdf->Output();
+            $user->sertifikat($id);
+            exit;
 
-        $this->redirect(Yii::app()->request->urlReferrer);
+            $this->redirect(Yii::app()->request->urlReferrer);
+        }
     }
 
     public function actionUpdateMyPhoto($id)

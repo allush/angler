@@ -12,6 +12,7 @@
  * @property string $network
  * @property integer $score
  * @property Photo[] $photos
+ * @property Sertifikat[] $sertss
  */
 class User extends CActiveRecord
 {
@@ -70,6 +71,7 @@ class User extends CActiveRecord
         // class name for the relations automatically generated below.
         return array(
             'photos' => array(self::HAS_MANY, 'Photo', 'user_id'),
+            'serts' => array(self::HAS_MANY, 'Sertifikat', 'user_id'),
         );
     }
 
