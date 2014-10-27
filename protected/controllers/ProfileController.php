@@ -99,13 +99,23 @@ class ProfileController extends Controller
         if ($sert->save()) {
             $mpdf = new mPDF();
             $mpdf->WriteHTML('Поздравляем! Вам выдан сертификат на ' . $id . ' англеров');
-           // $mpdf->Output($id,Yii::app()->getBasePath() . '/..' . '/sertifikat/');
+            $mpdf->Output('sertifikat/'.$sert->id.'.pdf','F');
             $mpdf->Output();
             $user->sertifikat($id);
             exit;
 
             $this->redirect(Yii::app()->request->urlReferrer);
         }
+    }
+    public function actionShowsertifikat($id)
+    {
+        $mpdf=new mPDF();
+        $mpdf->SetImportUse();
+
+        $pagecount = $mpdf->SetSourceFile('sertifikat/'.$id.'.pdf');
+        $tplId = $mpdf->ImportPage($pagecount);
+        $mpdf->UseTemplate($tplId);
+        $mpdf->Output();
     }
 
     public function actionUpdateMyPhoto($id)
