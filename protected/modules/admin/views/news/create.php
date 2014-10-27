@@ -8,15 +8,7 @@ $this->breadcrumbs=array(
 );
 
 
-//$this->widget('zii.widgets.CMenu', array(
-//    'items' => array(
-//        array('label'=>'Все новости', 'url'=>array('index')),
-//        array('label'=>'Управление новостями', 'url'=>array('admin')),
-//    ),
-//    'htmlOptions'=>array(
-//        'class'=>'nav nav-pills'
-//    )
-//));
+
 ?>
 
 <section>

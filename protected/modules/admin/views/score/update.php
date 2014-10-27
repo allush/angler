@@ -8,9 +8,7 @@ $this->breadcrumbs=array(
 	'Обновить',
 );
 
-//$this->menu=array(
-//	array('label'=>'Список событий', 'url'=>array('index')),
-//);
+
 ?>
 
 <section>

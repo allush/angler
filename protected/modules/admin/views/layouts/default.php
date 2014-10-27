@@ -39,6 +39,7 @@
     <!--[if lt IE 9]>
     <script type="text/javascript" src="/js/boostbox/libs/utils/html5shiv.js"></script>
     <script type="text/javascript" src="/js/boostbox/libs/utils/respond.min.js"></script>
+
     <![endif]-->
 
 </head>
@@ -56,6 +57,7 @@
 <script src="../js/boostbox/libs/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="../js/boostbox/core/demo/DemoDocs.js"></script>
 <script src="../js/boostbox/core/demo/Demo.js"></script>
+
 <!-- Additional JS includes -->
 
 <!-- Always put App.js last in your javascript imports -->
@@ -109,36 +111,37 @@
 
 
 
-<!-- изменить класс активного жлемента-->
+<!-- изменить класс активного жлемента -->
+<!-- основные пункты меню - 'active expanded', пункты подменю - просто 'active' -->
 
 
             <?php
 
             $this->widget('zii.widgets.CMenu', array(
                 'encodeLabel'=>false,
-                'activateItems'=>true,
                 'activateParents'=>true,
+                'activateItems'=>true,
                 'activeCssClass'=>'active',
                 'items' => array(
-                    array('label' => '<i class="fa fa-home"></i> <span class="title">Админcкаz</span>', 'url' => array('default/index'), 'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='default')),
-                    array('label' => '<i class="fa fa-users"></i> <span class="title" >Пользователи</span>', 'url' => array('user/index'), 'linkOptions'=>array('class'=>'linkbtn'), 'active'=>Yii::app()->controller->getId() == 'user'),
+                    array('label' => '<i class="fa fa-home"></i> <span class="title">Админcкаz</span>', 'url' => array('default/index'),'linkOptions'=>array('class'=>'linkbtn')),
+                    array('label' => '<i class="fa fa-users"></i> <span class="title" >Пользователи</span>', 'url' => array('user/index'), 'linkOptions'=>array('class'=>'linkbtn')),
 
 
                     array('label' => '<i class="fa fa-thumbs-up"></i> <span class="title">Баллы<span class="expand-sign">+</span></span>', 'linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
-                        array('label'=>'<i class="fa fa-list-ul"></i> Все события', 'url' => array('score/index'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='score')&&(Yii::app()->controller->action->getId()=='index')),
+                        array('label'=>'<i class="fa fa-list-ul"></i> Все события', 'url' => array('score/index'), 'linkOptions'=>array('class'=>'linkbtn')),
                         array('label'=>'<i class="fa fa-bolt"></i> Генерировать события', 'url'=>array('createEvents'),'linkOptions'=>array('class'=>'linkbtn')),
                     )),
-                    array('label' => '<i class="fa fa-picture-o"></i> <span class="title">Фото<span class="expand-sign">+</span></span>','linkOptions'=>array('class'=>'linkbtn'), 'url'=>'', 'items'=>array(
-                        array('label'=>'<i class="fa fa-question-circle"></i> Новые','url'=>array('photo/index'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='photo')&&(Yii::app()->controller->action->getId()=='index')),
-                        array('label'=>'<i class="fa fa-check-circle"></i> Подтверждённые фото','url'=>array('photo/confirmed'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='photo')&&(Yii::app()->controller->action->getId()=='confirmed')),
+                    array('label' => '<i class="fa fa-picture-o"></i> <span class="title">Фото<span class="expand-sign">+</span></span>', 'linkOptions'=>array('class'=>'linkbtn'),  'url'=>'', 'items'=>array(
+                        array('label'=>'<i class="fa fa-question-circle"></i> Новые','url'=>array('photo/index'), 'linkOptions'=>array('class'=>'linkbtn')),
+                        array('label'=>'<i class="fa fa-check-circle"></i> Подтверждённые фото','url'=>array('photo/confirmed'), 'linkOptions'=>array('class'=>'linkbtn')),
                     )),
-                    array('label' => '<i class="fa fa-info"></i> <span class="title">Новости<span class="expand-sign">+</span></span>', 'url'=>'','linkOptions'=>array('class'=>'linkbtn'), 'items'=>array(
-                        array('label'=>'<i class="fa fa-list-alt"></i> Все новости', 'url'=>array('news/index'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='news')&&(Yii::app()->controller->action->getId()=='index')),
-                        array('label'=>'<i class="fa fa-pencil-square-o"></i> Создать новость', 'url'=>array('news/create'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='photo')&&(Yii::app()->controller->action->getId()=='create')),
+                    array('label' => '<i class="fa fa-info"></i> <span class="title">Новости<span class="expand-sign">+</span></span>', 'url'=>'', 'itemOptions'=>array('class'=>'linkbtn'), 'items'=>array(
+                        array('label'=>'<i class="fa fa-list-alt"></i> Все новости', 'url'=>array('news/index'), 'linkOptions'=>array('class'=>'linkbtn')),
+                        array('label'=>'<i class="fa fa-pencil-square-o"></i> Создать новость', 'url'=>array('news/create'),'linkOptions'=>array('class'=>'linkbtn')),
                         //array('label'=>'<i class="fa fa-cogs"></i> Управление новостями', 'url'=>array('news/admin'),'linkOptions'=>array('class'=>'linkbtn'), 'active'=>(Yii::app()->controller->getId()=='photo')&&(Yii::app()->controller->action->getId()=='admin')),
                     )),
                     array('label' => '<i class="fa fa-reply"></i> <span class="title">Выход из админcкой</span>', 'url' => 'index.php', 'linkOptions'=>array('class'=>'linkbtn')),
-                    array('label' => '<i class="fa fa-reply-all"></i> <span class="title">Выход (' . Yii::app()->user->name . ')</span>', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest,'linkOptions'=>array('class'=>'linkbtn')),
+                    array('label' => '<i class="fa fa-reply-all"></i> <span class="title">Выход (' . Yii::app()->user->name . ')</span>', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest, 'linkOptions'=>array('class'=>'linkbtn')),
 
                 ),
                 'htmlOptions'=>array(
@@ -154,6 +157,9 @@
         </div>
 
         <div id="content">
+
+            <section>
+
             <?php if (isset($this->breadcrumbs)): ?>
                 <?php $this->widget('zii.widgets.CBreadcrumbs', array(
                     'links' => $this->breadcrumbs,
@@ -172,7 +178,7 @@
 
             <?php echo $content; ?>
 
-
+            </section>
 
         </div>
     </div>

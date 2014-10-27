@@ -32,30 +32,3 @@
 </div>
     </div>
 <?php $this->endWidget(); ?>
-<!--<div class="form">-->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!--    <div class="row">-->
-<!--        --><?php //echo $form->labelEx($model, 'Событие: '); ?>
-<!--        --><?//= $model->name; ?>
-<!--    </div>-->
-<!---->
-<!--    <div class="row">-->
-<!--        --><?php //echo $form->labelEx($model, 'Цена'); ?>
-<!--        --><?php //echo $form->numberField($model, 'price'); ?>
-<!--        --><?php //echo $form->error($model, 'price'); ?>
-<!--    </div>-->
-<!---->
-<!---->
-<!--    <div class="row buttons">-->
-<!--        --><?php //echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить'); ?>
-<!--    </div>-->
-<!---->
-<!--   -->
-<!---->
-<!--</div><!-- form -->
