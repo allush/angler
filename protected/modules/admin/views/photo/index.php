@@ -6,10 +6,7 @@ $this->breadcrumbs=array(
 	'Фото',
 );
 
-//$this->menu=array(
-//    array('label'=>'Новые','url'=>array('/admin/photo/index')),
-//array('label'=>'Подтверждённые фото','url'=>array('/admin/photo/confirmed'))
-//);
+
 ?>
 
 <section>

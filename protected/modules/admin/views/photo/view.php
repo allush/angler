@@ -7,16 +7,6 @@ $this->breadcrumbs=array(
 	$model->id,
 );
 
-
-//$this->widget('zii.widgets.CMenu', array(
-//    'items' => array(
-//        array('label'=>'Список фото', 'url'=>array('index')),
-//
-//    ),
-//    'htmlOptions'=>array(
-//        'class'=>'nav nav-pills'
-//    )
-//));
 ?>
 <section>
     <div class="section-header">
@@ -69,19 +59,6 @@ $this->breadcrumbs=array(
 
 
 
-<?php //$this->widget('zii.widgets.CDetailView', array(
-//	'data'=>$model,
-//	'attributes'=>array(
-//		'id',
-//        array(
-//            'name' => 'user_id',
-//            'value' => $model->user ? $model->user->username : '-',
-//        ),
-//		'filename',
-//        'is_confirmed',
-//        'coord_x',
-//        'coord_y',
-//	),
-//)); ?>
+
     </div>
 </section>

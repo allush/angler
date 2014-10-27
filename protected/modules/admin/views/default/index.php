@@ -21,6 +21,7 @@ $this->breadcrumbs=array(
 <p>
 Возможно редактирование этой страницы путём модификации файла '<code><tt><?php echo __FILE__; ?></tt></code>'
 </p>
+
     </div>
 </div>
 
