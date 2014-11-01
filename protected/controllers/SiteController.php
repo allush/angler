@@ -114,6 +114,21 @@ class SiteController extends Controller
         $this->render('register', array('model' => $model));
     }
 
+    public function actionZapros()
+    {
+        $this->render('zapros');
+    }
+
+    public function actionGetzapros()
+    {
+        include(Yii::app()->getBasePath() . '/..' . '/snoopy/Snoopy.class.php');
+        include(Yii::app()->getBasePath() . '/..' . '/parser/simple_html_dom.php');
+        $snoopy = new Snoopy(); // создаём объект
+        $snoopy->fetch('http://www.yandex.com/'); // загружаем страницу
+        echo $snoopy->results; // выводим результат
+        $this->render('zapros');
+    }
+
 
     /**
      * Logs out the current user and redirect to homepage.
