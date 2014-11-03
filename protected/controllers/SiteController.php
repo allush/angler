@@ -34,7 +34,6 @@ class SiteController extends Controller
     }
 
 
-
     /**
      * This is the action to handle external exceptions.
      */
@@ -121,12 +120,22 @@ class SiteController extends Controller
 
     public function actionGetzapros()
     {
+        //   http://yandex.ru/yandsearch?lr=213&text=%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C+%D0%BA%D1%83%D1%85%D0%BD%D1%8E&csg=21736%2C26287%2C12%2C12%2C0%2C1%2C0
         include(Yii::app()->getBasePath() . '/..' . '/snoopy/Snoopy.class.php');
         include(Yii::app()->getBasePath() . '/..' . '/parser/simple_html_dom.php');
         $snoopy = new Snoopy(); // создаём объект
-        $snoopy->fetch('http://www.yandex.com/'); // загружаем страницу
-        echo $snoopy->results; // выводим результат
         $this->render('zapros');
+        $post_array = array();
+        $post_array['text'] = 'купить кухню';
+        $post_array['lr'] = '213';
+        $snoopy->submit('http://www.yandex.com/yandsearch', $post_array);
+        $a = $snoopy->results;
+        echo $a; // выводим результат
+        // Второй вариант
+//        $snoopy->fetch('http://yandex.ru/yandsearch?lr=213&text=купить+кухню'); // загружаем страницу
+//        $a = $snoopy->results;
+//        echo $a; // выводим результат
+
     }
 
 
