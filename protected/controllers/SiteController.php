@@ -125,17 +125,25 @@ class SiteController extends Controller
         include(Yii::app()->getBasePath() . '/..' . '/parser/simple_html_dom.php');
         $snoopy = new Snoopy(); // создаём объект
         $this->render('zapros');
-        $post_array = array();
-        $post_array['text'] = 'купить кухню';
-        $post_array['lr'] = '213';
-        $snoopy->submit('http://www.yandex.com/yandsearch', $post_array);
-        $a = $snoopy->results;
-        echo $a; // выводим результат
-        // Второй вариант
-//        $snoopy->fetch('http://yandex.ru/yandsearch?lr=213&text=купить+кухню'); // загружаем страницу
+//        $post_array = array();
+//        $post_array['text'] = 'купить+кухню';
+//        $post_array['lr'] = '213';
+//        $snoopy->submit('http://www.yandex.com/yandsearch', $post_array);
 //        $a = $snoopy->results;
 //        echo $a; // выводим результат
-
+        // Второй вариант
+        $snoopy->fetch('http://yandex.ru/yandsearch?lr=213&text=купить+кухню'); // загружаем страницу
+        $a = $snoopy->results;
+        //    echo $a; // выводим результат
+        //Парсер
+        $html = str_get_html($a);
+        echo $html;
+//        $htmld= file_get_html('http://direct.yandex.ru/search?charset=utf-8&text=купить+кухню&rid=213&ref-page=0');
+        foreach ($html->find('a') as $element)
+            echo $element->href . '<br>';
+//        echo '--------------'.'<br>';
+//        foreach($htmld->find('a') as $element)
+//            echo $element->href . '<br>';
     }
 
 
