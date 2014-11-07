@@ -16,65 +16,55 @@ $this->breadcrumbs=array(
         $(document).ready(function() {
             $(".fancybox").fancybox();
         });
+
+
     </script>
 
-<h1>Parsers</h1>
+<h1>Парсер</h1>
 <?php
-echo CHtml::beginForm(CHtml::normalizeUrl(array('parser/index')), 'get', array('id'=>'filter-form'));
-echo CHtml::dateField('datefirst', (isset($_GET['datefirst'])) ? $_GET['datefirst']:'');
-//echo CHtml::textField('datefirst', (isset($_GET['datefirst'])) ? $_GET['datefirst']:'');
-echo CHtml::dateField('datelast', (isset($_GET['datelast'])) ? $_GET['datelast']:'');
-echo '<br/>';
-echo CHtml::submitButton('Поиск', array('name'=>''));
-echo CHtml::endForm();
-?>
-<table class="table">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Название</th>
-        <th>Дата</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    $dataProvider->sort->defaultOrder = "date DESC";
-    $this->widget('zii.widgets.CListView', array(
-        'dataProvider'=>$dataProvider,
-        'itemView'=>'_view',
-        'summaryText'=>false,
-    )); ?>
-    </tbody>
-</table>
-<?php //$this->widget('zii.widgets.CListView', array(
-//	'dataProvider'=>$dataProvider,
-//	'itemView'=>'_view',
-//)); ?>
-
-<!--перенести в контроллер-->
-<?php
-//$d = time()-432000;
-//
-//$query = Yii::app()->db->createCommand()->select('*')->from('parser')->where('date >= :d', array(':d'=>$d))->queryAll();
-//$d;
+//echo CHtml::beginForm(CHtml::normalizeUrl(array('parser/index')), 'get', array('id'=>'filter-form'));
+//echo CHtml::dateField('datefirst', (isset($_GET['datefirst'])) ? $_GET['datefirst']:'');
+////echo CHtml::textField('datefirst', (isset($_GET['datefirst'])) ? $_GET['datefirst']:'');
+//echo CHtml::dateField('datelast', (isset($_GET['datelast'])) ? $_GET['datelast']:'');
+//echo '<br/>';
+//echo CHtml::submitButton('Поиск', array('name'=>''));
+//echo CHtml::endForm();
 //?>
 
+<p>
+    <label for="amount">Диапазон дат: </label>
+    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+</p>
+
+<div id="slider-range"></div>
+
 <?php
-//
-// $this->widget('zii.widgets.grid.CGridView', array(
-//    'dataProvider'=>$dataProvider,
-//    'columns'=>array(
-//        array(
-//            'name'=>'id',
-//            'type'=>'html',
-//            'value'=>$data->id,
-//        ),
-//        array(
-//            'name'=>'name',
-//            'type'=>'html',
-//            'value'=>CHtml::link($data->name, 'index.php'),
-//        ),
-//
-//
-//    ),
-//)); ?>
+    $dataProvider->sort->defaultOrder = "date DESC";
+
+//@todo изменить класс таблицы!!
+$this->widget('zii.widgets.grid.CGridView', array(
+    'id'=>'parser-grid',
+    'dataProvider'=>$dataProvider,
+    'summaryText'=>false,
+    'columns'=>array(
+        array(
+            'name'=>'id',
+            'header'=>'#',
+            'type'=>'raw',
+            'value'=>$data->id,
+        ),
+        array(
+            'name'=>'name',
+            'header'=>'Название сайта',
+            'type'=>'raw',
+            'value'=>'CHtml::link($data->name, "/parser/sites/".$data->id.".html", array("class"=>"fancybox", "data-fancybox-type"=>"iframe"))',
+        ),
+        array(
+            'name'=>'date',
+            'header'=>'Дата слепка',
+            'value'=>'date("d.m.Y", $data->date)',
+        ),
+    ),
+)); ?>
+
+
