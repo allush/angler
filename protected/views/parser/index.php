@@ -6,13 +6,28 @@ $this->breadcrumbs=array(
 	'Parsers',
 );
 
-$this->menu=array(
-	array('label'=>'Create Parser', 'url'=>array('create')),
-	array('label'=>'Manage Parser', 'url'=>array('admin')),
-);
-?>
+//$this->menu=array(
+//	array('label'=>'Create Parser', 'url'=>array('create')),
+//	array('label'=>'Manage Parser', 'url'=>array('admin')),
+//);
+//?>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".fancybox").fancybox();
+        });
+    </script>
 
 <h1>Parsers</h1>
+<?php
+echo CHtml::beginForm(CHtml::normalizeUrl(array('parser/index')), 'get', array('id'=>'filter-form'));
+echo CHtml::dateField('datefirst', (isset($_GET['datefirst'])) ? $_GET['datefirst']:'');
+//echo CHtml::textField('datefirst', (isset($_GET['datefirst'])) ? $_GET['datefirst']:'');
+echo CHtml::dateField('datelast', (isset($_GET['datelast'])) ? $_GET['datelast']:'');
+echo '<br/>';
+echo CHtml::submitButton('Поиск', array('name'=>''));
+echo CHtml::endForm();
+?>
 <table class="table">
     <thead>
     <tr>
@@ -22,9 +37,12 @@ $this->menu=array(
     </tr>
     </thead>
     <tbody>
-    <?php $this->widget('zii.widgets.CListView', array(
+    <?php
+    $dataProvider->sort->defaultOrder = "date DESC";
+    $this->widget('zii.widgets.CListView', array(
         'dataProvider'=>$dataProvider,
         'itemView'=>'_view',
+        'summaryText'=>false,
     )); ?>
     </tbody>
 </table>

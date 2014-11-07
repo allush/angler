@@ -3,13 +3,15 @@
 /* @var $data Parser */
 ?>
 
+<!--<script type="text/javascript">-->
+<!--    $(document).ready(function() {-->
+<!--        $(".fancybox").fancybox();-->
+<!--    });-->
+<!--</script>-->
+
 <div class="view">
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".fancybox").fancybox();
-        });
-    </script>
+
 
     <tr>
         <td>
@@ -19,7 +21,7 @@
         </td>
         <td>
 <!--	<b>--><?php //echo CHtml::encode($data->getAttributeLabel('name')); ?><!--:</b>-->
-            <a class="fancybox" data-fancybox-type="iframe" href="<?= $data->path;?>"> <?= $data->name; ?> </a>
+            <a class="fancybox" data-fancybox-type="iframe" href="/parser/sites/<?= $data->id ?>.html"> <?= $data->name; ?> </a>
 	<br />
         </td>
         <td>
