@@ -118,32 +118,65 @@ class SiteController extends Controller
         $this->render('zapros');
     }
 
+    public function save_site($element, $id)
+    {
+        $snoopy = new Snoopy();
+        $snoopy->fetch($element);
+        if ($snoopy->status != 200) {
+            $element = $snoopy->lastredirectaddr;
+            $snoopy->fetch($element);
+            if ($snoopy->status != 200) {
+                $element = $snoopy->scheme . '://' . $snoopy->host;
+                $snoopy->fetch($element);
+            }
+        }
+        $path=Yii::app()->getBasePath().'\data/snapshots/';
+        $f = fopen($path.$id . '.htm', 'w');
+        if ($f) {
+            fwrite($f, $snoopy->results);
+            fclose($f);
+        }
+    }
+
     public function actionGetzapros()
     {
-        //   http://yandex.ru/yandsearch?lr=213&text=%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C+%D0%BA%D1%83%D1%85%D0%BD%D1%8E&csg=21736%2C26287%2C12%2C12%2C0%2C1%2C0
+        set_time_limit(0);
         include(Yii::app()->getBasePath() . '/..' . '/snoopy/Snoopy.class.php');
-        include(Yii::app()->getBasePath() . '/..' . '/parser/simple_html_dom.php');
-        $snoopy = new Snoopy(); // создаём объект
+        $snoopy = new Snoopy();
+
         $this->render('zapros');
-//        $post_array = array();
-//        $post_array['text'] = 'купить+кухню';
-//        $post_array['lr'] = '213';
-//        $snoopy->submit('http://www.yandex.com/yandsearch', $post_array);
-//        $a = $snoopy->results;
-//        echo $a; // выводим результат
-        // Второй вариант
         $snoopy->fetch('http://yandex.ru/yandsearch?lr=213&text=купить+кухню'); // загружаем страницу
-        $a = $snoopy->results;
-        //    echo $a; // выводим результат
+        $result = $snoopy->results;
+        $snoopy->agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36";
+
         //Парсер
-        $html = str_get_html($a);
-        echo $html;
-//        $htmld= file_get_html('http://direct.yandex.ru/search?charset=utf-8&text=купить+кухню&rid=213&ref-page=0');
-        foreach ($html->find('a') as $element)
-            echo $element->href . '<br>';
-//        echo '--------------'.'<br>';
-//        foreach($htmld->find('a') as $element)
-//            echo $element->href . '<br>';
+        echo 'РЕКЛАМА' . '<br>';
+        $adv_array = array();
+        preg_match_all('/<a class="b-link serp-item__title-link serp-item__title-link" target="_blank" href="(.*?)">.*?<\/a>/', $result, $adv_array);
+        foreach ($adv_array[1] as $element) {
+            $model = new Parser;
+            $snoopy = new Snoopy();
+            $snoopy->fetch($element);
+            $model->name = $snoopy->host;
+            $model->date = time();
+            if ($model->save()) {
+                $this->save_site($element, $model->id);
+            }
+        }
+
+        echo 'САЙТЫ' . '<br>';
+        $site_array = array();
+        preg_match_all('/<a class="b-link serp-item__title-link serp-item__title-link" target="_blank" onmousedown=".*?" href="(.*?)" tabindex="2">.*?<\/a>/', $result, $site_array);
+        foreach ($site_array[1] as $element) {
+            $model = new Parser;
+            $snoopy = new Snoopy();
+            $snoopy->fetch($element);
+            $model->name = $snoopy->host;
+            $model->date = time();
+            if ($model->save()) {
+                $this->save_site($element, $model->id);
+            }
+        }
     }
 
 
