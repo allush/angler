@@ -13,7 +13,21 @@ $this->menu=array(
 ?>
 
 <h1>Parsers</h1>
-
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Дата</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php $this->widget('zii.widgets.CListView', array(
+        'dataProvider'=>$dataProvider,
+        'itemView'=>'_view',
+    )); ?>
+    </tbody>
+</table>
 <?php //$this->widget('zii.widgets.CListView', array(
 //	'dataProvider'=>$dataProvider,
 //	'itemView'=>'_view',
@@ -27,14 +41,22 @@ $this->menu=array(
 //$d;
 //?>
 
-
-
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-    'dataProvider'=>$dataProvider,
-        'columns'=>array(
-            'id',
-            'name',
-            'date',
-            'path',
-        ),
-)); ?>
+<?php
+//
+// $this->widget('zii.widgets.grid.CGridView', array(
+//    'dataProvider'=>$dataProvider,
+//    'columns'=>array(
+//        array(
+//            'name'=>'id',
+//            'type'=>'html',
+//            'value'=>$data->id,
+//        ),
+//        array(
+//            'name'=>'name',
+//            'type'=>'html',
+//            'value'=>CHtml::link($data->name, 'index.php'),
+//        ),
+//
+//
+//    ),
+//)); ?>
