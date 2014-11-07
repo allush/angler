@@ -130,7 +130,7 @@ class SiteController extends Controller
                 $snoopy->fetch($element);
             }
         }
-        $path=Yii::app()->getBasePath().'\data/snapshots/';
+        $path=Yii::app()->getBasePath().'/data/snapshots/';
         $f = fopen($path.$id . '.htm', 'w');
         if ($f) {
             fwrite($f, $snoopy->results);
