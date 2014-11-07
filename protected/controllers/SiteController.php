@@ -118,75 +118,72 @@ class SiteController extends Controller
         $this->render('zapros');
     }
 
+    public function save_site($element, $id)
+    {
+        $snoopy = new Snoopy();
+        $snoopy->fetch($element);
+        if ($snoopy->status != 200) {
+            $element = $snoopy->lastredirectaddr;
+            $snoopy->fetch($element);
+            if ($snoopy->status != 200) {
+                $element = $snoopy->scheme . '://' . $snoopy->host;
+                $snoopy->fetch($element);
+            }
+        }
+        $path=Yii::app()->getBasePath().'\data/snapshots/';
+        $f = fopen($path.$id . '.htm', 'w');
+        if ($f) {
+            fwrite($f, $snoopy->results);
+            fclose($f);
+        }
+    }
+
     public function actionGetzapros()
     {
+        set_time_limit(0);
         include(Yii::app()->getBasePath() . '/..' . '/snoopy/Snoopy.class.php');
         $snoopy = new Snoopy();
+
         $this->render('zapros');
         $snoopy->fetch('http://yandex.ru/yandsearch?lr=213&text=купить+кухню'); // загружаем страницу
         $result = $snoopy->results;
-//        $f = fopen('ya.htm', 'w');
-//        fwrite($f, $result);
-//        fclose($f);
         $snoopy->agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36";
+
         //Парсер
         echo 'РЕКЛАМА' . '<br>';
         $adv_array = array();
         preg_match_all('/<a class="b-link serp-item__title-link serp-item__title-link" target="_blank" href="(.*?)">.*?<\/a>/', $result, $adv_array);
-        $count = 1;
         foreach ($adv_array[1] as $element) {
+            $model = new Parser;
             $snoopy = new Snoopy();
-            echo $element . '<br>';
             $snoopy->fetch($element);
-            if ($snoopy->status != 200) {
-                $element = $snoopy->lastredirectaddr;
-                $snoopy->fetch($element);
-                if ($snoopy->status != 200) {
-                    $element = $snoopy->scheme . '://' . $snoopy->host;
-                    $element = strtolower($element);
-                    $snoopy->fetch($element);
-                }
+            $model->name = $snoopy->host;
+            $model->date = time();
+            if ($model->save()) {
+                $this->save_site($element, $model->id);
             }
-            $f = fopen($count . '.htm', 'w');
-            if ($f) {
-                fwrite($f, $snoopy->results);
-                fclose($f);
-            }
-            $count++;
         }
-        $count += 10;
+
         echo 'САЙТЫ' . '<br>';
         $site_array = array();
         preg_match_all('/<a class="b-link serp-item__title-link serp-item__title-link" target="_blank" onmousedown=".*?" href="(.*?)" tabindex="2">.*?<\/a>/', $result, $site_array);
         foreach ($site_array[1] as $element) {
+            $model = new Parser;
             $snoopy = new Snoopy();
-            echo $element . '<br>';
-            $element = strtolower($element);
             $snoopy->fetch($element);
-            if ($snoopy->status != 200) {
-                $element = $snoopy->lastredirectaddr;
-                $element = strtolower($element);
-                $snoopy->fetch($element);
-                if ($snoopy->status != 200) {
-                    $element = $snoopy->scheme . '://' . $snoopy->host;
-                    $element = strtolower($element);
-                    $snoopy->fetch($element);
-                }
+            $model->name = $snoopy->host;
+            $model->date = time();
+            if ($model->save()) {
+                $this->save_site($element, $model->id);
             }
-            $f = fopen($count . '.htm', 'w');
-            if ($f) {
-                fwrite($f, $snoopy->results);
-                fclose($f);
-            }
-            $count++;
         }
     }
+
 
     /**
      * Logs out the current user and redirect to homepage.
      */
-    public
-    function actionLogout()
+    public function actionLogout()
     {
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->homeUrl);

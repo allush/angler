@@ -7,7 +7,6 @@
  * @property integer $id
  * @property string $name
  * @property integer $date
- * @property string $path
  */
 class Parser extends CActiveRecord
 {
@@ -27,11 +26,11 @@ class Parser extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, date, path', 'required'),
+			array('name, date', 'required'),
 			array('date', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, date, path', 'safe', 'on'=>'search'),
+			array('id, name, date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,7 +54,6 @@ class Parser extends CActiveRecord
 			'id' => 'ID',
 			'name' => 'Name',
 			'date' => 'Date',
-			'path' => 'Path',
 		);
 	}
 
@@ -80,7 +78,6 @@ class Parser extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('date',$this->date);
-		$criteria->compare('path',$this->path,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
