@@ -11,7 +11,6 @@
     <?php Yii::app()->getClientScript()->registerCoreScript('jquery');?>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
     <link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
     <script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
@@ -22,28 +21,10 @@
     <link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
     <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css">
 
-    <script>
-        $(function() {
-            var time = new Date().getTime() / 1000;
-            $( "#slider-range" ).slider({
-                range: true,
-                min: 1414977424,
-                max: time,
-                step: 86400,
-                values: [ 1414977424, time ],
-                slide: function( event, ui ) {
-                    $( "#amount" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-                }
-            });
-            $( "#amount" ).val($( "#slider-range" ).slider( "values", 0 ) +
-                " - " + $( "#slider-range" ).slider( "values", 1 ) );
-        });
-    </script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
     <script type="text/javascript">
 

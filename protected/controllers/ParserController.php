@@ -122,17 +122,17 @@ class ParserController extends Controller
 	 * Lists all models.
 	 */
 
-	public function actionIndex($datefirst='', $datelast='')
+	public function actionIndex($from='', $to='')
 	{
 
         $criteria = new CDbCriteria();
-        if (strlen($datefirst)>0)
-            $first=strtotime($datefirst);
-        else $first=0;
-        if (strlen($datelast)>0)
-            $last=strtotime($datelast);
-        else $last=time();
-        $criteria->addBetweenCondition('date', $first, $last+86400);
+//        if (strlen($from)>0)
+//            $first=strtotime($from);
+//        else $first=0;
+//        if (strlen($to)>0)
+//            $last=strtotime($to);
+//        else $last=time();
+        $criteria->addBetweenCondition('date', $from, $to+86400);
 		$dataProvider=new CActiveDataProvider('Parser', array('criteria'=>$criteria));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
