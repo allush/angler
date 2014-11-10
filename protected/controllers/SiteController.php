@@ -130,12 +130,16 @@ class SiteController extends Controller
                 $snoopy->fetch($element);
             }
         }
-        $path=Yii::app()->getBasePath().'/data/snapshots/';
-        $f = fopen($path.$id . '.htm', 'w');
-        if ($f) {
-            fwrite($f, $snoopy->results);
-            fclose($f);
-        }
+        $path = Yii::app()->getBasePath() . '/data/snapshots/';
+        shell_exec(Yii::app()->getBasePath() . '/CutyCapt.exe --url='.$element.'/ --out=' . $path  . $id . '.png');
+
+        /* $f = fopen($path.$id . '.htm', 'w');
+         if ($f) {
+
+             fwrite($f, $snoopy->results);
+             fclose($f);
+         }
+        */
     }
 
     public function actionGetzapros()
@@ -144,13 +148,13 @@ class SiteController extends Controller
         include(Yii::app()->getBasePath() . '/..' . '/snoopy/Snoopy.class.php');
         $snoopy = new Snoopy();
 
-        $this->render('zapros');
-        $snoopy->fetch('http://yandex.ru/yandsearch?lr=213&text=купить+кухню'); // загружаем страницу
-        $result = $snoopy->results;
-        $snoopy->agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36";
 
+        $snoopy->agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36";
+        $snoopy->curl_path;
+        $snoopy->fetch('http://yandex.ru/yandsearch?lr=213&text=купить+кухню');
+        $result = $snoopy->results;
+        //echo $result;
         //Парсер
-        echo 'РЕКЛАМА' . '<br>';
         $adv_array = array();
         preg_match_all('/<a class="b-link serp-item__title-link serp-item__title-link" target="_blank" href="(.*?)">.*?<\/a>/', $result, $adv_array);
         foreach ($adv_array[1] as $element) {
@@ -164,7 +168,6 @@ class SiteController extends Controller
             }
         }
 
-        echo 'САЙТЫ' . '<br>';
         $site_array = array();
         preg_match_all('/<a class="b-link serp-item__title-link serp-item__title-link" target="_blank" onmousedown=".*?" href="(.*?)" tabindex="2">.*?<\/a>/', $result, $site_array);
         foreach ($site_array[1] as $element) {
@@ -177,6 +180,8 @@ class SiteController extends Controller
                 $this->save_site($element, $model->id);
             }
         }
+
+        $this->render('zapros');
     }
 
 
