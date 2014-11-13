@@ -1,18 +1,18 @@
 <?php
 
-class m141113_121340_initial extends CDbMigration
+class m141113_124027_init extends CDbMigration
 {
 	public function up()
 	{
-$s="
-DROP TABLE IF EXISTS `news`;
+        $s = "
+        DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` int(11) NOT NULL,
   `head` varchar(100) NOT NULL,
   `content` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=45 ;
 
 -- --------------------------------------------------------
 
@@ -40,7 +40,7 @@ CREATE TABLE `parser` (
   `name` text NOT NULL,
   `date` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=150 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
 
 -- --------------------------------------------------------
 
@@ -54,11 +54,11 @@ CREATE TABLE `photo` (
   `filename` text NOT NULL,
   `is_confirmed` tinyint(1) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
-  `coord_x` float DEFAULT NULL,
-  `coord_y` float DEFAULT NULL,
+  `coord_x` float NOT NULL,
+  `coord_y` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_photo_user_idx` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 -- --------------------------------------------------------
 
@@ -78,6 +78,33 @@ CREATE TABLE `score` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `sertifikat`
+--
+
+DROP TABLE IF EXISTS `sertifikat`;
+CREATE TABLE `sertifikat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `tags`
+--
+
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE `tags` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tag` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `user`
 --
 
@@ -88,23 +115,36 @@ CREATE TABLE `user` (
   `email` text NOT NULL,
   `password` text NOT NULL,
   `score` int(11) NOT NULL DEFAULT '0',
-  `network` text,
-  `identity` text,
+  `identity` text NOT NULL,
+  `network` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
-";
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `news_tag`
+--
+ALTER TABLE `news_tag`
+  ADD CONSTRAINT `fk_news_tag_news1` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_news_tag_tags1` FOREIGN KEY (`tags_id`) REFERENCES `tags` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Ограничения внешнего ключа таблицы `photo`
+--
+ALTER TABLE `photo`
+  ADD CONSTRAINT `fk_photo_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ";
+
         $this->execute($s);
         return true;
 	}
 
 	public function down()
 	{
-		$this->dropTable('user');
-        $this->dropTable("score");
-        $this->dropTable("news");
-        $this->dropTable("news_tag");
-        $this->dropTable("parser");
-        $this->dropTable("photo");
+		echo "m141113_124027_init does not support migration down.\n";
 		return false;
 	}
 
