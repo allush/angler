@@ -7,6 +7,9 @@
  * @property integer $id
  * @property string $name
  * @property integer $date
+ * @property integer $request_id
+ *
+ *  @property Request $request
  */
 class Parser extends CActiveRecord
 {
@@ -26,11 +29,11 @@ class Parser extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('name, date', 'required'),
+            array('name, date, request_id', 'required'),
             array('date', 'numerical', 'integerOnly' => true),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, name, date', 'safe', 'on' => 'search'),
+            array('id, name, date,request_id', 'safe', 'on' => 'search'),
         );
     }
 
@@ -41,7 +44,10 @@ class Parser extends CActiveRecord
     {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
-        return array();
+
+        return array(
+            'request'=>array(self::BELONGS_TO, 'Request', 'request_id')
+        );
     }
 
     /**
@@ -53,6 +59,7 @@ class Parser extends CActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'date' => 'Date',
+            'request_id' => 'Request ID',
         );
     }
 
@@ -77,6 +84,7 @@ class Parser extends CActiveRecord
         $criteria->compare('id', $this->id);
         $criteria->compare('name', $this->name, true);
         $criteria->compare('date', $this->date);
+        $criteria->compare('request_id', $this->request_id);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

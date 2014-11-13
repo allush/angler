@@ -81,6 +81,8 @@
                 'items' => array(
                     array('label' => 'Главная', 'url' => array('/site/index')),
                     array('label' => 'Запрос', 'url' => array('/site/zapros')),
+                    array('label' => 'Редактирование запросов', 'url' => array('request/index')),
+                    array('label' => 'Вывод результатов', 'url' => array('parser/index')),
                     array('label' => 'Регстрация', 'url' => array('/site/register'), 'visible' => Yii::app()->user->isGuest),
                     array('label' => 'Авторизация', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
                     array('label' => 'Профиль', 'url' => array('/profile/profile'), 'visible' => !Yii::app()->user->isGuest),

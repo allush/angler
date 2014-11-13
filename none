@@ -23,3 +23,13 @@ I: Connecting to configured address/port: localhost:9000.
 E: Could not connect to client. :-(
 Log closed at 2014-11-13 13:04:47
 
+Log opened at 2014-11-13 13:07:59
+I: Connecting to configured address/port: localhost:9000.
+E: Could not connect to client. :-(
+Log closed at 2014-11-13 13:08:00
+
+Log opened at 2014-11-13 13:17:45
+I: Connecting to configured address/port: localhost:9000.
+E: Could not connect to client. :-(
+Log closed at 2014-11-13 13:17:46
+
