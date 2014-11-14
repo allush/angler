@@ -113,9 +113,9 @@ class SiteController extends Controller
         $this->render('register', array('model' => $model));
     }
 
-    public function actionZapros()
+    public function actionRequest()
     {
-        $this->render('zapros');
+        $this->render('request');
     }
 
     public function save_site($element, $id)
@@ -131,7 +131,7 @@ class SiteController extends Controller
             }
         }
         $path = Yii::app()->getBasePath() . '/data/snapshots/';
-        shell_exec(Yii::app()->getBasePath() . '/CutyCapt.exe --url='.$element.'/ --out=' . $path  . $id . '.png');
+        shell_exec(Yii::app()->getBasePath() . '/CutyCapt.exe --url=' . $element . '/ --out=' . $path . $id . '.png');
 
         /* $f = fopen($path.$id . '.htm', 'w');
          if ($f) {
@@ -142,52 +142,51 @@ class SiteController extends Controller
         */
     }
 
-    public function actionGetzapros()
+    public function actionGetquery()
     {
         set_time_limit(0);
         include(Yii::app()->getBasePath() . '/..' . '/snoopy/Snoopy.class.php');
         $snoopy = new Snoopy();
         $snoopy->agent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36";
         $snoopy->curl_path;
-        //?
-        $r=new Request();
-        $requests=$r->findAll();
-        foreach ($requests as $request)
-        {
-        $snoopy->fetch('http://yandex.ru/yandsearch?lr=213&text='.$request->name);
-        $result = $snoopy->results;
-        echo $result;
-        //Парсер
 
-        $adv_array = array();
-        preg_match_all('/<a class="b-link serp-item__title-link serp-item__title-link" target="_blank" href="(.*?)">.*?<\/a>/', $result, $adv_array);
-        foreach ($adv_array[1] as $element) {
-            $model = new Parser;
-            $snoopy = new Snoopy();
-            $snoopy->fetch($element);
-            $model->name = $snoopy->host;
-            $model->date = time();
-            if ($model->save()) {
-                $this->save_site($element, $model->id);
+        $requests = Request::model()->findAll();
+        foreach ($requests as $request) {
+            $snoopy->fetch('http://yandex.ru/yandsearch?lr=213&text=' . $request->name);
+            sleep(8);
+            $result = $snoopy->results;
+            echo $result;
+            //Парсер
+
+            $adv_array = array();
+            preg_match_all('/<a class="b-link serp-item__title-link serp-item__title-link" target="_blank" href="(.*?)">.*?<\/a>/', $result, $adv_array);
+            foreach ($adv_array[1] as $element) {
+                $model = new Parser;
+                $snoopy = new Snoopy();
+                $snoopy->fetch($element);
+                $model->name = $snoopy->host;
+                $model->date = time();
+                $model->request_id = $request->id;
+                if ($model->save()) {
+                    $this->save_site($element, $model->id);
+                }
+            }
+
+            $site_array = array();
+            preg_match_all('/<a class="b-link serp-item__title-link serp-item__title-link" target="_blank" onmousedown=".*?" href="(.*?)" tabindex="2">.*?<\/a>/', $result, $site_array);
+            foreach ($site_array[1] as $element) {
+                $model = new Parser;
+                $snoopy = new Snoopy();
+                $snoopy->fetch($element);
+                $model->name = $snoopy->host;
+                $model->date = time();
+                $model->request_id = $request->id;
+                if ($model->save()) {
+                    $this->save_site($element, $model->id);
+                }
             }
         }
-
-        $site_array = array();
-        preg_match_all('/<a class="b-link serp-item__title-link serp-item__title-link" target="_blank" onmousedown=".*?" href="(.*?)" tabindex="2">.*?<\/a>/', $result, $site_array);
-        foreach ($site_array[1] as $element) {
-            $model = new Parser;
-            $snoopy = new Snoopy();
-            $snoopy->fetch($element);
-            $model->name = $snoopy->host;
-            $model->date = time();
-            //?
-            $model->request=$request->id;
-            if ($model->save()) {
-                $this->save_site($element, $model->id);
-            }
-        }
-    }
-        $this->render('zapros');
+        $this->render('request');
     }
 
 
