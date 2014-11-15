@@ -3,6 +3,8 @@
 /* @var $dataProvider CActiveDataProvider */
 /* @var $data array */
 /* @var $siteNames array */
+/* @var $minDate int */
+/* @var $maxDate int */
 
 $this->breadcrumbs = array(
     'Parsers',
@@ -59,6 +61,31 @@ $this->breadcrumbs = array(
 
         });
     });
+
+
+    $(function() {
+        var date1, date2;
+        $( "#slider-range" ).slider({
+            range: true,
+            step: 86400,
+            min: (<?= $minDate;?>),
+            max: (<?= $maxDate;?>+86400),
+            values: [ <?php if ($from) echo $from; else echo $minDate; ?>, <?php if ($to) echo $to; else echo $maxDate;?> ],
+            slide: function( event, ui ) {
+                date1 = new Date(ui.values[0] * 1000);
+                date2 = new Date(ui.values[1] * 1000);
+                $("#amount").val((date1.getDate()) + "." + (date1.getMonth()+1) + "." + date1.getFullYear() + " - " + date2.getDate() + "." + (date2.getMonth()+1) + "." + date2.getFullYear());
+                $('[name=from]').val(ui.values[0]-8600);
+                $('[name=to]').val(ui.values[1]);
+            }
+        });
+        date1 = new Date(<?php if ($from) echo $from; else echo $minDate; ?> * 1000);
+        date2 = new Date(<?php if ($to) echo $to; else echo $maxDate;?> * 1000);
+        $("#amount").val((date1.getDate()) + "." + (date1.getMonth()+1) + "." + date1.getFullYear() + " - " + date2.getDate() + "." + (date2.getMonth()+1) + "." + date2.getFullYear());
+        $('[name=from]').val(ui.values[0]-8600);
+        $('[name=to]').val(ui.values[1]);
+    });
+
 </script>
 
 <h1>Парсер</h1>
@@ -74,8 +101,8 @@ $this->breadcrumbs = array(
 <label for="amount">Диапазон дат:</label>
 <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
 <div id="slider-range"></div>
-<?= CHtml::hiddenField('from', '1415277424') ?>
-<?= CHtml::hiddenField('to', '1415466983') ?>
+<?= CHtml::hiddenField('from', $minDate) ?>
+<?= CHtml::hiddenField('to', $maxDate) ?>
 <br/>
 <?= CHtml::submitButton('Выбрать'); ?>
 
@@ -94,7 +121,7 @@ $this->breadcrumbs = array(
 
     <div id="slider-range"></div>
     <br/>
-    <input type="submit">
+<!--    <input type="submit">-->
 
 </form>
 <?php

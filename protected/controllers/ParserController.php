@@ -137,7 +137,7 @@ class ParserController extends Controller
         for ($i = $tstart; $i < $tstop; $i += $step) {
             $criteria = new CDbCriteria();
             $criteria->addCondition('date >= :start and date < :stop');
-            $criteria->params = array(':start' => $i, ':stop' => $step + $i);
+            $criteria->params = array(':start' => $i, ':stop' => $i + $step - 1);
 
             $data[date('d.m.Y', $i)] = Parser::model()->findAll($criteria);
         }
@@ -148,9 +148,23 @@ class ParserController extends Controller
             ->where('date >= :start and date < :stop', array(':start' => $tstart, ':stop' => $tstop))
             ->queryColumn();
 
+        $minDate = Yii::app()->db->createCommand()
+            ->select('MIN(date)')
+            ->from('parser')
+            ->queryScalar();
+        $maxDate = Yii::app()->db->createCommand()
+            ->select('MAX(date)')
+            ->from('parser')
+            ->queryScalar();
+
+
         $this->render('index', array(
             'data' => $data,
-            'siteNames' => $siteNames
+            'siteNames' => $siteNames,
+            'minDate' => $minDate,
+            'maxDate' => $maxDate,
+            'from' => $from,
+            'to' => $to,
         ));
     }
 
