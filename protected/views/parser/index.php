@@ -58,7 +58,7 @@ $this->breadcrumbs = array(
 <script type="text/javascript">
     $(document).ready(function () {
         $(".fancybox").fancybox({
-
+            fitToView: false
         });
     });
 
