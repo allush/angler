@@ -118,6 +118,12 @@ class SiteController extends Controller
         $this->render('request');
     }
 
+    public function actionShell()
+    {
+        $path = Yii::app()->getBasePath() . '/data/snapshots/google.png';
+        echo shell_exec(Yii::app()->getBasePath() . '/capt/capt.exe --url=http://google.com --out='.$path.' ');
+    }
+
     public function save_site($element, $id)
     {
         $snoopy = new Snoopy();
@@ -131,8 +137,7 @@ class SiteController extends Controller
             }
         }
         $path = Yii::app()->getBasePath() . '/data/snapshots/';
-        shell_exec(Yii::app()->getBasePath() . '/CutyCapt.exe --url=' . $element . '/ --out=' . $path . $id . '.png');
-
+       shell_exec(Yii::app()->getBasePath() . '/capt/capt.exe --url='.$element.' --out='.$path.$id.'.png');
         /* $f = fopen($path.$id . '.htm', 'w');
          if ($f) {
 
@@ -141,6 +146,7 @@ class SiteController extends Controller
          }
         */
     }
+
 
     public function actionGetquery()
     {
@@ -161,6 +167,7 @@ class SiteController extends Controller
             $adv_array = array();
             preg_match_all('/<a class="b-link serp-item__title-link serp-item__title-link" target="_blank" href="(.*?)">.*?<\/a>/', $result, $adv_array);
             foreach ($adv_array[1] as $element) {
+                sleep(8);
                 $model = new Parser;
                 $snoopy = new Snoopy();
                 $snoopy->fetch($element);
@@ -175,6 +182,7 @@ class SiteController extends Controller
             $site_array = array();
             preg_match_all('/<a class="b-link serp-item__title-link serp-item__title-link" target="_blank" onmousedown=".*?" href="(.*?)" tabindex="2">.*?<\/a>/', $result, $site_array);
             foreach ($site_array[1] as $element) {
+                sleep(8);
                 $model = new Parser;
                 $snoopy = new Snoopy();
                 $snoopy->fetch($element);
