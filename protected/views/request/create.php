@@ -7,12 +7,20 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
-	array('label'=>'List Request', 'url'=>array('index')),
-	array('label'=>'Manage Request', 'url'=>array('admin')),
-);
+//$this->menu=array(
+//	array('label'=>'List Request', 'url'=>array('index')),
+//	array('label'=>'Manage Request', 'url'=>array('admin')),
+//);
+
+$this->widget('zii.widgets.CMenu', array(
+    'items' => array(
+        array('label'=>'Список запросов', 'url'=>array('index')),
+    ),
+    'htmlOptions' => array('class'=>'nav nav-pills'),
+));
+
 ?>
 
-<h1>Create Request</h1>
+<h1>Новый запрос</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

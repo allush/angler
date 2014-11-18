@@ -54,7 +54,7 @@ class Request extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
+			'name' => 'Текст запроса',
 		);
 	}
 
