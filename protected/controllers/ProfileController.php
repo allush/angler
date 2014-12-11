@@ -1,5 +1,4 @@
 <?php
-include(Yii::app()->getBasePath() . '/..' . '/mpdf/mpdf.php');
 class ProfileController extends Controller
 {
     /**

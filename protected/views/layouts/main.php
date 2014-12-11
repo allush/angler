@@ -14,35 +14,19 @@
 
 
     <!-- Add jQuery library -->
-<!--    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>-->
-
+    <!--    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>-->
 
 
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
 
-    <script type="text/javascript" src="/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
-    <link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen"/>
-    <script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-    <link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css"
-          media="screen"/>
-    <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-    <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
-
-    <link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css"
-          media="screen"/>
-    <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
-
-
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-
 
 
     <script type="text/javascript">
-
 
 
         ymaps.ready(init);
@@ -90,9 +74,6 @@
             <?php $this->widget('zii.widgets.CMenu', array(
                 'items' => array(
                     array('label' => 'Главная', 'url' => array('/site/index')),
-                    array('label' => 'Запрос', 'url' => array('/site/request')),
-                    array('label' => 'Редактирование запросов', 'url' => array('request/index')),
-                    array('label' => 'Вывод результатов', 'url' => array('parser/index')),
                     array('label' => 'Регстрация', 'url' => array('/site/register'), 'visible' => Yii::app()->user->isGuest),
                     array('label' => 'Авторизация', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
                     array('label' => 'Профиль', 'url' => array('/profile/profile'), 'visible' => !Yii::app()->user->isGuest),
