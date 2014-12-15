@@ -32,20 +32,20 @@ $user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
 if ($user->score >= 200) {
     ?>
     <div class="row buttons">
-        <?php echo CHtml::link('Получить сертификат' . ' ' . SCORE::SERT_200, array('getsertifikat', 'id' => SCORE::SERT_200)); ?>
+        <?php echo CHtml::link('Получить сертификат' . ' ' . Score::SERT_200, array('getsertifikat', 'id' => Score::SERT_200)); ?>
     </div>
 
     <?php if ($user->score >= 500) { ?>
 
         <div class="row buttons">
-        <?php echo CHtml::link('Получить сертификат' . ' ' . SCORE::SERT_500, array('getsertifikat', 'id' => SCORE::SERT_500));
+        <?php echo CHtml::link('Получить сертификат' . ' ' . Score::SERT_500, array('getsertifikat', 'id' => Score::SERT_500));
     } ?>
     </div>
 
     <?php if ($user->score >= 1000) { ?>
 
         <div class="row buttons">
-        <?php echo CHtml::link('Получить сертификат' . ' ' . SCORE::SERT_1000, array('getsertifikat', 'id' => SCORE::SERT_1000));
+        <?php echo CHtml::link('Получить сертификат' . ' ' . Score::SERT_1000, array('getsertifikat', 'id' => Score::SERT_1000));
     } ?>
     </div>
 

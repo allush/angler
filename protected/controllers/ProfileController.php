@@ -1,5 +1,5 @@
 <?php
-include(Yii::app()->getBasePath() . '/..' . '/mpdf/mpdf.php');
+
 class ProfileController extends Controller
 {
     /**
@@ -99,7 +99,7 @@ class ProfileController extends Controller
         if ($sert->save()) {
             $mpdf = new mPDF();
             $mpdf->WriteHTML('Поздравляем! Вам выдан сертификат на ' . $id . ' англеров');
-            $mpdf->Output('sertifikat/'.$sert->id.'.pdf','F');
+            $mpdf->Output('sertifikat/' . $sert->id . '.pdf', 'F');
             $mpdf->Output();
             $user->sertifikat($id);
             exit;
@@ -107,12 +107,13 @@ class ProfileController extends Controller
             $this->redirect(Yii::app()->request->urlReferrer);
         }
     }
+
     public function actionShowsertifikat($id)
     {
-        $mpdf=new mPDF();
+        $mpdf = new mPDF();
         $mpdf->SetImportUse();
 
-        $pagecount = $mpdf->SetSourceFile('sertifikat/'.$id.'.pdf');
+        $pagecount = $mpdf->SetSourceFile('sertifikat/' . $id . '.pdf');
         $tplId = $mpdf->ImportPage($pagecount);
         $mpdf->UseTemplate($tplId);
         $mpdf->Output();
@@ -169,5 +170,20 @@ class ProfileController extends Controller
         }
     }
 
-
+    public function actionUploadPhoto()
+    {
+        $uploadedFile = CUploadedFile::getInstanceByName('file');
+        if ($uploadedFile) {
+            $filename = md5(microtime() . $uploadedFile->name) . '.' . $uploadedFile->extensionName;
+            $path = Photo::path() . $filename;
+            if ($uploadedFile->saveAs($path)) {
+                $photo = new Photo;
+                $photo->filename = $filename;
+                $photo->user_id = $this->getUser()->id;
+                if(!$photo->save()){
+                    unlink($path);
+                }
+            }
+        }
+    }
 }
