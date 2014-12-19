@@ -96,6 +96,7 @@ class ProfileController extends Controller
         $sert = new Sertifikat;
         $sert->user_id = $user->id;
         $sert->price = $id;
+        $sert->used = 0;
         if ($sert->save()) {
             $mpdf = new mPDF();
             $mpdf->WriteHTML('Поздравляем! Вам выдан сертификат на ' . $id . ' англеров');

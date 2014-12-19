@@ -3,7 +3,7 @@
 /* @var $photos Photo[] */
 $this->pageTitle = Yii::app()->name . ' - Галерея';
 $this->breadcrumbs = array(
-    'Галерея',
+    'Галерея'
 );
 ?>
 <h1>Галерея</h1>

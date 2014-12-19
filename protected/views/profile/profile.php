@@ -6,15 +6,16 @@
 
 $this->pageTitle = Yii::app()->name . ' - Профиль';
 $this->breadcrumbs = array(
-    'Профиль',
+    'Профиль'
 );
 $user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
 ?>
+<div class="smalldivider"></div>
 
-<?php $this->renderPartial('_menu');?>
+<?php $this->renderPartial('_menu');
+echo CHtml::link('Редактировать', array('updateprofile'));
+?>
 <h1>Профиль</h1>
-
-
 
 
 <div class="row">

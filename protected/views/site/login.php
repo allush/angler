@@ -5,7 +5,7 @@
 
 $this->pageTitle=Yii::app()->name . ' - Авторизация';
 $this->breadcrumbs=array(
-	'Авторизация',
+	'Авторизация'
 );
 ?>
 

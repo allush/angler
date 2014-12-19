@@ -8,6 +8,7 @@
  * @property integer $user_id
  * @property integer $price
  * @property User $user
+ * @property bool $used
  */
 class Sertifikat extends CActiveRecord
 {
@@ -52,7 +53,8 @@ class Sertifikat extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'user_id' => 'ID пользователя',
-            'price' => 'Цена'
+            'price' => 'Цена',
+            'used' => 'Потрачено'
 		);
 	}
 

@@ -5,7 +5,7 @@
 /* @var $form CActiveForm */
 
 $this->breadcrumbs=array(
-    'News',
+    'Новости'
 );
 
 //$this->menu=array(

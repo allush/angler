@@ -4,7 +4,7 @@
 
 $this->pageTitle = Yii::app()->name . ' - Сертификаты';
 $this->breadcrumbs = array(
-    'Сертификаты',
+    'Сертификаты'
 );
 $user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
 ?>
@@ -18,9 +18,12 @@ $user = User::model()->findByAttributes(array('id' => Yii::app()->user->id));
 
 <div class="row">
     <?php
-    foreach ($serts as $sert) {  ?>
+    foreach ($serts as $sert) {
+        ?>
         <div class="row">
-            <?php  echo CHtml::link('Сертификат № ' . $sert->id . ' на ' . $sert->price  .' англеров', array('showsertifikat', 'id' => $sert->id)); ?>
+            <?php echo CHtml::link('Сертификат № ' . $sert->id . ' на ' . $sert->price . ' англеров'       , array('showsertifikat', 'id' => $sert->id));
+
+            ?>
         </div>
     <?php
     }
